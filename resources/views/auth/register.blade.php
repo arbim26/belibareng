@@ -33,10 +33,10 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="notelpon" class="text-md-end">{{ __('No Telephone') }}</label>
-                            <input id="notelpon" type="number" class="form-control form-control-lg @error('notelpon') is-invalid @enderror" name="notelpon" value="{{ old('notelpon') }}" required autocomplete="notelpon">
+                            <label for="telp" class="text-md-end">{{ __('Telephone') }}</label>
+                            <input id="telp" type="number" class="form-control form-control-lg @error('telp') is-invalid @enderror" name="telp" value="{{ old('telp') }}" required autocomplete="telp">
 
-                            @error('notelpon')
+                            @error('telp')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -64,7 +64,7 @@
                         <div class="row mb-0">
                             <div class="text-center mt-3 ">
                                 <button type="submit" class="btn" style="background: #c43315; color: white; width: 200px;">
-                                    {{ __('Selelsai') }}
+                                    {{ __('Selesai') }}
                                 </button>
                             </div>
                         </div>
