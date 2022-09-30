@@ -34,9 +34,9 @@
                         
                         <div class="form-group">
                             <label for="notelpon" class="text-md-end">{{ __('No Telephone') }}</label>
-                            <input id="notelpon" type="number" class="form-control form-control-lg @error('notelpon') is-invalid @enderror" name="notelpon" value="{{ old('notelpon') }}" required autocomplete="notelpon">
+                            <input id="Notelpon" type="number" class="form-control form-control-lg @error('Notelpon') is-invalid @enderror" name="notelpon" value="{{ old('Notelpon') }}" required autocomplete="Notelpon">
 
-                            @error('notelpon')
+                            @error('Notelpon')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
