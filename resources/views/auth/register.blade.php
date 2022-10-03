@@ -1,11 +1,13 @@
 @extends('layouts.LoginRegis')
 
 @section('content')
-<div class="d-flex align-items-center justify-content-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+<div class="container ">
 
-    <div class="align-items-center ">
-        <h1><strong>Daftar Sekarang</strong></h1>
-            <p class="mb-4">Sudah punya akun Belibareng? <a href="{{ route('login') }}" style="text-decoration: none; color: #c43315">Masuk</a></p>
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-7">
+            <h1><strong>Daftar Sekarang</strong></h1>
+            <p class="mb-3">Sudah punya akun Belibareng? <a href="{{ route('login') }}" style="text-decoration: none; color: #c43315">Masuk</a></p>
                 <form method="POST" action="{{ route('register') }}" style="width: 400px">
                 @csrf
 
@@ -70,7 +72,9 @@
                     </div>
                         
                     </form>
-                </div>
+          </div>
+        </div>
+      </div>
 
-</div>
+
 @endsection
