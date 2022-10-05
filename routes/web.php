@@ -30,6 +30,7 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
     });
 
+
     Route::group(['prefix'=>'user', 'middleware'=>['isUser','auth','PreventBackHistory']], function(){
     Route::get('dashboard',[UserController::class,'index'])->name('user.dashboard');
 });
