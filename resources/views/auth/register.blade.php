@@ -4,7 +4,8 @@
 <div class="container">
     <div class="row align-items-center justify-content-center">
       <div class="col-md-7">
-            <h1><strong>Daftar Sekarang</strong></h1>
+        <img src="{{ asset('assets/logo/logo belibareng 1-01.png') }}" class="col-md-7 mb-5  " alt="">
+            <h1 class="mb-3"><strong>Daftar Sekarang</strong></h1>
             <p class="mb-3">Sudah punya akun Belibareng? <a href="{{ route('login') }}" style="text-decoration: none; color: #c43315">Masuk</a></p>
                 <form method="POST" action="{{ route('register') }}">
                 @csrf
