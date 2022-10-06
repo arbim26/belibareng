@@ -3,8 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row align-items-center justify-content-center">
-      <div class="col-md-7">
-        <h1><strong>Login</strong></h1>
+        <div class="col-md-7 mb-5">
+            <img src="{{ asset('assets/logo/logo belibareng 1-01.png') }}" class="col-md-7 mb-5 justify-content-center" alt="">
+        <h1 class="mb-3"><strong>Login</strong></h1>
         <p class="mb-3">Belum punya akun Belibareng? <a href="{{ route('register') }}" style="text-decoration: none; color: #c43315">Daftar</a></p>
         <form method="POST" action="{{ route('login') }}" s>
             @csrf
