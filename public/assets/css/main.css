@@ -1,0 +1,123 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* warna */
+.jingga{
+    color: #EC5E24;
+}
+
+.merah{
+    color: #D82B2A;
+}
+
+.putih{
+    color: white;
+}
+/* warna */
+
+/* navbar */
+.navbar{
+    height: 70px;
+}
+/* navabar */
+
+/* navbar */
+.f-20{
+    font-size: 20px;
+}
+
+.f-15{
+    font-size: 15px;
+}
+/* navbar */
+
+/* produk */
+#produk{
+    background: #F5F5F5;
+}
+
+.round{
+    border-radius: 10px;
+}
+
+.card{
+    border-radius: 10px;
+}
+
+#produk .isi-card{
+    background: white;
+    margin-top: -50px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#produk .judul-card{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+}
+/* produk */
+
+/* tentang kami */
+.tentangkami-img{
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+
+.text-kami{
+    text-align: justify;
+}
+/* tentang kami */
+
+/* artikel */
+#artikel{
+    background: #F5F5F5;
+}
+#artikel .judul-card{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+#artikel .isi-card{
+    background: white;
+    margin-top: -30px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#artikel p{
+    font-weight: 600;
+}
+/* artikel */
+
+/* footer */
+#footer{
+    background-color: #0D2231;
+}
+
+#footer .card{
+    width: 60%;
+}
+
+#footer p{
+    text-align: justify;
+}
+
+#footer .isi-card{
+    background: white;
+    margin-top: -30px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#footer .isi-card h6{
+    font-weight: 600;
+}
+
+#footer .isi-card p{
+    font-weight: 600;
+}
+/* footer */
