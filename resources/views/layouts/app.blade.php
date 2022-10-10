@@ -38,10 +38,10 @@
                     <a class="nav-link" href="{{ route('tentangkami') }}">Tentang Kami</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Artikel</a>
+                    <a class="nav-link" href="{{ route('artikel') }}">Artikel</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Produk</a>
+                    <a class="nav-link" href="{{ route('produk') }}">Produk</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}"

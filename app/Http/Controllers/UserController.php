@@ -12,4 +12,10 @@ class UserController extends Controller
     function tentangkami(){
         return view('dashboards.users.tentangkami');
     }
+    function artikel(){
+        return view('dashboards.users.artikel');
+    }
+    function produk(){
+        return view('dashboards.users.produk');
+    }
 }
