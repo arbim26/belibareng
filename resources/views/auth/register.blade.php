@@ -3,13 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row align-items-center justify-content-center">
-<<<<<<< HEAD
-      <div class="col-md-7 ">
-            <img src="{{ asset('assets/logo/logo belibareng 1-01.png') }}" class="mb-5" style="height: 30px" alt="">
-=======
       <div class="col-md-7">
-        <img src="{{ asset('assets/logo/logo belibareng 2-01.png') }}" class="col-md-4 mb-5 justify-content-center" alt=""><img src="{{ asset('assets/logo/logo belibareng 1-01.png') }}" class="col-md-7 mb-5  " alt="">
->>>>>>> 48506eb051cfc0a96f009aeb45b3d1e4e8f63173
+            <img src="{{ asset('assets/logo/logo belibareng 1-01.png') }}" class="mb-5" style="height: 40px" alt="">
             <h1 class="mb-3"><strong>Daftar Sekarang</strong></h1>
             <p class="mb-3">Sudah punya akun Belibareng? <a href="{{ route('login') }}" style="text-decoration: none; color: #c43315">Masuk</a></p>
                 <form method="POST" action="{{ route('register') }}" >
