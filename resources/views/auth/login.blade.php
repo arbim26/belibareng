@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row align-items-center justify-content-center">
         <div class="col-md-7 mb-5">
-            <img src="{{ asset('assets/logo/logo belibareng 1-01.png') }}" class="col-md-7 mb-5 justify-content-center" alt="">
+        <img src="{{ asset('assets/logo/logo belibareng 1-01.png') }}" class="mb-5" style="height: 30px" alt="">
         <h1 class="mb-3"><strong>Login</strong></h1>
         <p class="mb-3">Belum punya akun Belibareng? <a href="{{ route('register') }}" style="text-decoration: none; color: #c43315">Daftar</a></p>
         <form method="POST" action="{{ route('login') }}" s>
@@ -48,7 +48,7 @@
 
             <div class="row mb-0">
                 <div class="text-center mt-3 ">
-                    <button type="submit" class="btn" style="background: #c43315; color: white; width: 200px;">
+                    <button type="submit" class="btn" style="background: #c43315; color: white; height: 40px; width: 200px;">
                         {{ __('Selesai') }}
                     </button>
                 </div>

@@ -3,11 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row align-items-center justify-content-center">
-      <div class="col-md-7">
-        <img src="{{ asset('assets/logo/logo belibareng 1-01.png') }}" class="col-md-7 mb-5  " alt="">
+      <div class="col-md-7 ">
+            <img src="{{ asset('assets/logo/logo belibareng 1-01.png') }}" class="mb-5" style="height: 30px" alt="">
             <h1 class="mb-3"><strong>Daftar Sekarang</strong></h1>
             <p class="mb-3">Sudah punya akun Belibareng? <a href="{{ route('login') }}" style="text-decoration: none; color: #c43315">Masuk</a></p>
-                <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="{{ route('register') }}" >
                 @csrf
 
                     <div class="form-group">
@@ -43,34 +43,36 @@
                             </span>
                             @enderror
                     </div>
-                        
-                    <div class="form-group">
-                        <label for="password" class="text-md-end">{{ __('Password') }}</label>
-                        <input id="password" type="password"
-                            class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" required
-                            autocomplete="new-password">
 
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                    </div>
-                        
-                     <div class="form-group">
-                        <label for="password-confirm" class="text-md-end">{{ __('Confirm Password') }}</label>
-                        <input id="password-confirm" type="password" class="form-control form-control-lg" name="password_confirmation" required autocomplete="new-password">
-                    </div>
-
-                    <div class="row mb-0">
-                        <div class="text-center mt-3 ">
-                            <button type="submit" class="btn" style="background: #c43315; color: white; width: 200px;">
-                                {{ __('Selesai') }}
-                            </button>
+                    <div class="row">
+                        <div class="form-group col">
+                            <label for="password" class="text-md-end">{{ __('Password') }}</label>
+                            <input id="password" type="password"
+                                class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" required
+                                autocomplete="new-password">
+    
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                        </div>
+                            
+                         <div class="form-group col">
+                            <label for="password-confirm" class="text-md-end">{{ __('Confirm Password') }}</label>
+                            <input id="password-confirm" type="password" class="form-control form-control-lg" name="password_confirmation" required autocomplete="new-password">
                         </div>
                     </div>
                         
-                    </form>
+
+                    <div class="row mb-0">
+                        <div class="text-center mt-3 ">
+                            <button type="submit" class="btn" style="background: #c43315; color: white; height: 40px; width: 200px;">
+                                {{ __('Selesai') }}
+                            </button>
+                        </div>
+                    </div>        
+                </form>
           </div>
     </div>
 </div>
