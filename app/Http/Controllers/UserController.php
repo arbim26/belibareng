@@ -18,5 +18,14 @@ class UserController extends Controller
     function produk(){
         return view('dashboards.users.produk');
     }
+    function profile(){
+        return view('dashboards.users.profile');
+    }
+    function alamat(){
+        return view('dashboards.users.alamat');
+    }
+    function password(){
+        return view('dashboards.users.password');
+    }
 }
 
