@@ -32,10 +32,12 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
 
 
     Route::group(['prefix'=>'user', 'middleware'=>['isUser','auth','PreventBackHistory']], function(){
-        Route::get('dashboard',[UserController::class,'index'])->name('index');
+        Route::get('dashboard',[UserController::class,'index'])->name('user.dashboard');
         Route::get('tentangkami',[UserController::class,'tentangkami'])->name('tentangkami');
         Route::get('artikel',[UserController::class,'artikel'])->name('artikel');
         Route::get('produk',[UserController::class,'produk'])->name('produk');
-        Route::get('akunsaya',[UserController::class,'profile'])->name('profile');
+        Route::get('profile',[UserController::class,'profile'])->name('profile');
+        Route::get('alamat',[UserController::class,'alamat'])->name('alamat');
+        Route::get('password',[UserController::class,'password'])->name('password');
     });
 
