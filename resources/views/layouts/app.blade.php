@@ -20,9 +20,9 @@
   <body>
     
     <section id="navbar">
-        <nav class=" navbar navbar-expand-lg navbar-light bg-white bg-body rounded sticky-top ">
+        <nav class=" navbar navbar-expand-lg navbar-light bg-white bg-body position-relative fixed-top">
           <div class="container">
-              <a class="navbar-brand" href="#">
+              <a class="navbar-brand" href="{{ route('user.dashboard') }}">
                 <img src="../assets/logo/logo belibareng 1-01.png" width="" height="40" alt="">
               </a>
     
@@ -34,7 +34,7 @@
                 <ul class="navbar-nav ms-auto">
                   @auth
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('index') }}">Home</a>
+                    <a class="nav-link" aria-current="page" href="{{ route('user.dashboard') }}">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('tentangkami') }}">Tentang Kami</a>
@@ -60,7 +60,7 @@
                       </svg>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item" href="{{ route('akunsaya') }}">Akun Saya</a></li>
+                      <li><a class="dropdown-item" href="">Akun Saya</a></li>
                       <li><a class="dropdown-item" href="#">Pesanan Saya</a></li>
                       <li><a class="dropdown-item" href="{{ route('logout') }}" 
                         onclick="event.preventDefault();
@@ -131,7 +131,7 @@
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum placeat in, neque reprehenderit iste voluptas delectus! Pariatur praesentium tempore commodi doloremque, libero atque sequi perspiciatis debitis ea, explicabo quaerat nesciunt id nam rerum, similique maxime sed sapiente? Id, numquam facilis!</p>
             </div>
 
-            <div class="artikel col-md-4 d-flex justify-content-pend">
+            <div class="artikel col-md-4 d-flex justify-content-center">
                 <div class="card">
                   <img src="../assets/image/artikel1.png" class="card-img-top round" alt="">
                   <div class="isi-card">
