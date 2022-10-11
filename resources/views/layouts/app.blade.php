@@ -34,11 +34,7 @@
                 <ul class="navbar-nav ms-auto">
                   @auth
                   <li class="nav-item">
-<<<<<<< HEAD
                     <a class="nav-link" aria-current="page" href="{{ route('user.dashboard') }}">Home</a>
-=======
-                    <a class="nav-link active" aria-current="page" href="{{ route('user.dashboard') }}">Home</a>
->>>>>>> c4326ab2a07bddf1c57feacbccca391a29b52fd2
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('tentangkami') }}">Tentang Kami</a>
@@ -50,6 +46,7 @@
                     <a class="nav-link" href="{{ route('produk') }}">Produk</a>
                   </li>
                   @endauth
+                  
     
                 <div class="navbar-nav">
                   <a class="btn" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
@@ -65,11 +62,7 @@
                       </svg>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-<<<<<<< HEAD
-                      <li><a class="dropdown-item" href="">Akun Saya</a></li>
-=======
                       <li><a class="dropdown-item" href="{{ route('profile') }}">Akun Saya</a></li>
->>>>>>> c4326ab2a07bddf1c57feacbccca391a29b52fd2
                       <li><a class="dropdown-item" href="#">Pesanan Saya</a></li>
                       <li><a class="dropdown-item" href="{{ route('logout') }}" 
                         onclick="event.preventDefault();
