@@ -27,5 +27,8 @@ class UserController extends Controller
     function password(){
         return view('dashboards.users.password');
     }
+    function cart(){
+        return view('dashboards.users.cart');
+    }
 }
 
