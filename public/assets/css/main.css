@@ -120,4 +120,23 @@ body {
 #footer .isi-card p{
     font-weight: 600;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 /* footer */
+
+/* profile */
+#profile {
+    background-color: #F5F5F5;
+}
+#profile .card{
+    background-color: white;
+}
+#profile a{
+    text-decoration: none;
+    color: black;
+}
+/* profile */
