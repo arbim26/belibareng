@@ -3,12 +3,13 @@
 
 <section id="cart">
     <div class="container pt-5">
-        <h1>Keranjang Belanja</h1>
+        <h1 class="fw-bold">Keranjang Belanja</h1>
+        <br>
         <div class="row d-flex">
             <div class="col-8 ps-3 pe-3">
                 <div class="card">
                     <div class="card-body">
-                    <p class="text-start">1 Produk</p>
+                    <p class="card-text">1 Produk</p>
                     <a class="text-end link-danger" href="#">Hapus Semua</a>
                     </div>
                 </div>
@@ -16,10 +17,10 @@
             <div class="col-4 ps-3 pe-3">
                 <div class="card">
                     <div class="card-body">
-                    <p class="card-text">Total Belanja</p>
+                    <p class="card-text fw-bold">Total Belanja</p>
                     <p class="text-end">Rp. 12.000</p>
                     <div class="d-grid gap-2">
-                        <button class="btn btn-danger" type="button">Button</button>
+                        <button class="btn btn-danger" type="button">Beli Sekarang</button>
                     </div>
                     </div>
                 </div>
@@ -33,7 +34,7 @@
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M2.6898 13.167C2.6665 13.7282 2.6665 14.387 2.6665 15.1667V23.1667C2.6665 24.4238 2.6665 25.0523 3.05703 25.4429C3.44755 25.8334 4.07609 25.8334 5.33317 25.8334H9.33346V20.5001C9.33346 19.7637 9.93041 19.1667 10.6668 19.1667H13.3335C14.0698 19.1667 14.6668 19.7637 14.6668 20.5001V25.8334H18.6665C19.9236 25.8334 20.5521 25.8334 20.9426 25.4429C21.3332 25.0523 21.3332 24.4238 21.3332 23.1667V15.1667C21.3332 14.387 21.3332 13.7282 21.3099 13.167C20.8235 13.1658 20.326 13.152 19.8668 13.045C19.1744 12.8837 18.5387 12.5693 18 12.1357C17.2212 12.7626 16.2404 13.141 15.1822 13.1655C15.1273 13.1667 15.0696 13.1667 15.0143 13.1667H15.0143L15 13.1667L14.9857 13.1667H14.9856C14.9304 13.1667 14.8726 13.1667 14.8177 13.1655C13.7596 13.141 12.7788 12.7626 12 12.1357C11.2212 12.7626 10.2404 13.141 9.1822 13.1655C9.12733 13.1667 9.06956 13.1667 9.01434 13.1667H9.01428L8.99996 13.1667L8.98565 13.1667H8.98559C8.93037 13.1667 8.8726 13.1667 8.81773 13.1655C7.75956 13.141 6.77876 12.7626 5.99996 12.1357C5.46125 12.5693 4.82557 12.8837 4.13308 13.045C3.67382 13.152 3.17624 13.1658 2.6898 13.167Z" fill="#737373"/>
                 </svg>
                 Jawa Barat - Depok</h5>
-                <img src="../assets/image/Tepung.jpg" class="rounded float-start card-img-top" style="width: 100px" alt="...">
+                <img src="../assets/image/Tepung.jpg" class="rounded float-start " style="width: 100px" alt="...">
               <p class="card-text">Minyak Goreng</p>
               <p class="text-end">Rp12.000</p>
               <a href="#" class="btn"><svg width="21" height="24" viewBox="0 0 21 24" fill="none" xmlns="http://www.w3.org/2000/svg">

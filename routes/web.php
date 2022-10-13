@@ -40,5 +40,6 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::get('alamat',[UserController::class,'alamat'])->name('alamat');
         Route::get('password',[UserController::class,'password'])->name('password');
         Route::get('cart',[UserController::class,'cart'])->name('cart');
+        Route::get('daftarpesanan',[UserController::class,'daftarpesanan'])->name('daftarpesanan');
     });
 
