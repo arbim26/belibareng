@@ -20,9 +20,9 @@
   <body>
     
     <section id="navbar">
-        <nav class=" navbar navbar-expand-lg navbar-light bg-white bg-body rounded sticky-top ">
+        <nav class=" navbar navbar-expand-lg navbar-light bg-white bg-body position-relative fixed-top">
           <div class="container">
-              <a class="navbar-brand" href="#">
+              <a class="navbar-brand" href="{{ route('user.dashboard') }}">
                 <img src="../assets/logo/logo belibareng 1-01.png" width="" height="40" alt="">
               </a>
     
@@ -34,7 +34,7 @@
                 <ul class="navbar-nav ms-auto">
                   @auth
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('user.dashboard') }}">Home</a>
+                    <a class="nav-link" aria-current="page" href="{{ route('user.dashboard') }}">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('tentangkami') }}">Tentang Kami</a>
@@ -46,10 +46,10 @@
                     <a class="nav-link" href="{{ route('produk') }}">Produk</a>
                   </li>
                   @endauth
-
-                <div class="dropdown">
-                  <a class="btn" type="button" id="dropdownMenuButton1" data-bs-toogle="dropdown" aria-expanded="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+                  
+    
+                <div class="navbar-nav">
+                  <a class="btn" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
                     <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
                   </svg>
                 </a>
