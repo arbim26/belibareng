@@ -30,5 +30,8 @@ class UserController extends Controller
     function cart(){
         return view('dashboards.users.cart');
     }
+    function daftarpesanan(){
+        return view('dashboards.users.daftarpesanan');
+    }
 }
 
