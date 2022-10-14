@@ -83,8 +83,6 @@
                                 </ul>
                             </div>
                         </div>
-
-
                 </div>
             </div>
 
@@ -185,12 +183,7 @@
                 </div>
             </div>
           </div>
-
-          <div class="copyright d-flex justify-content-center">
-            <h6 class="text-white">Copyright © Digital Forte Indonesia</h6>
-          </div>
-          
-        </div>
+          <input type="number"/>
     </section>
 
 
@@ -204,6 +197,10 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
+    </script>
+    <script src="./assets/js/bootstrap-input-spinner.js"></script>
+    <script>
+        $("input[type='number']").inputSpinner()
     </script>
 </body>
 

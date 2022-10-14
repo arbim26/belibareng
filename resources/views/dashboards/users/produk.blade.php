@@ -16,6 +16,9 @@
                           <div class="col">
                             <p class="f-15 text-muted">575/1000 L</p>
                           </div>
+                          <div class="product-action-1 show">
+                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i>+</a>
+                        </div>
                         </div>
                       </div>
                   </div>
