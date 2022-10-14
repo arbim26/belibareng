@@ -15,8 +15,14 @@ class UserController extends Controller
     function artikel(){
         return view('dashboards.users.artikel');
     }
+    function subartikel(){
+        return view('dashboards.users.subartikel');
+    }
     function produk(){
         return view('dashboards.users.produk');
+    }
+    function detailproduk(){
+        return view('dashboards.users.detailproduk');
     }
     function profile(){
         return view('dashboards.users.profile');

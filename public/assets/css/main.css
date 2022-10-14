@@ -1,142 +1,213 @@
 body {
-  font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* warna */
-.jingga{
+.jingga {
     color: #EC5E24;
 }
 
-.merah{
+.merah {
     color: #D82B2A;
 }
 
-.putih{
-    color: white;
+.abu {
+    color: #737373;
 }
+
 /* warna */
 
 /* navbar */
-.navbar{
+.navbar {
     height: 70px;
 }
+
 /* navabar */
 
 /* navbar */
-.f-20{
+.f-20 {
     font-size: 20px;
 }
 
-.f-15{
+.f-15 {
     font-size: 15px;
 }
+
 /* navbar */
 
 /* produk */
-#produk{
+#produk {
     background: #F5F5F5;
 }
 
-.round{
+
+.round {
     border-radius: 10px;
 }
 
-.card{
+.card {
     border-radius: 10px;
 }
 
-#produk .isi-card{
+#produk .isi-card {
     background: white;
     margin-top: -50px;
     padding: 10px;
     border-radius: 10px;
 }
 
-#produk .judul-card{
+#produk .judul-card {
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
 }
+
+#produk a{
+    color: #D82B2A;
+}
+
 /* produk */
 
 /* tentang kami */
-.tentangkami-img{
+.tentangkami-img {
     width: 100%;
     max-width: 400px;
     height: auto;
-  }
+}
 
-.text-kami{
+.text-kami {
     text-align: justify;
 }
+
 /* tentang kami */
 
 /* artikel */
-#artikel{
+#artikel {
     background: #F5F5F5;
 }
-#artikel .judul-card{
+
+#artikel .judul-card {
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
 }
 
-#artikel .isi-card{
+#artikel .isi-card {
     background: white;
     margin-top: -30px;
     padding: 10px;
     border-radius: 10px;
 }
 
-#artikel p{
+#artikel p {
     font-weight: 600;
 }
+
+#artikel a {
+    color: #D82B2A;
+}
+
+#artikel .card a{
+    color: black;
+    text-decoration: none;
+}
+
 /* artikel */
 
 /* footer */
-#footer{
+#footer {
     background-color: #0D2231;
 }
 
-#footer .card{
+#footer .card {
     width: 60%;
 }
 
-#footer p{
+#footer p {
     text-align: justify;
 }
 
-#footer .isi-card{
+#footer .isi-card {
     background: white;
     margin-top: -30px;
     padding: 10px;
     border-radius: 10px;
 }
 
-#footer .isi-card h6{
+#footer .isi-card h6 {
     font-weight: 600;
 }
 
-#footer .isi-card p{
+#footer .isi-card p {
     font-weight: 600;
+}
+
+#footer .copyright{
+    background-color: #D82B2A;
+    height: 50px;
+    align-items: center;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
+
 /* footer */
 
 /* profile */
 #profile {
     background-color: #F5F5F5;
 }
-#profile .card{
+
+#profile .card {
     background-color: white;
 }
-#profile a{
+
+#profile a {
     text-decoration: none;
     color: black;
 }
+
 /* profile */
+
+/* subartikel */
+.text-artikel p {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 22px;
+    text-align: justify;
+
+}
+
+.komentar textarea{
+    border-radius: 15px;
+}
+/* subartikel */
+
+/*  recent-posts */
+.recent-posts a{
+    text-decoration: none;
+    color: black;
+}
+/*  recent-posts */
+
+/* detailproduk */
+#detailproduk {
+    background-color: #F5F5F5;
+}
+
+#detailproduk .container{
+    background-color: white;
+}
+
+#detailproduk .text-detail{
+    text-align: justify;
+}
+
+#detailproduk .card-header p{
+    font-size: 25px;
+}
+/* detailproduk */

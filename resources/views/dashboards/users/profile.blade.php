@@ -1,7 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
-
 <section id="profile">
     <div class="container pt-5 pb-5">
         <div class="row">
@@ -18,7 +16,6 @@
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><a href="{{ route('profile') }}">Profile</a></li>
-                        <li class="list-group-item"><a href="{{ route('alamat') }}">Alamat</a></li>
                         <li class="list-group-item"><a href="{{ route('password') }}">Password</a></li>
                     </ul>
                 </div>

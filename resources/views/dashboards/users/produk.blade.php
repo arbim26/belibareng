@@ -133,6 +133,9 @@
                         </div>
                     </div>
                   </div>
+              </div>
+              <img src="../assets/image/banner.jpg" class="img-fluid round mb-4" alt="">
+              <div class="row">
                 <div class="col-6 col-sm-3 mb-4">
                   <div class="card">
                       <img src="../assets/image/Kerupuk.jpg" class="card-img-top round" alt="">

@@ -10,7 +10,7 @@
                 <div class="card">
                     <img src="../assets/image/artikel1.png" class="card-img-top round" alt="">
                     <div class="isi-card">
-                      <h1 class="judul-card ">Bantu Pasarkan Produk UMKM, Mendag Akan Buka Hipermarket di Arab Saudi</h1>
+                      <a class="judul-card" href="{{ route('subartikel') }}">Bantu Pasarkan Produk UMKM, Mendag Akan Buka Hipermarket di Arab Saudi</a>
                       <hr>
                       <div class="d-flex gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
@@ -26,7 +26,7 @@
                 <div class="card">
                     <img src="../assets/image/artikel2.png" class="card-img-top round" alt="">
                     <div class="isi-card">
-                      <h1 class="judul-card ">Bantu Pasarkan Produk UMKM, Mendag Akan Buka Hipermarket di Arab Saudi</h1>
+                      <a class="judul-card" href="{{ route('subartikel') }}">Bantu Pasarkan Produk UMKM, Mendag Akan Buka Hipermarket di Arab Saudi</a>
                       <hr>
                       <div class="d-flex gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
@@ -42,7 +42,7 @@
                 <div class="card">
                     <img src="../assets/image/artikel3.png" class="card-img-top round" alt="">
                     <div class="isi-card">
-                      <h1 class="judul-card ">Bantu Pasarkan Produk UMKM, Mendag Akan Buka Hipermarket di Arab Saudi</h1>
+                      <a class="judul-card" href="{{ route('subartikel') }}">Bantu Pasarkan Produk UMKM, Mendag Akan Buka Hipermarket di Arab Saudi</a>
                       <hr>
                       <div class="d-flex gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
@@ -61,7 +61,7 @@
                 <div class="card">
                     <img src="../assets/image/artikel1.png" class="card-img-top round" alt="">
                     <div class="isi-card">
-                      <h1 class="judul-card ">Bantu Pasarkan Produk UMKM, Mendag Akan Buka Hipermarket di Arab Saudi</h1>
+                      <a class="judul-card" href="{{ route('subartikel') }}">Bantu Pasarkan Produk UMKM, Mendag Akan Buka Hipermarket di Arab Saudi</a>
                       <hr>
                       <div class="d-flex gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
@@ -77,7 +77,7 @@
                 <div class="card">
                     <img src="../assets/image/artikel2.png" class="card-img-top round" alt="">
                     <div class="isi-card">
-                      <h1 class="judul-card ">Bantu Pasarkan Produk UMKM, Mendag Akan Buka Hipermarket di Arab Saudi</h1>
+                      <a class="judul-card" href="{{ route('subartikel') }}">Bantu Pasarkan Produk UMKM, Mendag Akan Buka Hipermarket di Arab Saudi</a>
                       <hr>
                       <div class="d-flex gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
@@ -93,7 +93,7 @@
                 <div class="card">
                     <img src="../assets/image/artikel3.png" class="card-img-top round" alt="">
                     <div class="isi-card">
-                      <h1 class="judul-card ">Bantu Pasarkan Produk UMKM, Mendag Akan Buka Hipermarket di Arab Saudi</h1>
+                      <a class="judul-card" href="{{ route('subartikel') }}">Bantu Pasarkan Produk UMKM, Mendag Akan Buka Hipermarket di Arab Saudi</a>
                       <hr>
                       <div class="d-flex gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
@@ -112,7 +112,7 @@
                 <div class="card">
                     <img src="../assets/image/artikel1.png" class="card-img-top round" alt="">
                     <div class="isi-card">
-                      <h1 class="judul-card ">Bantu Pasarkan Produk UMKM, Mendag Akan Buka Hipermarket di Arab Saudi</h1>
+                      <a class="judul-card" href="{{ route('subartikel') }}">Bantu Pasarkan Produk UMKM, Mendag Akan Buka Hipermarket di Arab Saudi</a>
                       <hr>
                       <div class="d-flex gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
@@ -128,7 +128,7 @@
                 <div class="card">
                     <img src="../assets/image/artikel2.png" class="card-img-top round" alt="">
                     <div class="isi-card">
-                      <h1 class="judul-card ">Bantu Pasarkan Produk UMKM, Mendag Akan Buka Hipermarket di Arab Saudi</h1>
+                      <a class="judul-card" href="{{ route('subartikel') }}">Bantu Pasarkan Produk UMKM, Mendag Akan Buka Hipermarket di Arab Saudi</a>
                       <hr>
                       <div class="d-flex gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
@@ -144,7 +144,7 @@
                 <div class="card">
                     <img src="../assets/image/artikel3.png" class="card-img-top round" alt="">
                     <div class="isi-card">
-                      <h1 class="judul-card ">Bantu Pasarkan Produk UMKM, Mendag Akan Buka Hipermarket di Arab Saudi</h1>
+                      <a class="judul-card" href="{{ route('subartikel') }}">Bantu Pasarkan Produk UMKM, Mendag Akan Buka Hipermarket di Arab Saudi</a>   
                       <hr>
                       <div class="d-flex gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">

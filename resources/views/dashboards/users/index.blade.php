@@ -8,7 +8,7 @@
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
       </div>
-      <div class="carousel-inner" style="height: 600px">
+      <div class="carousel-inner">
         <div class="carousel-item img-fluid active" data-bs-interval="2000">
           <img src="../assets/image/Slider 1.jpg" class="img-fluid d-block w-100" alt="...">
         </div>
@@ -55,7 +55,7 @@
                   <div class="card">
                       <img src="../assets/image/tepung.jpg" class="card-img-top round" alt="">
                       <div class="isi-card">
-                        <h4 class="judul-card">Tepung</h4>
+                        <a href="{{ route('detailproduk') }}" class="judul-card">Tepung</a href="">
                         <div class="row">
                           <div class="col">
                             <p class="f-20 jingga">Rp12.000</p>
@@ -101,8 +101,8 @@
                   </div>
             </div>
 
-            <div class="text-end ">
-              <a href="{{ route('produk') }}" type="button" class="merah link">Selengkapnya</a>
+            <div class="text-end">
+              <a href="{{ route('produk') }}" type="button" class="merah">Selengkapnya</a>
             </div>
           </div>
     </div>
@@ -119,7 +119,7 @@
           <h2 class="fw-bold">Tentang Kami</h2>
           <p class="text-kami mt-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus fugiat, accusantium ex minima dicta pariatur ducimus autem, maxime excepturi deleniti tempore impedit modi sint earum neque doloribus, dolorem corporis? Provident dolorum nisi nesciunt praesentium odio eius consectetur quisquam, ipsa et dolorem repudiandae laboriosam, cupiditate, in iste quod voluptate obcaecati dolore? Iure, adipisci nostrum. Quam saepe maiores tenetur doloribus possimus laborum exercitationem, dignissimos sapiente commodi fuga ratione voluptas temporibus! Necessitatibus, eligendi corporis! Quisquam libero odio est veritatis illum optio a alias sit in quas explicabo voluptas sed, nam placeat expedita assumenda beatae magnam facere cum harum. Ut doloribus fugiat eveniet est!</p>
           <div class="text-end mt-5">
-            <button class="btn" style="background-color: #D82B2A; color: white">Selengkapnya</button>
+            <a class="btn text-white bg-red" href="{{ route('tentangkami') }}" style="background-color: #D82B2A;">Selengkapnya</a>
           </div>
         </div>
         </div>
