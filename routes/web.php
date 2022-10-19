@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('beforeLogin.home');
 });
 
 Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
@@ -28,6 +28,7 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
 
     Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHistory']], function(){
         Route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
+        Route::get('profile',[AdminController::class,'profile'])->name('profile');
     });
 
 
