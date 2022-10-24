@@ -9,7 +9,10 @@ class AdminController extends Controller
     function index(){
         return view('dashboards.admins.index');
     }
-    function profile(){
-        return view('dashboards.admins.profile');
+    function informasi(){
+        return view('dashboards.admins.informasi');
+    }
+    function slider(){
+        return view('dashboards.admins.slider');
     }
 }
