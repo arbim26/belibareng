@@ -21,14 +21,22 @@ Route::get('/', function () {
     return view('beforeLogin.home');
 });
 
+Route::get('/loginadmin', function () {
+    return view('auth.loginadmin');
+});
+Route::get('/registeradmin', function () {
+    return view('auth.registeradmin');
+});
+
 Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
     Auth::routes();
 });
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+    
     Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHistory']], function(){
         Route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
-        Route::get('profile',[AdminController::class,'profile'])->name('profile');
+        Route::get('informasi',[AdminController::class,'informasi'])->name('informasi');
+        Route::get('slider',[AdminController::class,'slider'])->name('slider');
     });
 
 
