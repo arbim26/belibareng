@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ArtikelController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -20,6 +21,20 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('beforeLogin.home');
 });
+
+Route::get('/add', function () {
+    return view('dashboards.admins.addartikel');
+});
+
+Route::get('/artikel', [ArtikelController::class, 'show'])->name('show');
+Route::post('/add_process',[ArtikelController::class, 'store'])->name('add_process');
+Route::get('/addartikel',[ArtikelController::class, 'addartikel'])->name('addartikel');
+Route::get('/detail/{id}',[ArtikelController::class, 'detail']);
+Route::get('/admin',[ArtikelController::class, 'show_by_admin'])->name('admin');
+Route::get('/edit/{id}',[ArtikelController::class, 'edit'])->name('edit');
+Route::put('/edit_process/{id}',[ArtikelController::class, 'update']);
+Route::delete('/delete/{id}', [ArtikelController::class, 'destroy']);
+
 
 Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
     Auth::routes();
