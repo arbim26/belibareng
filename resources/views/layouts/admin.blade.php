@@ -58,7 +58,7 @@
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Profile</a>
+              <a class="dropdown-item" href="{{ route('profiles') }}">Profile</a>
               <a class="dropdown-item" href="#">Settings</a>
               <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
               document.getElementById('logout-form').submit();">Logout</a>
@@ -110,14 +110,15 @@
               </a>
             </li>
             <li class="nav-item flex-fill w-100 ">
-              <a class="nav-link" href="widgets.html">
+              <a class="nav-link" href="{{ route('aboutus') }}">
                 <i class="fe fe-layers fe-16"></i>
                 <span class="ml-3 item-text">Tentang Kami</span>
                 <span class="badge badge-pill badge-primary">New</span>
               </a>
             </li>
             <li class="navbar-nav flex-fill w-100 mb-2">
-              <a class="nav-link" href="#forms">
+              <li class="nav-item w-100">
+              <a class="nav-link" href="{{ route('contactus') }}">
                 <i class="fe fe-credit-card fe-16"></i>
                 <span class="ml-3 item-text">Kontak Kami</span>
               </a>
@@ -128,7 +129,7 @@
           </p>
           <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-              <a class="nav-link" href="calendar.html">
+              <a class="nav-link" href="{{ route('article') }}">
                 <i class="fe fe-calendar fe-16"></i>
                 <span class="ml-3 item-text">Artikel</span>
               </a>
@@ -139,19 +140,20 @@
           </p>
           <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-              <a class="nav-link" href="#pages">
+              <a class="nav-link" href="{{ route('product') }}">
                 <i class="fe fe-file fe-16"></i>
                 <span class="ml-3 item-text">List Products</span>
               </a>
             </li>
             <li class="navbar-nav flex-fill w-100">
-              <a class="nav-link" href="#auth">
+              <li class="nav-item w-100">
+              <a class="nav-link" href="{{ route('order') }}">
                 <i class="fe fe-shield fe-16"></i>
                 <span class="ml-3 item-text">Order</span>
               </a>
             </li>
             <li class="nav-item flex-fill w-100">
-              <a class="nav-link" href="#layouts">
+              <a class="nav-link" href="{{ route('payment') }}">
                 <i class="fe fe-layout fe-16"></i>
                 <span class="ml-3 item-text">Payment</span>
               </a>
@@ -162,21 +164,15 @@
           </p>
           <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-              <a class="nav-link" href="../docs/index.html">
+              <a class="nav-link" href="{{ route('profiles') }}">
                 <i class="fe fe-help-circle fe-16"></i>
                 <span class="ml-3 item-text">Admin</span>
-              </a>
-            </li>
-            <li class="nav-item w-100">
-              <a class="nav-link" href="../docs/index.html">
-                <i class="fe fe-help-circle fe-16"></i>
-                <span class="ml-3 item-text">User</span>
               </a>
             </li>
           </ul>
           <div class="btn-box w-100 mt-4 mb-1">
             <a href="https://themeforest.net/item/tinydash-bootstrap-html-admin-dashboard-template/27511269" target="_blank" class="btn mb-2 btn-primary btn-lg btn-block">
-              <i class="fe fe-shopping-cart fe-12 mx-2"></i><span class="small">Buy now</span>
+              <i class="fe fe-shopping-cart fe-12 mx-2"></i><span class="small">Belibareng</span>
             </a>
           </div>
         </nav>

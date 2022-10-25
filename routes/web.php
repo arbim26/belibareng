@@ -37,6 +37,13 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
         Route::get('informasi',[AdminController::class,'informasi'])->name('informasi');
         Route::get('slider',[AdminController::class,'slider'])->name('slider');
+        Route::get('aboutus',[AdminController::class,'aboutus'])->name('aboutus');
+        Route::get('contactus',[AdminController::class,'contactus'])->name('contactus');
+        Route::get('article',[AdminController::class,'article'])->name('article');
+        Route::get('product',[AdminController::class,'product'])->name('product');
+        Route::get('order',[AdminController::class,'order'])->name('order');
+        Route::get('payment',[AdminController::class,'payment'])->name('payment');
+        Route::get('profiles',[AdminController::class,'profiles'])->name('profiles');
     });
 
 

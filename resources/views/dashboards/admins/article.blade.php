@@ -6,7 +6,7 @@
         <div class="container-fluid">
           <div class="row justify-content-center">
             <div class="col-12">
-              <h2 class="page-title">Slider Banner</h2>
+              <h2 class="page-title">Artikel</h2>
               <p class="lead text-muted">Demo for form control styles, layout options, and custom components for creating a wide variety of forms.</p>
               <div class="row mb-4">
                 <div class="col-md-6">
