@@ -4,7 +4,7 @@
 <section id="detailproduk">
     <div class="container pt-5 pb-5 ps-5 pe-5">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-md-4">
                 <img src="/assets/image/Tepung 2-01.jpg" class="round w-100" alt="...">
                 <hr>
                 <h6 class="jingga">Detail Produk</h6>
@@ -15,7 +15,7 @@
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim debitis non ullam accusantium consequuntur corporis, optio tenetur dolor iusto saepe.</p>
                 </div>
             </div>
-            <div class="col-sm-8">
+            <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
                       <h3 class="fw-bolder">Tepung</h3>
@@ -25,7 +25,7 @@
                       </div>
                     </div>
                     <div class="card-body abu">
-                        <ul>
+                        <ul style="list-style: none; padding: 0;">
                             <li>
                                 <div class="row">
                                     <label class="col-sm-3">1 bal</label>
@@ -41,15 +41,6 @@
                             <li>
                                 <div class="row">
                                     <label class="col-sm-3">Jumlah</label>
-                                    <div class="input-group number-spinner">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-default" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
-                                        </span>
-                                        <input type="text" class="form-control text-center" value="1">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-default" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
-                                        </span>
-                                    </div>
                                 </div>
                             </li>
                             <li>
@@ -59,8 +50,37 @@
                                 </div>
                             </li>
                         </ul>
+                        <a class="btn text-white bg-red" href="#" style="background-color: #D82B2A;">
+                            <div class="d-flex gap-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+                                    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                                </svg>
+                                <p class="m-0">Masukkan Keranjang</p>
+                            </div>
+                        </a>
+                        <a class="btn text-white bg-red" href="#" style="background-color: #D82B2A;">Beli Sekarang</a>
                     </div>
-                  </div>
+                </div>
+                <div class="mt-5">
+                    <h6>Daftar Pemesan</h6>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                              <th scope="col">Nama</th>
+                              <th scope="col">Jumlah</th>
+                              <th scope="col">Alaman</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+
+                              <td>Mark</td>
+                              <td>Otto</td>
+                              <td>@mdo</td>
+                            </tr>
+                          </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
