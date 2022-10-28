@@ -88,11 +88,11 @@
 
             </div>
         </nav>
-
     </section>
 
-
-    @yield('content')
+    <div class="wrapper">
+        @yield('content')
+    </div>
 
     <section id="footer">
         <div class="container pt-5 pb-5">

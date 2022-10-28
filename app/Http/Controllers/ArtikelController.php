@@ -6,30 +6,19 @@ use Session;
 Use Storage;
 use App\Models\Artikel;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\ArtikelController;
  
 class ArtikelController extends Controller
 {
+    // admin
     public function show()
     {
-        $articles = DB::table('artikel')->orderby('id', 'desc')->get();
-        return view('dashboards.admins.show', ['articles'=>$articles]);
+        $artikel = Artikel::latest()->paginate(5);
+        return view('artikel.artikeladmin', compact('artikel'));
     }
-
-    public function detail($id)
-    {
-        $article = DB::table('artikel')->where('id', $id)->first();
-        return view('dashboards.admins.detail', ['article'=>$article]);
-    }
-
-    public function show_by_admin()
-    {
-        $artikel = Artikel::latest()->paginate(10);
-        return view('dashboards.admins.adminshow', compact('artikel'));
-    }
-
 
         /**
     * create
@@ -38,16 +27,16 @@ class ArtikelController extends Controller
     */
     public function addartikel()
     {
-        return view('dashboards.admins.addartikel');
+        return view('artikel.addartikel');
     }
 
     public function store(Request $request)
     {
-        // $this->validate($request, [
-        //     'image'     => 'required|image|mimes:png,jpg,jpeg',
-        //     'title'     => 'required',
-        //     'content'   => 'required'
-        // ]);
+        $request->validate([
+            'image'     => 'required|image|mimes:png,jpg,jpeg',
+            'title'     => 'required',
+            'content'   => 'required'
+        ]);
 
         //upload image
         $image = $request->file('image');
@@ -61,17 +50,17 @@ class ArtikelController extends Controller
 
         if($blog){
             //redirect dengan pesan sukses
-            return redirect()->route('admin')->with(['success' => 'Data Berhasil Disimpan!']);
+            return redirect()->route('artikel_admin')->with(['success' => 'Data Berhasil Disimpan!']);
         }else{
             //redirect dengan pesan error
-            return redirect()->route('admin')->with(['error' => 'Data Gagal Disimpan!']);
+            return redirect()->route('artikel_admin')->with(['error' => 'Data Gagal Disimpan!']);
         }
     }
 
     public function edit($id)
     {
         $data = Artikel::find($id);
-        return view('dashboards.admins.edit', compact('data'));
+        return view('artikel.edit', compact('data'));
     }
 
 
@@ -84,20 +73,10 @@ class ArtikelController extends Controller
     */
     public function update(Request $request, Artikel $artikel, $id)
         {
-        // dd($artikel);
-        // $this->validate($request, [
-        //     'title'     => 'required',
-        //     'content'   => 'required'
-        // ]);
-
-        //get data Blog by ID
-
-
-        // if($request->hasFile('dokumentasi')){
-        //     $request->file('dokumentasi')->move('fotobukti/', $request->file('dokumentasi')->getClientOriginalName());
-        //     $artikel->dokumentasi = $request->file('dokumentasi')->getClientOriginalName();
-        //     $artikel->save(); 
-        // }
+        $request->validate([
+            'title'     => 'required',
+            'content'   => 'required'
+        ]);
         $artikel = Artikel::findOrFail($id);
 
         if($request->file('image') == "") {
@@ -122,15 +101,15 @@ class ArtikelController extends Controller
 
         if($artikel){
             //redirect dengan pesan sukses
-            return redirect()->route('admin')->with(['success' => 'Data Berhasil Diupdate!']);
+            return redirect()->route('artikel_admin')->with(['success' => 'Data Berhasil Diupdate!']);
         }else{
             //redirect dengan pesan error
-            return redirect()->route('admin')->with(['error' => 'Data Gagal Diupdate!']);
+            return redirect()->route('artikel_admin')->with(['error' => 'Data Gagal Diupdate!']);
         }
 
     }
 
-    public function destroy($id)
+    public function destroy(Artikel $artikel, $id)
     {
       $artikel = Artikel::findOrFail($id);
       Storage::disk('local')->delete('public/artikels/'.$artikel->image);
@@ -138,10 +117,19 @@ class ArtikelController extends Controller
     
       if($artikel){
          //redirect dengan pesan sukses
-         return redirect()->route('admin')->with(['success' => 'Data Berhasil Dihapus!']);
+         return redirect()->route('artikel_admin')->with(['success' => 'Data Berhasil Dihapus!']);
       }else{
         //redirect dengan pesan error
-        return redirect()->route('admin')->with(['error' => 'Data Gagal Dihapus!']);
+        return redirect()->route('artikel_admin')->with(['error' => 'Data Gagal Dihapus!']);
       }
     }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->search;
+        $users = User::where('name', 'like', "%" . $keyword . "%")->paginate(5);
+        return view('users.index', compact('users'))->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+    // admin
+
 }
