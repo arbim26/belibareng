@@ -12,18 +12,18 @@
     <!-- Fonts CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- Icons CSS -->
-    <link rel="stylesheet" href="../css/feather.css">
-    <link rel="stylesheet" href="../css/select2.css">
-    <link rel="stylesheet" href="../css/dropzone.css">
-    <link rel="stylesheet" href="../css/uppy.min.css">
-    <link rel="stylesheet" href="../css/jquery.steps.css">
-    <link rel="stylesheet" href="../css/jquery.timepicker.css">
-    <link rel="stylesheet" href="../css/quill.snow.css">
+    <link rel="stylesheet" href="../../css/feather.css">
+    <link rel="stylesheet" href="../../css/select2.css">
+    <link rel="stylesheet" href="../../css/dropzone.css">
+    <link rel="stylesheet" href="../../css/uppy.min.css">
+    <link rel="stylesheet" href="../../css/jquery.steps.css">
+    <link rel="stylesheet" href="../../css/jquery.timepicker.css">
+    <link rel="stylesheet" href="../../css/quill.snow.css">
     <!-- Date Range Picker CSS -->
-    <link rel="stylesheet" href="../css/daterangepicker.css">
+    <link rel="stylesheet" href="../../css/daterangepicker.css">
     <!-- App CSS -->
-    <link rel="stylesheet" href="../css/app-light.css" id="lightTheme" disabled>
-    <link rel="stylesheet" href="../css/app-dark.css" id="darkTheme">
+    <link rel="stylesheet" href="../../css/app-light.css" id="lightTheme" disabled>
+    <link rel="stylesheet" href="../../css/app-dark.css" id="darkTheme">
   </head>
   <body class="vertical  dark  ">
     <div class="wrapper">
@@ -65,6 +65,7 @@
               <form id="logout-form" action="{{ route('logout') }}" method="POST"
               class="d-none">
               @csrf
+              </form>
             </div>
           </li>
         </ul>
@@ -104,7 +105,7 @@
           </p>
           <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-              <a class="nav-link" href="{{ route('slider') }}">
+              <a class="nav-link" href="{{ route('slider.index') }}">
                 <i class="fe fe-box fe-16"></i>
                 <span class="ml-3 item-text">Slider Banner</span>
               </a>
@@ -140,7 +141,7 @@
           </p>
           <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-              <a class="nav-link" href="{{ route('product') }}">
+              <a class="nav-link" href="{{ route('product.index') }}">
                 <i class="fe fe-file fe-16"></i>
                 <span class="ml-3 item-text">List Products</span>
               </a>

@@ -1,11 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ArtikelController;
 use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SliderController;
+use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,10 +24,15 @@ Route::get('/', function () {
     return view('beforeLogin.home');
 });
 
+Route::resource('slider', SliderController::class);
+Route::resource('product', ProductController::class);
+
+Route::get('/add', [ArtikelController::class, 'create'])->name('add');
 
 Route::get('/loginadmin', function () {
     return view('auth.loginadmin');
 });
+
 Route::get('/registeradmin', function () {
     return view('auth.registeradmin');
 });
