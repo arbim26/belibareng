@@ -3,8 +3,30 @@
 
 <section id="produk">
     <div class="container pt-5">
-            <div class="row ">
+      <form action="product">
+        <div class="row ">
+              @foreach ($products as $product)
                 <div class="col-6 col-sm-3 mb-4">
+                  <div class="card">
+                      <img src="{{ Storage::url('public/products/').$product->image }}" class="card-img-top round" alt="">
+                      <div class="isi-card">
+                        <h4 class="judul-card">{{ $product->barang }}</h4>
+                        <div class="row">
+                          <div class="col">
+                            <p class="f-20 jingga">{{ $product->harga }}</p>
+                          </div>
+                          <div class="col">
+                            <p class="f-15 text-muted">{{ $product->stock }}</p>
+                          </div>
+                          <div class="product-action-1 show">
+                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i>{!! $product->content !!}</a>
+                        </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                @endforeach
+                {{-- <div class="col-6 col-sm-3 mb-4">
                   <div class="card">
                       <img src="../assets/image/Minyak.jpg" class="card-img-top round" alt="">
                       <div class="isi-card">
@@ -70,9 +92,9 @@
                           </div>
                         </div>
                     </div>
-                  </div>
+                  </div> --}}
 
-                <div class="col-6 col-sm-3 mb-4">
+                {{-- <div class="col-6 col-sm-3 mb-4">
                   <div class="card">
                       <img src="../assets/image/sarden.jpg" class="card-img-top round" alt="">
                       <div class="isi-card">
@@ -135,10 +157,10 @@
                           </div>
                         </div>
                     </div>
-                  </div>
+                  </div> --}}
               </div>
               <img src="../assets/image/banner.jpg" class="img-fluid round mb-4" alt="">
-              <div class="row">
+              {{-- <div class="row">
                 <div class="col-6 col-sm-3 mb-4">
                   <div class="card">
                       <img src="../assets/image/Kerupuk.jpg" class="card-img-top round" alt="">
@@ -202,8 +224,10 @@
                           </div>
                         </div>
                     </div>
-                  </div>
-            </div>
+                  </div> --}}
+                  
+                </form>
+            {{-- </div> --}}
 
 </section>
 @endsection

@@ -12,18 +12,18 @@
     <!-- Fonts CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- Icons CSS -->
-    <link rel="stylesheet" href="../css/feather.css">
-    <link rel="stylesheet" href="../css/select2.css">
-    <link rel="stylesheet" href="../css/dropzone.css">
-    <link rel="stylesheet" href="../css/uppy.min.css">
-    <link rel="stylesheet" href="../css/jquery.steps.css">
-    <link rel="stylesheet" href="../css/jquery.timepicker.css">
-    <link rel="stylesheet" href="../css/quill.snow.css">
+    <link rel="stylesheet" href="../../css/feather.css">
+    <link rel="stylesheet" href="../../css/select2.css">
+    <link rel="stylesheet" href="../../css/dropzone.css">
+    <link rel="stylesheet" href="../../css/uppy.min.css">
+    <link rel="stylesheet" href="../../css/jquery.steps.css">
+    <link rel="stylesheet" href="../../css/jquery.timepicker.css">
+    <link rel="stylesheet" href="../../css/quill.snow.css">
     <!-- Date Range Picker CSS -->
-    <link rel="stylesheet" href="../css/daterangepicker.css">
+    <link rel="stylesheet" href="../../css/daterangepicker.css">
     <!-- App CSS -->
-    <link rel="stylesheet" href="../css/app-light.css" id="lightTheme" disabled>
-    <link rel="stylesheet" href="../css/app-dark.css" id="darkTheme">
+    <link rel="stylesheet" href="../../css/app-light.css" id="lightTheme" disabled>
+    <link rel="stylesheet" href="../../css/app-dark.css" id="darkTheme">
   </head>
   <body class="vertical  dark  ">
     <div class="wrapper">
@@ -58,7 +58,7 @@
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Profile</a>
+              <a class="dropdown-item" href="{{ route('profiles') }}">Profile</a>
               <a class="dropdown-item" href="#">Settings</a>
               <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
               document.getElementById('logout-form').submit();">Logout</a>
@@ -105,7 +105,7 @@
           </p>
           <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-              <a class="nav-link" href="{{ route('slider') }}">
+              <a class="nav-link" href="{{ route('slider.index') }}">
                 <i class="fe fe-box fe-16"></i>
                 <span class="ml-3 item-text">Slider Banner</span>
               </a>
@@ -117,7 +117,8 @@
               </a>
             </li>
             <li class="navbar-nav flex-fill w-100 mb-2">
-              <a class="nav-link" href="#forms">
+              <li class="nav-item w-100">
+              <a class="nav-link" href="{{ route('contactus') }}">
                 <i class="fe fe-credit-card fe-16"></i>
                 <span class="ml-3 item-text">Kontak Kami</span>
               </a>
@@ -139,19 +140,20 @@
           </p>
           <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-              <a class="nav-link" href="#pages">
+              <a class="nav-link" href="{{ route('product.index') }}">
                 <i class="fe fe-file fe-16"></i>
                 <span class="ml-3 item-text">List Products</span>
               </a>
             </li>
             <li class="navbar-nav flex-fill w-100">
-              <a class="nav-link" href="#auth">
+              <li class="nav-item w-100">
+              <a class="nav-link" href="{{ route('order') }}">
                 <i class="fe fe-shield fe-16"></i>
                 <span class="ml-3 item-text">Order</span>
               </a>
             </li>
             <li class="nav-item flex-fill w-100">
-              <a class="nav-link" href="#layouts">
+              <a class="nav-link" href="{{ route('payment') }}">
                 <i class="fe fe-layout fe-16"></i>
                 <span class="ml-3 item-text">Payment</span>
               </a>
@@ -162,59 +164,53 @@
           </p>
           <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-              <a class="nav-link" href="../docs/index.html">
+              <a class="nav-link" href="{{ route('profiles') }}">
                 <i class="fe fe-help-circle fe-16"></i>
                 <span class="ml-3 item-text">Admin</span>
-              </a>
-            </li>
-            <li class="nav-item w-100">
-              <a class="nav-link" href="../docs/index.html">
-                <i class="fe fe-help-circle fe-16"></i>
-                <span class="ml-3 item-text">User</span>
               </a>
             </li>
           </ul>
           <div class="btn-box w-100 mt-4 mb-1">
             <a href="https://themeforest.net/item/tinydash-bootstrap-html-admin-dashboard-template/27511269" target="_blank" class="btn mb-2 btn-primary btn-lg btn-block">
-              <i class="fe fe-shopping-cart fe-12 mx-2"></i><span class="small">Buy now</span>
+              <i class="fe fe-shopping-cart fe-12 mx-2"></i><span class="small">Belibareng</span>
             </a>
           </div>
         </nav>
       </aside>
 @yield('main')
     </div> <!-- .wrapper -->
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/moment.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/simplebar.min.js"></script>
-    <script src='../js/daterangepicker.js'></script>
-    <script src='../js/jquery.stickOnScroll.js'></script>
-    <script src="../js/tinycolor-min.js"></script>
-    <script src="../js/config.js"></script>
-    <script src="../js/d3.min.js"></script>
-    <script src="../js/topojson.min.js"></script>
-    <script src="../js/datamaps.all.min.js"></script>
-    <script src="../js/datamaps-zoomto.js"></script>
-    <script src="../js/datamaps.custom.js"></script>
-    <script src="../js/Chart.min.js"></script>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/moment.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/simplebar.min.js"></script>
+    <script src='../../js/daterangepicker.js'></script>
+    <script src='../../js/jquery.stickOnScroll.js'></script>
+    <script src="../../js/tinycolor-min.js"></script>
+    <script src="../../js/config.js"></script>
+    <script src="../../js/d3.min.js"></script>
+    <script src="../../js/topojson.min.js"></script>
+    <script src="../../js/datamaps.all.min.js"></script>
+    <script src="../../js/datamaps-zoomto.js"></script>
+    <script src="../../js/datamaps.custom.js"></script>
+    <script src="../../js/Chart.min.js"></script>
     <script>
       /* defind global options */
       Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
       Chart.defaults.global.defaultFontColor = colors.mutedColor;
     </script>
-    <script src="../js/gauge.min.js"></script>
-    <script src="../js/jquery.sparkline.min.js"></script>
-    <script src="../js/apexcharts.min.js"></script>
-    <script src="../js/apexcharts.custom.js"></script>
-    <script src='../js/jquery.mask.min.js'></script>
-    <script src='../js/select2.min.js'></script>
-    <script src='../js/jquery.steps.min.js'></script>
-    <script src='../js/jquery.validate.min.js'></script>
-    <script src='../js/jquery.timepicker.js'></script>
-    <script src='../js/dropzone.min.js'></script>
-    <script src='../js/uppy.min.js'></script>
-    <script src='../js/quill.min.js'></script>
+    <script src="../../js/gauge.min.js"></script>
+    <script src="../../js/jquery.sparkline.min.js"></script>
+    <script src="../../js/apexcharts.min.js"></script>
+    <script src="../../js/apexcharts.custom.js"></script>
+    <script src='../../js/jquery.mask.min.js'></script>
+    <script src='../../js/select2.min.js'></script>
+    <script src='../../js/jquery.steps.min.js'></script>
+    <script src='../../js/jquery.validate.min.js'></script>
+    <script src='../../js/jquery.timepicker.js'></script>
+    <script src='../../js/dropzone.min.js'></script>
+    <script src='../../js/uppy.min.js'></script>
+    <script src='../../js/quill.min.js'></script>
     <script>
       $('.select2').select2(
       {
@@ -418,7 +414,7 @@
         });
       }
     </script>
-    <script src="../js/apps.js"></script>
+    <script src="../../js/apps.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
     <script>
