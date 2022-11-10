@@ -1,11 +1,14 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ArtikelController;
 use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\VisimisiController;
+use App\Http\Controllers\SliderController;
+use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +34,10 @@ Route::get('/loginadmin', function () {
 Route::get('/registeradmin', function () {
     return view('auth.registeradmin');
 }); 
+
+Route::resource('slider', SliderController::class);
+Route::resource('product', ProductController::class);
+Route::resource('order',OrderController::class);
 
 Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
     Auth::routes();
