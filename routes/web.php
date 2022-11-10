@@ -1,11 +1,14 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ArtikelController;
 use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AboutusController;
+use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\VisimisiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,15 +25,10 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('beforeLogin.home');
 });
-Route::get('/sip', function () {
-    return view('artikel.sip');
-});
+
 Route::get('/loginadmin', function () {
     return view('auth.loginadmin');
 });
-Route::get('/registeradmin', function () {
-    return view('auth.registeradmin');
-}); 
 
 Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
     Auth::routes();
@@ -52,13 +50,33 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         // artikel
 
         // tentangkami
-        Route::get('aboutus',[TentangkamiController::class, 'show'])->name('aboutus');
+        Route::get('aboutus',[AboutusController::class, 'show'])->name('aboutus');
+        Route::get('addaboutus',[AboutusController::class, 'add'])->name('addaboutus');
+        Route::post('store_aboutus',[AboutusController::class, 'store'])->name('store_aboutus');
+        Route::get('edit_aboutus/{id}',[AboutusController::class, 'edit'])->name('edit_aboutus');
+        Route::put('update_aboutus/{id}',[AboutusController::class, 'update'])->name('update_aboutus');
         // tentangkami
+
+        // visimisi
+        Route::get('visi',[VisimisiController::class, 'showvisi'])->name('visi');
+        Route::get('addvisi',[VisimisiController::class, 'addvisi'])->name('addvisi');
+        Route::post('store_visi',[VisimisiController::class, 'storevisi'])->name('store_visi');
+        Route::get('edit_visi/{id}',[VisimisiController::class, 'editvisi'])->name('edit_visi');
+        Route::put('update_visi/{id}',[VisimisiController::class, 'updatevisi'])->name('update_visi');
+        // visimisi
+
+        // visimisi
+        Route::get('misi',[VisimisiController::class, 'showmisi'])->name('misi');
+        Route::get('addmisi',[VisimisiController::class, 'addmisi'])->name('addmisi');
+        Route::post('store_misi',[VisimisiController::class, 'storemisi'])->name('store_misi');
+        Route::get('edit_misi/{id}',[VisimisiController::class, 'editmisi'])->name('edit_misi');
+        Route::put('update_misi/{id}',[VisimisiController::class, 'updatemisi'])->name('update_misi');
+        // visimisi
     });
 
-    Route::get('detailartikel/{id}',[UserController::class,'detail'])->name('detailartikel');
     
     Route::group(['prefix'=>'user', 'middleware'=>['isUser','auth','PreventBackHistory']], function(){
+        Route::get('detailartikel/{id}',[UserController::class,'detail'])->name('detailartikel');
         Route::get('produk',[UserController::class,'produk'])->name('produk');
         Route::get('dashboard',[UserController::class,'index'])->name('user.dashboard');
         Route::get('tentangkami',[UserController::class,'tentangkami'])->name('tentangkami');

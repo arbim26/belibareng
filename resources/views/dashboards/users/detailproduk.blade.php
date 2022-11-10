@@ -41,6 +41,17 @@
                             <li>
                                 <div class="row">
                                     <label class="col-sm-3">Jumlah</label>
+                                    <div class="col-sm-9 m-0">
+                                        <div class="spinner border">
+                                            <button id="decrement" onclick="stepper(this)"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                              </svg> </button>
+                                            <input type="number" min="0" max="100" step="1" value="20" id="my-input" readonly>
+                                            <button id="increment" onclick="stepper(this)"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                              </svg> </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </li>
                             <li>

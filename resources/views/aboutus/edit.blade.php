@@ -5,13 +5,13 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-12">
-                <h2 class="mb-2 page-title">Edit Artikel</h2>
+                <h2 class="mb-2 page-title">Edit Tentang Kami</h2>
                 <div class="row my-4">
                     <!-- Small table -->
                     <div class="col-md-12">
                         <div class="card shadow">
                             <div class="card-body">
-                            <form action="{{ route('update_artikel', $data->id) }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('update_aboutus', $data->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
@@ -45,7 +45,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-md btn-primary">UPDATE</button>
-                            <a href="{{route("artikel_admin")}}" type="cancel" class="btn btn-md btn-danger">CANCEL</a>
+                            <a href="{{route("aboutus")}}" type="cancel" class="btn btn-md btn-danger">CANCEL</a>
 
                         </form> 
                             </div>

@@ -1,48 +1,78 @@
 <!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
+    <link rel="stylesheet" href="../../assets/css/LogReg.css">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>BeliBareng</title>
+  </head>
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
-    <link rel="stylesheet" href="../assets/css/LogReg.css">
-</head>
-
-<body>
-    
-    <div class="d-lg-flex half">
-        <div class="bg order-1 order-md-2" style="background-image: url(/assets/image/Kumpulan_Sembako.jpg);"></div>
-        <div class="contents order-2 order-md-1">
+  <body>
+    <section class="vh-100">
+      <div class="container-fluid width=device-width, initial-scale=1.0">
+        <div class="row" style="height: 100vh;">
+          <div class="col-sm-6 text-black d-flex justify-content-center align-items-center" style="height: 100vh;">
+            <div class="d-flex flex-column">
               @yield('content')
+            </div>
+          </div>
+          <div class="col-sm-6 px-0 d-none d-sm-block" style="background-image: url({{ asset('assets/image/indonesia_03.jpg') }});   background-size: cover;
+          background-position: center; height: 100vh;">
+          </div>
         </div>
-    </div>
-      
+      </div>
+    </section>
+
+    <script>
+      const togglePassword = document.querySelector("#togglePassword");
+      const password = document.querySelector("#password");
+
+      togglePassword.addEventListener("click", function () {
+          // toggle the type attribute
+          const type = password.getAttribute("type") === "password" ? "text" : "password";
+          password.setAttribute("type", type);
+          
+          // toggle the icon
+          this.classList.toggle("bi-eye");
+      });
+
+      // prevent form submit
+      const form = document.querySelector("form");
+      form.addEventListener('submit', function (e) {
+          e.preventDefault();
+      });
+  </script>
+  <script>
+      const togglePassword = document.querySelector("#toggleconfirmPassword");
+      const password = document.querySelector("#password_confirmation");
+
+      togglePassword.addEventListener("click", function () {
+          // toggle the type attribute
+          const type = password.getAttribute("type") === "password" ? "text" : "password";
+          password.setAttribute("type", type);
+          
+          // toggle the icon
+          this.classList.toggle("bi-eye");
+      });
+
+      // prevent form submit
+      const form = document.querySelector("form");
+      form.addEventListener('submit', function (e) {
+          e.preventDefault();
+      });
+  </script>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
@@ -50,6 +80,5 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
     -->
-</body>
-
+  </body>
 </html>

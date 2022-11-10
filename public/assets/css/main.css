@@ -174,3 +174,26 @@ input::-webkit-inner-spin-button {
 }
 
 /* footer */
+.spinner{
+    width: 150px;
+    height: 35px;
+    justify-content: center;
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 45px;
+}
+
+input[type="number"]{
+    -moz-appearance: textfield;
+    text-align: center;
+    font-size: 15px;
+    border: none;
+    background-color: #ffffff;
+    color: #202030;
+}
+button{
+    color: #737373;
+    background-color: #ffffff;
+    border: none;
+    cursor: pointer;
+}

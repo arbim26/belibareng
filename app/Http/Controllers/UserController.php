@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aboutus;
 use App\Models\Artikel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,7 +11,8 @@ class UserController extends Controller
 {
     function index(){
         $artikel = Artikel::latest()->get();
-        return view('dashboards.users.index', compact('artikel'));
+        $tentangkami = Aboutus::latest()->get();
+        return view('dashboards.users.index', compact('artikel','tentangkami'));
     }
 
     function tentangkami(){

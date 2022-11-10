@@ -1,69 +1,52 @@
 @extends('layouts.LoginRegis')
 
 @section('content')
-<div class="container">
-    <div class="row align-items-center justify-content-center">
-        <div class="col-md-7 mb-5">
-        <img src="{{ asset('assets/logo/logo belibareng 1-01.png') }}" class="mb-5" style="height: 40px" alt="">
-        <h1 class="mb-3"><strong>Login</strong></h1>
-        <p class="mb-3">Belum punya akun Belibareng? <a href="{{ route('register') }}" style="text-decoration: none; color: #c43315">Daftar</a></p>
-        <form method="POST" action="{{ route('login') }}" s>
-            @csrf
-
-            <div class="form-group">
-                <label for="email" class="text-md-end">{{ __('Alamat Email') }}</label>
-                <input id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-            
-            <div class="form-group">
-                <label for="password" class="text-md-end">{{ __('Sandi') }}</label>
-                <input id="password" type="password"
-                    class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" required
-                    autocomplete="new-password">
-
-                @error('password')
+  <div class="main" style="width: 23rem;">
+      <img class="mb-5" src="{{ asset('assets/logo/logo belibareng 1-01.png') }}" style="height: 35px;">
+      <h3 class="fw-normal mb-3" style="letter-spacing: 1px;">Log in</h3>
+      <p>Belum punya akun? <a href="{{ route('register') }}" class="link-info" style="color: #D82B2A;">Daftar di sini</a></p>
+      <form method="POST" action="{{ route('login') }}">
+        @csrf
+        <div class="label mb-4">
+            <input id="email" type="email" class=" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+            <label for="email" class="label-text">{{ __('Alamat Email') }}</label>
+            @error('email')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
-                @enderror
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                        <label class="form-check-label" for="remember">
-                            {{ __('Remember Me') }}
-                        </label>
-                    </div>
+            @enderror
+        </div>
+        
+        <div class="label mb-4">
+            <input id="password" type="password"
+            class=" @error('password') is-invalid @enderror" name="password" required
+            autocomplete="new-password">
+            <label for="password" class="label-text">{{ __('Sandi') }}</label>
+            @error('password')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                    <label class="form-check-label" for="remember">
+                        {{ __('Remember Me') }}
+                    </label>
                 </div>
             </div>
-
-            <div class="row mb-0">
-                <div class="text-center mt-3 ">
-                    <button type="submit" class="btn" style="background: #c43315; color: white; height: 40px; width: 200px;">
-                        {{ __('Selesai') }}
-                    </button>
-                </div>
-
-                @if (Route::has('password.request'))
-                <a class="btn btn-link" href="{{ route('password.request') }}">
-                    {{ __('Lupa Kata Sandi?') }}
-                </a>
-                @endif
-
-            </div>
-
-            
-        </form>
+        </div>
+      <div class="pt-1 mb-4 text-center submit">
+          <button type="submit" class="btn btn-lg btn-block text-white text-center">
+            {{ __('Selesai') }}
+          </button>
       </div>
-    </div>
+      @if (Route::has('password.request'))
+      <p class="small mb-2 pb-lg-2 text-center"><a class="text-muted" href="{{ route('password.request') }}">Lupa Sandi?</a></p>
+      @endif
+        
+    </form>
   </div>
 @endsection
