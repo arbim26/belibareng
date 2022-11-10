@@ -15,4 +15,25 @@ class AdminController extends Controller
     function slider(){
         return view('dashboards.admins.slider');
     }
+    function aboutus(){
+        return view('dashboards.admins.aboutus');
+    }
+    function contactus(){
+        return view('dashboards.admins.contactus');
+    }
+    function article(){
+        return view('dashboards.admins.article');
+    }
+    function product(){
+        return view('dashboards.admins.product');
+    }
+    function order(){
+        return view('dashboards.admins.order');
+    }
+    function payment(){
+        return view('dashboards.admins.payment');
+    }
+    function profiles(){
+        return view('dashboards.admins.profiles');
+    }
 }

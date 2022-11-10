@@ -1,14 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\UserController;
+
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AboutusController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArtikelController;
-use App\Http\Controllers\VisimisiController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,10 +22,15 @@ use App\Http\Controllers\VisimisiController;
 Route::get('/', function () {
     return view('beforeLogin.home');
 });
-
+Route::get('/sip', function () {
+    return view('artikel.sip');
+});
 Route::get('/loginadmin', function () {
     return view('auth.loginadmin');
 });
+Route::get('/registeradmin', function () {
+    return view('auth.registeradmin');
+}); 
 
 Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
     Auth::routes();
@@ -39,6 +41,13 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
         Route::get('informasi',[AdminController::class,'informasi'])->name('informasi');
         Route::get('slider',[AdminController::class,'slider'])->name('slider');
+        Route::get('aboutus',[AdminController::class,'aboutus'])->name('aboutus');
+        Route::get('contactus',[AdminController::class,'contactus'])->name('contactus');
+        Route::get('article',[AdminController::class,'article'])->name('article');
+        Route::get('product',[AdminController::class,'product'])->name('product');
+        Route::get('order',[AdminController::class,'order'])->name('order');
+        Route::get('payment',[AdminController::class,'payment'])->name('payment');
+        Route::get('profiles',[AdminController::class,'profiles'])->name('profiles');
 
         // artikel
         Route::get('artikel_admin',[ArtikelController::class, 'show'])->name('artikel_admin');

@@ -73,7 +73,7 @@
                                             d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                                     </svg>
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <ul class="dropdown-menu" aria-labelledby="dropdow  nMenuButton1">
                                     <li><a class="dropdown-item" href="{{ route('profile') }}">Akun Saya</a></li>
                                     <li><a class="dropdown-item" href="#">Pesanan Saya</a></li>
                                     <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -84,6 +84,7 @@
                                         </form>
                                     </li>
                                 </ul>
+                            </form>
                             </div>
                         </div>
                 </div>
