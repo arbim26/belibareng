@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
 use App\Models\Product;
-=======
 use App\Models\Artikel;
->>>>>>> a4004f49c2d6dac581caaa1fb8e59928ea9d2d49
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
