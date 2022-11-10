@@ -11,7 +11,7 @@
                     <div class="col-md-12">
                         <div class="card shadow">
                             <div class="card-body">
-                            <form action="{{ route('update_artikel', $data->id) }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('update_visi', $data->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
@@ -45,7 +45,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-md btn-primary">UPDATE</button>
-                            <a href="{{route("artikel_admin")}}" type="cancel" class="btn btn-md btn-danger">CANCEL</a>
+                            <a href="{{route("visi")}}" type="cancel" class="btn btn-md btn-danger">CANCEL</a>
 
                         </form> 
                             </div>

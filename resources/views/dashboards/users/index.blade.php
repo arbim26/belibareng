@@ -111,18 +111,20 @@
 <section id="tentang-kami">
   <div class="container pt-5 pb-5">
     <div class="row">
+      @foreach ($tentangkami as $aboutus)
       <div class="col-md-4">
-        <img src="/assets/image/Kumpulan_Sembako.jpg" class="round tentangkami-img" alt="...">
+        <img src="{{ Storage::url('aboutus/').$aboutus->image }}" class="round tentangkami-img" alt="...">
       </div>
       <div class="col-md-8">
         <div class="p-1">
-          <h2 class="fw-bold">Tentang Kami</h2>
-          <p class="text-kami mt-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus fugiat, accusantium ex minima dicta pariatur ducimus autem, maxime excepturi deleniti tempore impedit modi sint earum neque doloribus, dolorem corporis? Provident dolorum nisi nesciunt praesentium odio eius consectetur quisquam, ipsa et dolorem repudiandae laboriosam, cupiditate, in iste quod voluptate obcaecati dolore? Iure, adipisci nostrum. Quam saepe maiores tenetur doloribus possimus laborum exercitationem, dignissimos sapiente commodi fuga ratione voluptas temporibus! Necessitatibus, eligendi corporis! Quisquam libero odio est veritatis illum optio a alias sit in quas explicabo voluptas sed, nam placeat expedita assumenda beatae magnam facere cum harum. Ut doloribus fugiat eveniet est!</p>
+          <h2 class="fw-bold">{{$aboutus->title}}</h2>
+          <p class="text-kami mt-3">{!! $aboutus->content !!}</p>
           <div class="text-end mt-5">
    
           </div>
         </div>
         </div>
+      @endforeach
     </div>
   </div>
 </section>

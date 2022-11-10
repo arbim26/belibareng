@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Misi;
+use App\Models\Visi;
+use App\Models\Aboutus;
 use App\Models\Artikel;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -11,11 +14,15 @@ class UserController extends Controller
 {
     function index(){
         $artikel = Artikel::latest()->get();
-        return view('dashboards.users.index', compact('artikel'));
+        $tentangkami = Aboutus::latest()->get();
+        return view('dashboards.users.index', compact('artikel','tentangkami'));
     }
 
     function tentangkami(){
-        return view('dashboards.users.tentangkami');
+        $tentangkami = Aboutus::latest()->get();
+        $visi = Visi::latest()->get();
+        $misi = Misi::latest()->get();
+        return view('dashboards.users.tentangkami', compact('tentangkami','visi','misi'));
     }
 
     // artikel

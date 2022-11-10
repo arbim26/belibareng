@@ -1,145 +1,148 @@
-body {
-  font-family: 'Montserrat', sans-serif;
-  background-color: #fff; }
-
-p {
-  color: #b3b3b3;
-  font-weight: 300; }
-
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: "Roboto", sans-serif; }
-
-a {
-  -webkit-transition: .3s all ease;
-  -o-transition: .3s all ease;
-  transition: .3s all ease; }
-  a:hover {
-    text-decoration: none !important; }
-
-.content {
-  padding: 7rem 0; }
-
-h2 {
-  font-size: 20px; }
-
-.half, .half .container > .row {
-  height: 100vh;
-  min-height: 700px; }
-
-@media (max-width: 991.98px) {
-  .half .bg {
-    height: 200px; } }
-
-.half .contents, .half .bg {
-  width: 50%; }
-  @media (max-width: 1199.98px) {
-    .half .contents, .half .bg {
-      width: 100%; } }
-  .half .contents .form-control, .half .bg .form-control {
-    border-radius: 10px;
-    height: 30px;
-    background: #fff; }
-    .half .contents .form-control:active, .half .contents .form-control:focus, .half .bg .form-control:active, .half .bg .form-control:focus {
-      outline: none;
-      -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1); }
-
-.half .bg {
-  background-size: cover;
-  background-position: center; }
-
-.half a {
-  color: #888;
-  text-decoration: underline; }
-
-.half .btn {
-  height: 54px;
-  padding-left: 30px;
-  padding-right: 30px; }
-
-.half .forgot-pass {
-  position: relative;
-  top: 2px;
-  font-size: 14px; }
-
-.control {
-  display: block;
-  position: relative;
-  padding-left: 30px;
-  margin-bottom: 15px;
-  cursor: pointer;
-  font-size: 14px; }
-  .control .caption {
+.bg-image-vertical {
     position: relative;
-    top: .2rem;
-    color: #888; }
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: auto 100%;
+}
 
-.control input {
-  position: absolute;
-  z-index: -1;
-  opacity: 0; }
+@media (min-width: 1025px) {
+    .h-custom-2 {
+        height: 100%;
+    }
+}
 
-.control__indicator {
-  position: absolute;
-  top: 2px;
-  left: 0;
-  height: 20px;
-  width: 20px;
-  background: #e6e6e6;
-  border-radius: 4px; }
+.label {
+    position: relative;
+}
 
-.control--radio .control__indicator {
-  border-radius: 50%; }
+.main .submit button {
+    background: #d82b2a;
+}
+.main .submit button:hover {
+  box-shadow: 0 0 5px 1px grey;
+}
 
-.control:hover input ~ .control__indicator,
-.control input:focus ~ .control__indicator {
-  background: #ccc; }
+/* animation for the text to float up */
 
-.control input:checked ~ .control__indicator {
-  background: #fb771a; }
+.label .label-text {
+    position: absolute;
+    left: 15px;
+    color: #7f8487;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-.control:hover input:not([disabled]):checked ~ .control__indicator,
-.control input:checked:focus ~ .control__indicator {
-  background: #fb8633; }
+/* remove the input box styling */
+.label input {
+    border: solid 1.75px #9e9e9e9e;
+    border-radius: 10px;
+    background: none;
+    height: 45px;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    color: #7f8487;
+}
 
-.control input:disabled ~ .control__indicator {
-  background: #e6e6e6;
-  opacity: 0.9;
-  pointer-events: none; }
+/* once you click in the input the input width box animates */
 
-.control__indicator:after {
-  font-family: 'icomoon';
-  content: '\e5ca';
-  position: absolute;
-  display: none;
-  font-size: 16px;
-  -webkit-transition: .3s all ease;
-  -o-transition: .3s all ease;
-  transition: .3s all ease; }
+.label input:focus {
+    outline: none;
+    border: 1.5px solid #5f9df7;
+}
 
-.control input:checked ~ .control__indicator:after {
-  display: block;
-  color: #fff; }
+/* the text floats up and turns white */
 
-.control--checkbox .control__indicator:after {
-  top: 50%;
-  left: 50%;
-  margin-top: -1px;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%); }
+.label input:focus + .label-text {
+    background-color: white;
+    padding: 0 0.2rem;
+    color: #5f9df7;
+    -moz-transform: translateY(-12px);
+    -ms-transform: translateY(-12px);
+    -webkit-transform: translateY(-12px);
+    transform: translateY(-12px);
+}
 
-.control--checkbox input:disabled ~ .control__indicator:after {
-  border-color: #7b7b7b; }
+/* the text floats up during form validation */
 
-.control--checkbox input:disabled:checked ~ .control__indicator {
-  background-color: #7e0cf5;
-  opacity: .2; }
+.label input:valid + .label-text {
+    padding: 0 0.2rem;
+    background-color: white;
+    -moz-transform: translateY(-12px);
+    -ms-transform: translateY(-12px);
+    -webkit-transform: translateY(-12px);
+    transform: translateY(-12px);
+}
 
+.bi-eye-slash {
+    position: absolute;
+    top: 28%;
+    right: 4%;
+    cursor: pointer;
+    color: lightgray;
+}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.label-twin {
+    position: relative;
+}
+
+/* animation for the text to float up */
+
+.label-twin .label-text {
+    position: absolute;
+    left: 25px;
+    color: #7f8487;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* remove the input box styling */
+.label-twin input {
+    border: solid 1.75px #9e9e9e9e;
+    border-radius: 10px;
+    background: none;
+    height: 45px;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    color: #7f8487;
+}
+
+/* once you click in the input the input width box animates */
+
+.label-twin input:focus {
+    outline: none;
+    border: 1.5px solid #5f9df7;
+}
+
+/* the text floats up and turns white */
+
+.label-twin input:focus + .label-text {
+    background-color: white;
+    padding: 0 0.2rem;
+    color: #5f9df7;
+    -moz-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+}
+
+/* the text floats up during form validation */
+
+.label-twin input:valid + .label-text {
+    padding: 0 0.2rem;
+    background-color: white;
+    -moz-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
 }
