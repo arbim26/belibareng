@@ -1,7 +1,26 @@
 body {
     font-family: 'Montserrat', sans-serif;
 }
+.wrapper{
+    margin-top: 70px;
+}
+#artikel img{
+    width: 100%;
+    height: 30vh;
+    object-fit: cover;
+}
+#artikel .card {
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
 
+#artikel .title{
+    overflow: hidden;
+    height: 12vh;
+}
 /* warna */
 .jingga {
     color: #EC5E24;

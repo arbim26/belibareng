@@ -65,7 +65,7 @@
               <form id="logout-form" action="{{ route('logout') }}" method="POST"
               class="d-none">
               @csrf
-              </form>
+            </form>
             </div>
           </li>
         </ul>
@@ -114,7 +114,6 @@
               <a class="nav-link" href="{{ route('aboutus') }}">
                 <i class="fe fe-layers fe-16"></i>
                 <span class="ml-3 item-text">Tentang Kami</span>
-                <span class="badge badge-pill badge-primary">New</span>
               </a>
             </li>
             <li class="navbar-nav flex-fill w-100 mb-2">
@@ -130,7 +129,7 @@
           </p>
           <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-              <a class="nav-link" href="{{ route('article') }}">
+              <a class="nav-link" href="{{route('artikel_admin')}}">
                 <i class="fe fe-calendar fe-16"></i>
                 <span class="ml-3 item-text">Artikel</span>
               </a>
@@ -428,5 +427,24 @@
       gtag('js', new Date());
       gtag('config', 'UA-56159088-1');
     </script>
-  </body>
+
+    <script>
+      //message with toastr
+      @if(session()->has('success'))
+      
+          toastr.success('{{ session('success') }}', 'BERHASIL!'); 
+
+      @elseif(session()->has('error'))
+
+          toastr.error('{{ session('error') }}', 'GAGAL!'); 
+          
+      @endif
+    </script>
+    <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace( 'content' );
+    </script>
+    
+
+    </body>
 </html>
