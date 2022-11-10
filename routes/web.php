@@ -26,6 +26,7 @@ Route::get('/', function () {
 
 Route::resource('slider', SliderController::class);
 Route::resource('product', ProductController::class);
+Route::resource('order',OrderController::class);
 
 Route::get('/add', [ArtikelController::class, 'create'])->name('add');
 

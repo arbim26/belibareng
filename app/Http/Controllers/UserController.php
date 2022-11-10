@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
@@ -19,7 +21,8 @@ class UserController extends Controller
         return view('dashboards.users.subartikel');
     }
     function produk(){
-        return view('dashboards.users.produk');
+        $products = Product::latest()->paginate(10);
+        return view('dashboards.users.produk', compact('products'));
     }
     function detailproduk(){
         return view('dashboards.users.detailproduk');
