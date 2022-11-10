@@ -15,7 +15,8 @@ class UserController extends Controller
     function index(){
         $artikel = Artikel::latest()->get();
         $tentangkami = Aboutus::latest()->get();
-        return view('dashboards.users.index', compact('artikel','tentangkami'));
+        $products = Product::latest()->get();
+        return view('dashboards.users.index', compact('artikel','tentangkami','products'));
     }
 
     function tentangkami(){
