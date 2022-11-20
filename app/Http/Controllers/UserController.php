@@ -36,13 +36,15 @@ class UserController extends Controller
         $data = Artikel::find($id);
         return view('artikel.detail', compact('data'));
     }
+    public function product($id)
+    {
+        $data = Product::find($id);
+        return view('dashboards.admins.products.detail', compact('data'));
+    }
     // artikel
-    function produk(){
+    public function produk(){
         $products = Product::latest()->paginate(10);
         return view('dashboards.users.produk', compact('products'));
-    }
-    function detailproduk(){
-        return view('dashboards.users.detailproduk');
     }
     function profile(){
         return view('dashboards.users.profile');

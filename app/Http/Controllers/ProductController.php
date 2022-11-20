@@ -28,8 +28,6 @@ class ProductController extends Controller
     {
         return view('dashboards.admins.products.create');
     }
-
-
     /**
     * store
     *
@@ -73,8 +71,9 @@ class ProductController extends Controller
     * @param  mixed $blog
     * @return void
     */
-    public function edit(Product $product)
+    public function edit($id)
     {
+        $product = Product::find($id);
         return view('dashboards.admins.products.edit', compact('product'));
     }
 
@@ -88,8 +87,8 @@ class ProductController extends Controller
     */
     public function update(Request $request, Product $product)
     {
-        $this->validate($request, [
-            'image'     => 'required|image|mimes:png,jpg,jpeg',
+        // dd($product);
+        $request->validate([
             'barang'    => 'required',
             'harga'     => 'required',
             'stock'     => 'required',
@@ -100,15 +99,8 @@ class ProductController extends Controller
         $product = Product::findOrFail($product->id);
 
         if($request->file('image') == "") {
-
-            $product->update([
-                'image'     => $image->hashName(),
-                'barang'    => $request->barang,
-                'harga'     => $request->harga,
-                'stock'     => $request->stock,
-                'content'   => $request->content
-            ]);
-
+            $product = Product::find($product->id);
+            $product->update($request->all());
         } else {
 
             //hapus old image
@@ -127,13 +119,12 @@ class ProductController extends Controller
             ]);
 
         }
-
         if($product){
             //redirect dengan pesan sukses
-            return redirect()->route('product.index')->with(['success' => 'Data Berhasil Diupdate!']);
+            return redirect()->route('product.index')->with(['success' => 'Data Berhasil Disimpan!']);
         }else{
             //redirect dengan pesan error
-            return redirect()->route('product.index')->with(['error' => 'Data Gagal Diupdate!']);
+            return redirect()->route('product.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
     }
     /**

@@ -38,15 +38,15 @@
               @foreach ($products->take(4) as $data)
                 <div class="col-6 col-sm-3 mb-4">
                   <div class="card">
-                      <img src="{{ Storage::url('products/').$data>image }}" class="card-img-top round" alt="">
+                      <img src="{{ Storage::url('products/').$data->image }}" class="card-img-top round" alt="">
                       <div class="isi-card">
-                        <h4 class="judul-card">{{$data->barang}}</h4>
+                        <a class="judul-card" href="{{route('detailproduk', $data->id)}}">{{Str::limit($data->barang,30)}}</a>
                         <div class="row">
                           <div class="col">
                             <p class="f-20 jingga">{{$data->harga}}</p>
                           </div>
                           <div class="col">
-                            <p class="f-15 text-muted">{{data->stock}}</p>
+                            <p class="f-15 text-muted">{{$data->stock}}</p>
                           </div>
                         </div>
                       </div>
