@@ -9,37 +9,37 @@
                     <div class="card-body">
                         <form action="slider">
                         <a href="{{ route('slider.create') }}" class="btn btn-md btn-success mb-3">TAMBAH slider</a>
-                        <table class="table table-bordered">
-                            <thead>
-                              <tr>
-                                <th scope="col">GAMBAR</th>
-                                <th scope="col">AKSI</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              @forelse ($sliders as $slider)
-                                <tr>
-                                    <td class="text-center">
-                                        <img src="{{ Storage::url('public/sliders/').$slider->image }}" class="rounded" style="width: 150px">
-                                    </td>
-                                    <td class="text-center">
-                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('slider.destroy', $slider->id) }}" method="POST">
-                                            <a href="{{ route('slider.edit', $slider->id) }}" class="btn btn-sm btn-primary">EDIT</a>
-                                            @method('DELETE')
-                                            @csrf
-                                            <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                              @empty
-                                  <div class="alert alert-danger">
-                                      Data slider belum Tersedia.
-                                  </div>
-                              @endforelse
-                            </tbody>
-                          </table>  
-                          {{ $sliders->links() }}
-                        </form>
+                        {{ $sliders->links() }}
+                    </form>
+                    <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th scope="col">GAMBAR</th>
+                            <th scope="col">AKSI</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @forelse ($sliders as $slider)
+                            <tr>
+                                <td class="text-center">
+                                    <img src="{{ Storage::url('public/sliders/').$slider->image }}" class="rounded" style="width: 150px">
+                                </td>
+                                <td class="text-center">
+                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('slider.destroy', $slider->id) }}" method="POST">
+                                        <a href="{{ route('slider.edit', $slider->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                                    </form>
+                                </td>
+                            </tr>
+                          @empty
+                              <div class="alert alert-danger">
+                                  Data slider belum Tersedia.
+                              </div>
+                          @endforelse
+                        </tbody>
+                      </table>  
                     </div>
                 </div>
             </div>

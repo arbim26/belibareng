@@ -5,10 +5,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\VisimisiController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\AboutusController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\VisimisiController;
 
 /*
 |--------------------------------------------------------------------------

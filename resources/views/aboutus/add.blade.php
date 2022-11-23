@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-12">
-                <h2 class="mb-2 page-title">Tambah Artiekel Baru</h2>
+                <h2 class="mb-2 page-title">Tambah Tentang Kami</h2>
                 <div class="row my-4">
                     <!-- Small table -->
                     <div class="col-md-12">

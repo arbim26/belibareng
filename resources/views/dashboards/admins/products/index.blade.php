@@ -28,7 +28,7 @@
                                     <td>{{ $product->barang }}</td>
                                     <td>{{ $product->harga }}</td>
                                     <td>{{ $product->stock }}</td>
-                                    <td>{!! $product->content !!}</td>
+                                    <td>{!! Str::limit($product->content,50) !!}</td>
                                     <td class="text-center">
                                         <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('product.destroy', $product->id) }}" method="POST">
                                             <a href="{{ route('product.edit', $product->id) }}" class="btn btn-sm btn-primary">EDIT</a>
