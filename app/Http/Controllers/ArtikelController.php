@@ -17,7 +17,7 @@ class ArtikelController extends Controller
     public function show()
     {
         $artikel = Artikel::latest()->paginate(5);
-        return view('artikel.artikeladmin', compact('artikel'));
+        return view('artikel.index', compact('artikel'));
     }
 
         /**
@@ -27,15 +27,17 @@ class ArtikelController extends Controller
     */
     public function addartikel()
     {
-        return view('artikel.addartikel');
+        return view('artikel.add');
     }
 
     public function store(Request $request)
     {
+        // dd($request);
         $request->validate([
             'image'     => 'required|image|mimes:png,jpg,jpeg',
             'title'     => 'required',
-            'content'   => 'required'
+            'content'   => 'required',
+            'date'      => 'required'
         ]);
 
         //upload image
@@ -45,7 +47,8 @@ class ArtikelController extends Controller
         $blog = Artikel::create([
             'image'     => $image->hashName(),
             'title'     => $request->title,
-            'content'   => $request->content
+            'content'   => $request->content,
+            'date'      => $request->date
         ]);
 
         if($blog){
@@ -75,7 +78,8 @@ class ArtikelController extends Controller
         {
         $request->validate([
             'title'     => 'required',
-            'content'   => 'required'
+            'content'   => 'required',
+            'date'      => 'required'
         ]);
         $artikel = Artikel::findOrFail($id);
 
@@ -94,7 +98,8 @@ class ArtikelController extends Controller
             $artikel->update([
                 'image'     => $image->hashName(),
                 'title'     => $request->title,
-                'content'   => $request->content
+                'content'   => $request->content,
+                'date'      => $request->date
             ]);
 
         }
@@ -126,10 +131,16 @@ class ArtikelController extends Controller
 
     public function search(Request $request)
     {
-        $keyword = $request->search;
-        $artikel = Artikel::where('name', 'like', "%" . $keyword . "%")->paginate(5);
-        return view('artikel.artikeladmin', compact('artikel'))->with('i', (request()->input('page', 1) - 1) * 5);
+        // menangkap data pencarian
+        $search = $request->search;
+     
+         // mengambil data dari table pegawai sesuai pencarian data
+        $artikel = DB::table('artikel')
+        ->where('title','like',"%".$search."%")
+        ->paginate();
+     
+            // mengirim data pegawai ke view index
+        return view('index',['pegawai' => $pegawai]);
+     
     }
-    // admin
-
 }

@@ -24,7 +24,6 @@ class CartController extends Controller
     public function addToCart($id)
     {
         $product = Product::findOrFail($id);
-        
         $cart = session()->get('cart', []);
         if(isset($cart[$id])) {
             $cart[$id]['quantity']++;
@@ -35,6 +34,7 @@ class CartController extends Controller
                 "price" => $product->harga,
                 "image" => $product->image
             ];
+            dd($cart);
         }
           
         session()->put('cart', $cart);

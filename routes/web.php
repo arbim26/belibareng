@@ -66,7 +66,7 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::get('edit_artikel/{id}',[ArtikelController::class, 'edit'])->name('edit_artikel');
         Route::put('update_artikel/{id}',[ArtikelController::class, 'update'])->name('update_artikel');
         Route::delete('delete_artikel/{id}', [ArtikelController::class, 'destroy'])->name('delete_artikel');
-        Route::get('search', [ArtikelController::class, 'search'])->name('search');
+        Route::post('/article/search',[ArtikelController::class,'search'])->name('article.search');
         // artikel
 
         // tentangkami
@@ -92,6 +92,7 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::get('edit_misi/{id}',[VisimisiController::class, 'editmisi'])->name('edit_misi');
         Route::put('update_misi/{id}',[VisimisiController::class, 'updatemisi'])->name('update_misi');
         // visimisi
+
 
 
     });

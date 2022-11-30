@@ -56,7 +56,7 @@
                             <a class="nav-link" href="{{ route('artikel') }}">Artikel</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('produk') }}">Produk</a>
+                            <a class="nav-link" href="{{ route('product.index') }}">Produk</a>
                         </li>
                         @endauth
 
@@ -280,10 +280,6 @@
     });
   
 </script>
-
-
-
-
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
