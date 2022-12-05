@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\CartDetailController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AboutusController;
 use App\Http\Controllers\VisimisiController;
@@ -41,6 +40,8 @@ Route::get('/registeradmin', function () {
 Route::resource('slider',SliderController::class);
 Route::resource('product',ProductController::class);
 Route::resource('order',OrderController::class);    
+
+
 
 Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
     Auth::routes();
@@ -105,7 +106,7 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::get('profile',[UserController::class,'profile'])->name('profile');
         Route::get('alamat',[UserController::class,'alamat'])->name('alamat');
         Route::get('password',[UserController::class,'password'])->name('password');
-        Route::get('cart',[UserController::class,'cart'])->name('cart');
+        // Route::get('cart',[UserController::class,'cart'])->name('cart');
         Route::get('daftarpesanan',[UserController::class,'daftarpesanan'])->name('daftarpesanan');
         
         // artiekel
@@ -118,10 +119,11 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         // produk
 
         // cart
-        Route::get('cart', [CartController::class, 'cart'])->name('cart');
-        Route::get('add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add.to.cart');
-        Route::patch('update-cart', [CartController::class, 'update'])->name('update.cart');
-        Route::delete('remove-from-cart', [CartController::class, 'remove'])->name('remove.from.cart');
-        // cart
+        Route::resource('cart', CartController::class);
+        // Route::get('cart', [CartController::class,'index'])->name('cart.index');
+        // Route::post('cart', [CartController::class, 'store'])->name('cart.store');
+        Route::patch('kosongkan/{id}', [CartController::class, 'kosongkan']);
+        // cart detail
+
     });
 

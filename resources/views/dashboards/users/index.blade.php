@@ -43,7 +43,7 @@
                         <a class="judul-card" href="{{route('detailproduk', $data->id)}}">{{Str::limit($data->barang,30)}}</a>
                         <div class="row">
                           <div class="col">
-                            <p class="f-20 jingga">{{$data->harga}}</p>
+                            <p class="f-20 jingga">{{number_format($data->harga)}}</p>
                           </div>
                           <div class="col">
                             <p class="f-15 text-muted">{{$data->stock}}</p>

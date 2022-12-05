@@ -25,8 +25,6 @@ class UserController extends Controller
         $misi = Misi::latest()->get();
         return view('dashboards.users.tentangkami', compact('tentangkami','visi','misi'));
     }
-
-    // artikel
     function artikel(){
         $artikel = Artikel::latest()->paginate(9);
         return view('dashboards.users.artikel', compact('artikel'));
@@ -41,7 +39,6 @@ class UserController extends Controller
         $data = Product::find($id);
         return view('dashboards.admins.products.detail', compact('data'));
     }
-    // artikel
     public function produk(){
         $products = Product::latest()->paginate(10);
         return view('dashboards.users.produk', compact('products'));
@@ -54,9 +51,6 @@ class UserController extends Controller
     }
     function password(){
         return view('dashboards.users.password');
-    }
-    function cart(){
-        return view('dashboards.users.cart');
     }
     function daftarpesanan(){
         return view('dashboards.users.daftarpesanan');

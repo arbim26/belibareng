@@ -20,7 +20,7 @@
                       <h3 class="fw-bolder">{{$data->barang}}</h3>
                       <div class="d-flex gap-5">
                         <p class="text-decoration-line-through">Rp 16.000</p>
-                        <p class="jingga">{{$data->harga}}</p>
+                        <p class="jingga">Rp.{{ number_format($data->harga, 2) }}</p>
                       </div>
                     </div>
                     <div class="card-body abu">
@@ -42,13 +42,9 @@
                                     <label class="col-sm-3">Jumlah</label>
                                     <div class="col-sm-9 m-0">
                                         <div class="spinner border">
-                                            <button id="decrement" onclick="stepper(this)"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-                                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-                                              </svg> </button>
-                                            <input type="number" min="0" max="100" step="1" value="20" id="my-input" readonly>
-                                            <button id="increment" onclick="stepper(this)"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                              </svg> </button>
+                                            <button id="decrement" onclick="stepper(this)"><i class="bi bi-dash-lg"></i></button>
+                                            <input type="number" name="qty" min="1" max="100" step="1" value="1" id="my-input" readonly>
+                                            <button id="increment" onclick="stepper(this)"><i class="bi bi-plus-lg"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -60,16 +56,16 @@
                                 </div>
                             </li>
                         </ul>
-                        <a class="btn text-white bg-red" href="{{ route('add.to.cart', $data->id) }}" style="background-color: #D82B2A;">
-                            <div class="d-flex gap-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
-                                    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
-                                </svg>
-                                <p class="m-0">Masukkan Keranjang</p>
-                            </div>
-                        </a>
-                        <a class="btn text-white bg-red" href="#" style="background-color: #D82B2A;">Beli Sekarang</a>
-                    </div>
+                        <div class="d-flex gap-1">
+                            <form action="{{ route('cart.store') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="produk_id" value={{$data->id}}>
+                                <button class="btn text-white" type="submit" style="background-color: #D82B2A;">
+                                    <i class="bi bi-cart2" style="font-size: 1.2rem;;"></i> Tambahkan Ke Keranjang
+                                </button>
+                            </form>
+                            <a class="btn text-white bg-red" href="#" style="background-color: #D82B2A;">Beli Sekarang</a>
+                        </div>
                 </div>
                 <div class="mt-5">
                     <h6>Daftar Pemesan</h6>
