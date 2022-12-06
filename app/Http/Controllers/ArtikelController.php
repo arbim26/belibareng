@@ -127,8 +127,8 @@ class ArtikelController extends Controller
     public function search(Request $request)
     {
         $keyword = $request->search;
-        $users = User::where('name', 'like', "%" . $keyword . "%")->paginate(5);
-        return view('users.index', compact('users'))->with('i', (request()->input('page', 1) - 1) * 5);
+        $artikel = Artikel::where('name', 'like', "%" . $keyword . "%")->paginate(5);
+        return view('artikel.artikeladmin', compact('artikel'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
     // admin
 

@@ -16,7 +16,7 @@
                                   <form class="form">
                                     <div class="form-row">
                                       <div class="form-group col-auto mr-auto">
-                                        <a href="{{ route('addaboutus')}}" class="btn btn-md btn-primary mb-3">TAMBAH BLOG</a>
+                                        <a href="{{ route('addaboutus')}}" class="btn btn-md btn-primary mb-3">ADD</a>
                                       </div>
                                       <div class="form-group col-auto">
                                         <form class="form" method="get" action="">

@@ -4,12 +4,14 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CartDetailController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\SliderController;
 use App\Http\Controllers\AboutusController;
+use App\Http\Controllers\VisimisiController;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\VisimisiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,9 +38,9 @@ Route::get('/registeradmin', function () {
     return view('auth.registeradmin');
 }); 
 
-Route::resource('slider', SliderController::class);
-Route::resource('product', ProductController::class);
-Route::resource('order',OrderController::class);
+Route::resource('slider',SliderController::class);
+Route::resource('product',ProductController::class);
+Route::resource('order',OrderController::class);    
 
 Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
     Auth::routes();
@@ -64,6 +66,7 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::get('edit_artikel/{id}',[ArtikelController::class, 'edit'])->name('edit_artikel');
         Route::put('update_artikel/{id}',[ArtikelController::class, 'update'])->name('update_artikel');
         Route::delete('delete_artikel/{id}', [ArtikelController::class, 'destroy'])->name('delete_artikel');
+        Route::get('search', [ArtikelController::class, 'search'])->name('search');
         // artikel
 
         // tentangkami
@@ -89,15 +92,15 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::get('edit_misi/{id}',[VisimisiController::class, 'editmisi'])->name('edit_misi');
         Route::put('update_misi/{id}',[VisimisiController::class, 'updatemisi'])->name('update_misi');
         // visimisi
+
+
     });
 
     
     Route::group(['prefix'=>'user', 'middleware'=>['isUser','auth','PreventBackHistory']], function(){
         Route::get('detailartikel/{id}',[UserController::class,'detail'])->name('detailartikel');
-        Route::get('produk',[UserController::class,'produk'])->name('produk');
         Route::get('dashboard',[UserController::class,'index'])->name('user.dashboard');
         Route::get('tentangkami',[UserController::class,'tentangkami'])->name('tentangkami');
-        Route::get('detailproduk',[UserController::class,'detailproduk'])->name('detailproduk');
         Route::get('profile',[UserController::class,'profile'])->name('profile');
         Route::get('alamat',[UserController::class,'alamat'])->name('alamat');
         Route::get('password',[UserController::class,'password'])->name('password');
@@ -108,5 +111,16 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::get('artikel',[UserController::class,'artikel'])->name('artikel');
         // artiekel
 
+        // produk
+        Route::get('produk',[UserController::class,'produk'])->name('produk');
+        Route::get('detailproduk/{id}',[UserController::class,'product'])->name('detailproduk');
+        // produk
+
+        // cart
+        Route::get('cart', [CartController::class, 'cart'])->name('cart');
+        Route::get('add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add.to.cart');
+        Route::patch('update-cart', [CartController::class, 'update'])->name('update.cart');
+        Route::delete('remove-from-cart', [CartController::class, 'remove'])->name('remove.from.cart');
+        // cart
     });
 

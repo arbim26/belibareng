@@ -19,7 +19,7 @@
                             <p class="f-15 text-muted">{{ $product->stock }}</p>
                           </div>
                           <div class="product-action-1 show">
-                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i>{!! $product->content !!}</a>
+                            <a aria-label="Add To Cart" class="action-btn hover-up" href="{{ route('product.detail') }}"><i class="fi-rs-shopping-bag-add"></i>{!! $product->content !!}</a>
                         </div>
                         </div>
                       </div>
