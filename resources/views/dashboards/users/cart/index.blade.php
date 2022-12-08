@@ -12,18 +12,14 @@
                         <div class="card">
                             <div class="d-flex justify-content-between align-items-center card-body">
                                 <p class="m-0">@php echo count($cart) @endphp Produk</p>
-                                <form action="" method="post">
-                                    @method('patch')
+                                <form  onsubmit="return confirm('Kosongkan Keranjang ?');" action="{{ route('cart.clear') }}" method="post">
                                     @csrf()
                                     <button type="submit" class="text-end link-danger fw-bold">Hapus Semua</button>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    @php $total = 0 @endphp
-                    @php
-                    @endphp
-                    @foreach ($cart as $row)
+                    @forelse ($cart as $row)
                     <div class="card mt-3">
                         <div class="card-body">
                           <h5 class="card-title"><i class="bi bi-shop-window" ></i>Jawa Barat - Depok</h5>
@@ -37,16 +33,16 @@
                                   <div class="col"><p class="text-end">Rp{{number_format($row->produk->harga, 2)}}</p></div>
                                 </div>
                                 <div class="d-flex justify-content-between">
-                                    <form action="{{ route('cart.destroy', $row->id) }}" method="post" style="display:inline;">
+                                    <form onsubmit="return confirm('Hapus Barang ?');" action="{{ route('cart.destroy', $row->id) }}" method="post" style="display:inline;">
                                         @csrf
                                         {{ method_field('delete') }}
                                         <button type="submit">
-                                            <i class="bi bi-trash" style="font-size: 1.5rem;"></i>
+                                            <i class="bi bi-trash" style="font-size: 1.5rem; color: #D82B2A "></i>
                                         </button>                    
                                     </form>
                                     <div class=" spinner border text-end">
                                       <button id="decrement" onclick="stepper(this)"><i class="bi bi-dash-lg"></i></button>
-                                      <input type="number" min="0" max="100" step="1"  value="{{ $row['qty'] }}" id="my-input" readonly>
+                                      <input type="number" min="0" max="100" step="1"  value="{{ $row->qty }}" id="my-input" readonly>
                                       <button id="increment" onclick="stepper(this)"><i class="bi bi-plus-lg"></i></button>
                                     </div>
                                 </div>
@@ -54,14 +50,22 @@
                           </div>
                         </div>
                     </div>  
-                    @endforeach
+                    @empty
+                    <div class="mt-4 alert alert-danger">
+                        Belum ada barang di cart.
+                    </div>
+                    @endforelse
                 </div>
             </div>
             <div class="col-md-4 mt-3">
                 <div class="card">
                     <div class="card-body">
                     <p class="card-text fw-bold">Total Belanja</p>
-                    {{-- <p class="text-end">Rp. {{number_format($total, 2)}}</p> --}}
+                    @php $total = 0 @endphp
+                    @foreach ($cart as $row)
+                        @php $total = $row->where('user_id', $row->user_id)->sum('total'); @endphp
+                    @endforeach
+                    <p class="text-end">Rp. {{number_format($total, 2)}}</p>
                     <div class="d-grid gap-2">
                         <button class="btn btn-danger" type="button">Beli Sekarang</button>
                     </div>

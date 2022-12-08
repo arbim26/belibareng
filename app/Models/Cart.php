@@ -26,6 +26,23 @@ class Cart extends Model
         return $this->belongsTo('App\Models\Product', 'produk_id');
     }
 
+    public function clear() {
+        {
+            if ($this->fireEvent('clearing') === false) {
+                return false;
+            }
+    
+            $this->session->put(
+                $this->sessionKeyCartItems,
+                array()
+            );
+    
+            $this->fireEvent('cleared');
+            return true;
+        }
+    }
+    
+
     // function untuk update qty, sama subtotal
     public function updatedetail($itemdetail, $qty, $harga) {
         $this->attributes['qty'] = $itemdetail->qty + $qty;

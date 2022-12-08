@@ -63,12 +63,13 @@
                         <div class="navbar-nav d-flex gap-2">
                             <div class="dropdown">
                                 <button type="button" class="dropbtn" data-toggle="dropdown">
-                                    <i class="bi bi-cart" style="font-size: 1.6rem; color: black;"></i><span class="position-absolute start-75 translate-middle badge rounded-pill bg-danger" style="top: 10px">{{ count((array) session('cart')) }}</span>
+                                    <i class="bi bi-cart" style="font-size: 1.6rem; color: black;"></i><span class="position-absolute start-75 translate-middle badge rounded-pill bg-danger" style="top: 10px"></span>
                                 </button>
                                 <div class="dropdown-cart hover">
                                     @php $total = 0 @endphp
                                     @foreach((array) session('cart') as $id => $details)
-                                        @php $total += $details['price'] * $details['quantity'] @endphp
+                                        {{-- @php dd($details) @endphp   --}}
+                                        {{-- @php $total += $details['harga'] * $details['qty'] @endphp --}}
                                     @endforeach
                                     <div class="row d-flex d-flex justify-content-between">
                                         <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
@@ -83,14 +84,14 @@
                                             <hr>
                                             <div class="row d-flex align-items-center">
                                                 <div class="col-lg-3 col-sm-3 col-3 ">
-                                                    <img src="{{ Storage::url('products/').$details['image'] }}" style="width: 100%"; height="auto"/>
+                                                    <img src="{{ Storage::url('products/').$details->produk->image }}" style="width: 100%"; height="auto"/>
                                                 </div>
                                                 <div class="col-lg-5 col-sm-5 col-5" >
-                                                    <h4 class="fw-bolder">{{ $details['name'] }}</h4>
-                                                    <p class="count" style="font-size: 12px"> Jumlah:{{ $details['quantity'] }}</p>
+                                                    <h6 class="fw-bolder">{{ $details->produk->barang }}</h6>
+                                                    <p class="count" style="font-size: 12px"> Jumlah:{{ $details->qty }}</p>
                                                 </div>
                                                 <div class="col-lg-4 col-sm-4 col-4 ">
-                                                    <span class="price jingga"> Rp{{ $details['price'] }}</span> 
+                                                    <span class="price jingga"> Rp{{ $details->produk->harga }}</span> 
                                                 </div>
                                             </div>
                                         @endforeach
