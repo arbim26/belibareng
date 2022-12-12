@@ -12,7 +12,7 @@
                         <div class="card">
                             <div class="d-flex justify-content-between align-items-center card-body">
                                 <p class="m-0">@php echo count($cart) @endphp Produk</p>
-                                <form  onsubmit="return confirm('Kosongkan Keranjang ?');" action="{{ route('cart.clear') }}" method="post">
+                                <form onsubmit="return confirm('Kosongkan Keranjang ?');" action="{{ route('cart.clear') }}" method="post">
                                     @csrf()
                                     <button type="submit" class="text-end link-danger fw-bold">Hapus Semua</button>
                                 </form>
@@ -67,7 +67,7 @@
                     @endforeach
                     <p class="text-end">Rp. {{number_format($total, 2)}}</p>
                     <div class="d-grid gap-2">
-                        <button class="btn btn-danger" type="button">Beli Sekarang</button>
+                        <a class="btn text-white bg-red" href="{{ route('checkout') }}" style="background-color: #D82B2A;">Beli Sekarang</a>
                     </div>
                     </div>
                 </div>
@@ -79,46 +79,20 @@
 </section>
 @endsection
 @section('js')
-{{-- <script type="text/javascript">
-  
-    $(".update-cart").change(function (e) {
-        e.preventDefault();
-  
-        var ele = $(this);
-  
-        $.ajax({
-            url: '{{ route('update.cart') }}',
-            method: "patch",
-            data: {
-                _token: '{{ csrf_token() }}', 
-                id: ele.parents("tr").attr("data-id"), 
-                quantity: ele.parents("tr").find(".quantity").val()
-            },
-            success: function (response) {
-               window.location.reload();
-            }
-        });
-    });
-  
-    $(".remove-from-cart").click(function (e) {
-        e.preventDefault();
-  
-        var ele = $(this);
-  
-        if(confirm("Are you sure want to remove?")) {
-            $.ajax({
-                url: '{{ route('remove.from.cart') }}',
-                method: "DELETE",
-                data: {
-                    _token: '{{ csrf_token() }}', 
-                    id: ele.parents("tr").attr("data-id")
-                },
-                success: function (response) {
-                    window.location.reload();
-                }
-            });
+<script>
+    const myInput = document.getElementById("my-input");
+    function stepper(btn){
+        let id = btn.getAttribute("id");
+        let min = myInput.getAttribute("min");
+        let max = myInput.getAttribute("max");
+        let step = myInput.getAttribute("step");
+        let val = myInput.getAttribute("value");
+        let calcStep = (id == "increment") ? (step*1) : (step * -1);
+        let newValue = parseInt(val) + calcStep;
+        
+        if(newValue >= min && newValue <= max){
+            myInput.setAttribute("value", newValue);
         }
-    });
-  
-</script> --}}
+    }
+</script>
 @endsection

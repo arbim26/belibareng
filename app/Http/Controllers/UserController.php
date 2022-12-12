@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Misi;
 use App\Models\Visi;
 use App\Models\Aboutus;
@@ -54,6 +55,15 @@ class UserController extends Controller
     }
     function daftarpesanan(){
         return view('dashboards.users.daftarpesanan');
+    }
+    function checkout(Request $request){
+        $user = $request->user();
+        $produk = Product::get();
+        $cart = Cart::where('user_id', $user->id)->get();
+        $data = array('cart'=>$cart);
+        // dd($data);
+        session()->put('data', $data);
+        return view('dashboards.users.checkout', $data)->with('no', 1);
     }
 }
 
