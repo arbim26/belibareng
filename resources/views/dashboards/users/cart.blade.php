@@ -58,7 +58,7 @@
                     <p class="card-text fw-bold">Total Belanja</p>
                     <p class="text-end">Rp. {{ $total }}</p>
                     <div class="d-grid gap-2">
-                        <button class="btn btn-danger" type="button">Beli Sekarang</button>
+                        <a class="btn text-white bg-red" href="{{ route('checkout') }}" style="background-color: #D82B2A;">Beli Sekarang</a>
                     </div>
                     </div>
                 </div>

@@ -3,15 +3,17 @@
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\CartDetailController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AboutusController;
-use App\Http\Controllers\VisimisiController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\AboutusController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\VisimisiController;
+use App\Http\Controllers\CartDetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +27,7 @@ use App\Http\Controllers\ProductController;
 */
 
 
-Route::get('/', function () {
+Route::get('/',[HomeController::class,'index'], function () {
     return view('beforeLogin.home');
 });
 Route::get('/sip', function () {
@@ -38,14 +40,12 @@ Route::get('/registeradmin', function () {
     return view('auth.registeradmin');
 }); 
 
-Route::resource('product',ProductController::class);
-Route::resource('order',OrderController::class);    
 
 
 Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
     Auth::routes();
 });
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     
     Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHistory']], function(){
         Route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
@@ -57,7 +57,8 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::get('product',[AdminController::class,'product'])->name('product');
         Route::get('order',[AdminController::class,'order'])->name('order');
         Route::get('payment',[AdminController::class,'payment'])->name('payment');
-        Route::get('profiles',[AdminController::class,'profiles'])->name('profiles');
+        Route::get('profileadmin',[AdminController::class,'admin'])->name('profileadmin');
+        Route::get('accountuser',[AdminController::class,'user'])->name('accountuser');
 
         // slider
         Route::get('slider',[SliderController::class, 'index'])->name('slider.index'); 
@@ -104,6 +105,15 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::put('update_misi/{id}',[VisimisiController::class, 'updatemisi'])->name('update_misi');
         // visimisi
 
+        // product
+        Route::resource('product',ProductController::class);
+        // product
+
+        // order
+        Route::resource('order',OrderController::class);
+        // order
+
+
         
 
 
@@ -119,15 +129,17 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::get('alamat',[UserController::class,'alamat'])->name('alamat');
         Route::get('password',[UserController::class,'password'])->name('password');
         Route::get('cart',[UserController::class,'cart'])->name('cart');
+        Route::get('checkout',[UserController::class,'checkout'])->name('checkout');
         Route::get('daftarpesanan',[UserController::class,'daftarpesanan'])->name('daftarpesanan');
         
         // artiekel
         Route::get('artikel',[UserController::class,'artikel'])->name('artikel');
+        Route::get('detailartikel/{id}',[UserController::class,'detail'])->name('detailartikel');
         // artiekel
 
         // produk
         Route::get('produk',[UserController::class,'produk'])->name('produk');
-        Route::get('detailproduk/{id}',[UserController::class,'product'])->name('detailproduk');
+        Route::get('detailproduk/{id}',[UserController::class,'detailproduk'])->name('detailproduk');
         // produk
 
         // cart

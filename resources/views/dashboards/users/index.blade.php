@@ -43,7 +43,7 @@
                         <a class="judul-card" href="{{route('detailproduk', $data->id)}}">{{Str::limit($data->barang,30)}}</a>
                         <div class="row">
                           <div class="col">
-                            <p class="f-20 jingga">{{$data->harga}}</p>
+                            <p class="f-20 jingga">Rp.{{$data->harga}}</p>
                           </div>
                           <div class="col">
                             <p class="f-15 text-muted">{{$data->stock}}</p>
@@ -93,7 +93,7 @@
               <img src="{{ Storage::url('artikels/').$data->image }}" class="card-img-top round" alt="">
               <div class="isi-card d-flex flex-column ">
                 <div class="title">
-                  <a href="{{route('detailartikel', $data->id)}}" class="judul-card ">{{ Str::limit($data->title,100) }}</a>
+                  <a href="{{ route('detailartikel', $data->id) }}" class="judul-card ">{{ Str::limit($data->title,100) }}</a>
                 </div>
                 <hr>
                 <div class="d-flex gap-2">

@@ -5,7 +5,7 @@
         <div class="row d-flex">
             <div class="col-8 border-end">
                 <div>
-                    <img src="{{ Storage::url('articles/').$data->image }}" class="img-artikel" style="width: 100%" alt="...">
+                    <img src="{{ Storage::url('artikels/').$data->image }}" class="img-artikel" style="width: 100%" alt="...">
                     {{-- <label for="img-artikel">Foto : kemendag</label> --}}
                 </div>
                 <div class="text-artikel mt-3">

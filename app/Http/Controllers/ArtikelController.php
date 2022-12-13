@@ -132,18 +132,18 @@ class ArtikelController extends Controller
     //    return view('artikel.filter',compact('artikels'));
     // Search for a user based on their name.
     if ($request->has('title')) {
-        return $user->where('title', $request->input('title'))->get();
+        return $admin->where('title', $request->input('title'))->get();
     }
 
     // Search for a user based on their company.
     if ($request->has('content')) {
-        return $user->where('content', $request->input('content'))
+        return $admin->where('content', $request->input('content'))
             ->get();
     }
 
     // Search for a user based on their city.
     if ($request->has('image')) {
-        return $user->where('image', $request->input('image'))->get();
+        return $admin->where('image', $request->input('image'))->get();
     }
 
     // Continue for all of the filters.
@@ -152,7 +152,7 @@ class ArtikelController extends Controller
     // let's return all users. This is
     // bad - we should paginate in
     // reality.
-    return User::all();
+    return Admin::all();
     }
     // admin
 

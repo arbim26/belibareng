@@ -45,7 +45,6 @@
 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        @auth
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="{{ route('user.dashboard') }}">Home</a>
                         </li>
@@ -58,8 +57,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('produk') }}">Produk</a>
                         </li>
-                        @endauth
-
+                        
+                        @auth
                         <div class="navbar-nav d-flex gap-2">
                             <div class="dropdown">
                                 <button type="button" class="dropbtn" data-toggle="dropdown">
@@ -68,7 +67,7 @@
                                 <div class="dropdown-cart hover">
                                     @php $total = 0 @endphp
                                     @foreach((array) session('cart') as $id => $details)
-                                        @php $total += $details['price'] * $details['quantity'] @endphp
+                                    @php $total += $details['price'] * $details['quantity'] @endphp
                                     @endforeach
                                     <div class="row d-flex d-flex justify-content-between">
                                         <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
@@ -79,53 +78,54 @@
                                         </div>
                                     </div>
                                     @if(session('cart'))
-                                        @foreach(session('cart') as $id => $details)
-                                            <hr>
-                                            <div class="row d-flex align-items-center">
-                                                <div class="col-lg-3 col-sm-3 col-3 ">
-                                                    <img src="{{ Storage::url('products/').$details['image'] }}" style="width: 100%"; height="auto"/>
-                                                </div>
-                                                <div class="col-lg-5 col-sm-5 col-5" >
-                                                    <h4 class="fw-bolder">{{ $details['name'] }}</h4>
-                                                    <p class="count" style="font-size: 12px"> Jumlah:{{ $details['quantity'] }}</p>
-                                                </div>
-                                                <div class="col-lg-4 col-sm-4 col-4 ">
-                                                    <span class="price jingga"> Rp{{ $details['price'] }}</span> 
-                                                </div>
+                                    @foreach(session('cart') as $id => $details)
+                                    <hr>
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-lg-3 col-sm-3 col-3 ">
+                                            <img src="{{ Storage::url('products/').$details['image'] }}" style="width: 100%"; height="auto"/>
+                                        </div>
+                                        <div class="col-lg-5 col-sm-5 col-5" >
+                                            <h4 class="fw-bolder">{{ $details['name'] }}</h4>
+                                            <p class="count" style="font-size: 12px"> Jumlah:{{ $details['quantity'] }}</p>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-4 ">
+                                            <span class="price jingga"> Rp{{ $details['price'] }}</span> 
+                                        </div>
                                             </div>
                                         @endforeach
                                     @endif
                                 </div>
-                              </div>
+                            </div>
                             <div class="dropdown">
-
-
+                                
+                                
                             </div>
 
                             <div class="dropdown">
                                 <a class="" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                                    aria-expanded="false"><i class="bi bi-person-circle" style="font-size: 1.75rem; color: black;"></i>
-                                </a>
-                                <ul class="dropdown-menu hover" aria-labelledby="dropdow  nMenuButton1">
-                                    <li><a class="dropdown-item" href="{{ route('profile') }}">Akun Saya</a></li>
-                                    <li><a class="dropdown-item" href="">Pesanan Saya</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">Logout</a>
+                                aria-expanded="false"><i class="bi bi-person-circle" style="font-size: 1.75rem; color: black;"></i>
+                            </a>
+                            <ul class="dropdown-menu hover" aria-labelledby="dropdow  nMenuButton1">
+                                <li><a class="dropdown-item" href="{{ route('profile') }}">Akun Saya</a></li>
+                                <li><a class="dropdown-item" href="">Pesanan Saya</a></li>
+                                <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">Logout</a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                            class="d-none">
-                                            @csrf
-                                        </form>
-                                    </li>
-                                </ul>
-                            </form>
-                            </div>
+                                        class="d-none">
+                                        @csrf
+                                    </form>
+                                </li>
+                            </ul>
+                        </form>
                         </div>
+                        @endauth
+                    </div>
                 </div>
             </div>
-
-            </div>
-        </nav>
-    </section>
+            
+        </div>
+    </nav>
+</section>
 
     <div class="wrapper">
         @yield('content')

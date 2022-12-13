@@ -27,7 +27,10 @@
                 <h6>Kelola Informasi profil anda untuk mengontrol,melindungi dan mengamankan akun</h6>
                 <hr>
               </div>
+              <form action="" >
 
+                    
+                
                 <div class="row">
                     <div class="col-9 pe-5">
                         <div class="mb-4 row">
@@ -45,13 +48,13 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="inputPassword" class="col-sm-2 col-form-label">No.Telpon</label>
+                            <label for="inputPassword" class="col-sm-2 col-form-label">No.Telp</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="inputPassword">
+                                <input type="number" class="form-control" id="inputTelpon">
                             </div>
                         </div>
 
-                        <div class="mb-4 row">
+                        {{-- <div class="mb-4 row">
                             <label for="inputPassword" class="col-sm-2 col-form-label">Jenis Kelamin</label>
                             <div class="col-sm-10">
                                 <div class="d-flex gap-3">
@@ -71,7 +74,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="mb-4 row">
                             <label for="inputPassword" class="col-sm-2 col-form-label">Tanggal Lahir</label>
@@ -79,8 +82,8 @@
                                 <input type="date" class="form-control" id="inputPassword">
                             </div>
                         </div>
-
-                        <button class="btn" style="background-color: #D82B2A; color: white">Simpan</button>
+                        
+                        <button class="btn" type="submit" style="background-color: #D82B2A; color: white">Simpan</button>
                     </div>
 
                     <div class="col-3 text-center">
@@ -89,7 +92,7 @@
                         <button class="btn" style="background-color: #D82B2A; color: white">Upload Gambar</button>
                     </div>
                 </div>
-
+              </form>
             </div>
         </div>
     </div>

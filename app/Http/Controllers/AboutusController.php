@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Aboutus;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class AboutusController extends Controller
 {
@@ -49,7 +50,7 @@ class AboutusController extends Controller
     public function edit($id)
     {
         $data = Aboutus::find($id);
-        return view('aboutus.edit', compact('data'));
+        return view('dashboards.admins.aboutus.edit', compact('data'));
     }
 
     public function update(Request $request, Aboutus $aboutus, $id)
@@ -82,10 +83,10 @@ class AboutusController extends Controller
 
     if($data){
         //redirect dengan pesan sukses
-        return redirect()->route('aboutus')->with(['success' => 'Data Berhasil Diupdate!']);
+        return redirect()->route('aboutus.index')->with(['success' => 'Data Berhasil Diupdate!']);
     }else{
         //redirect dengan pesan error
-        return redirect()->route('aboutus')->with(['error' => 'Data Gagal Diupdate!']);
+        return redirect()->route('aboutus.index')->with(['error' => 'Data Gagal Diupdate!']);
     }
 
 }

@@ -14,7 +14,7 @@ class CartController extends Controller
      */
     public function cart()
     {
-        return view('dashboards.admins.products.cart');
+        return view('dashboards.users.cart');
     }
     /**
      * Write code on Method

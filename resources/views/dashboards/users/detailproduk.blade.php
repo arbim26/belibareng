@@ -68,7 +68,7 @@
                                 <p class="m-0">Masukkan Keranjang</p>
                             </div>
                         </a>
-                        <a class="btn text-white bg-red" href="#" style="background-color: #D82B2A;">Beli Sekarang</a>
+                        <a class="btn text-white bg-red" href="{{ route('cart') }}" style="background-color: #D82B2A;">Beli Sekarang</a>
                     </div>
                 </div>
                 <div class="mt-5">
