@@ -3,9 +3,6 @@
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\CartController;
-<<<<<<< HEAD
 use App\Http\Controllers\UserController;
 =======
 >>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb
@@ -116,7 +113,9 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::put('update_misi/{id}',[VisimisiController::class, 'updatemisi'])->name('update_misi');
         // visimisi
 
-        // product
+        Route::resource('slider',SliderController::class);
+        Route::resource('product',ProductController::class);
+        Route::resource('order',OrderController::class);            // product
         Route::resource('product',ProductController::class);
         // product
 
@@ -144,6 +143,8 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::get('cart',[UserController::class,'cart'])->name('cart');
         Route::get('checkout',[UserController::class,'checkout'])->name('checkout');
 =======
+        Route::get('checkout',[UserController::class,'checkout'])->name('checkout');
+
         // Route::get('cart',[UserController::class,'cart'])->name('cart');
 >>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb
         Route::get('daftarpesanan',[UserController::class,'daftarpesanan'])->name('daftarpesanan');
@@ -162,8 +163,8 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::resource('cart', CartController::class);
         // Route::get('cart', [CartController::class,'index'])->name('cart.index');
         // Route::post('cart', [CartController::class, 'store'])->name('cart.store');
-        Route::patch('kosongkan/{id}', [CartController::class, 'kosongkan']);
-        // cart detail
+        Route::post('clear', [CartController::class, 'clear'])->name('cart.clear');
+        // cart detai
 
     });
 

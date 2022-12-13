@@ -24,7 +24,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> 
 
     <title>BeliBareng</title>
 </head>
@@ -55,20 +55,17 @@
                             <a class="nav-link" href="{{ route('artikel') }}">Artikel</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('product.index') }}">Produk</a>
+                            <a class="nav-link" href="{{ route('produk') }}">Produk</a>
                         </li>
                         
                         @auth
                         <div class="navbar-nav d-flex gap-2">
                             <div class="dropdown">
                                 <button type="button" class="dropbtn" data-toggle="dropdown">
-                                    <i class="bi bi-cart" style="font-size: 1.6rem; color: black;"></i><span class="position-absolute start-75 translate-middle badge rounded-pill bg-danger" style="top: 10px">{{ count((array) session('cart')) }}</span>
+                                    <i class="bi bi-cart" style="font-size: 1.6rem; color: black;"></i><span class="position-absolute start-75 translate-middle badge rounded-pill bg-danger" style="top: 10px"></span>
                                 </button>
-                                <div class="dropdown-cart hover">
+                                {{-- <div class="dropdown-cart hover">
                                     @php $total = 0 @endphp
-                                    @foreach((array) session('cart') as $id => $details)
-                                    @php $total += $details['price'] * $details['quantity'] @endphp
-                                    @endforeach
                                     <div class="row d-flex d-flex justify-content-between">
                                         <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
                                             <p>Total: <span class="jingga">Rp {{ $total }}</span></p>
@@ -82,24 +79,24 @@
                                         </div>
                                     </div>
                                     @if(session('cart'))
-                                    @foreach(session('cart') as $id => $details)
-                                    <hr>
-                                    <div class="row d-flex align-items-center">
-                                        <div class="col-lg-3 col-sm-3 col-3 ">
-                                            <img src="{{ Storage::url('products/').$details['image'] }}" style="width: 100%"; height="auto"/>
-                                        </div>
-                                        <div class="col-lg-5 col-sm-5 col-5" >
-                                            <h4 class="fw-bolder">{{ $details['name'] }}</h4>
-                                            <p class="count" style="font-size: 12px"> Jumlah:{{ $details['quantity'] }}</p>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-4 col-4 ">
-                                            <span class="price jingga"> Rp{{ $details['price'] }}</span> 
-                                        </div>
+                                        @foreach(session('cart') as $id => $details)
+                                            <hr>
+                                            <div class="row d-flex align-items-center">
+                                                <div class="col-lg-3 col-sm-3 col-3 ">
+                                                    <img src="{{ Storage::url('products/').$details->produk->image }}" style="width: 100%"; height="auto"/>
+                                                </div>
+                                                <div class="col-lg-5 col-sm-5 col-5" >
+                                                    <h6 class="fw-bolder">{{ $details->produk->barang }}</h6>
+                                                    <p class="count" style="font-size: 12px"> Jumlah:{{ $details->qty }}</p>
+                                                </div>
+                                                <div class="col-lg-4 col-sm-4 col-4 ">
+                                                    <span class="price jingga"> Rp{{ $details->produk->harga }}</span> 
+                                                </div>
                                             </div>
                                         @endforeach
                                     @endif
-                                </div>
-                            </div>
+                                </div> --}}
+                              </div>
                             <div class="dropdown">
                                 
                                 
@@ -213,7 +210,7 @@
         // fungsi initialize untuk mempersiapkan peta
         function initialize() {
         var propertiPeta = {
-            center:new google.maps.LatLng(-8.5830695,116.3202515),
+            center:new google.maps.LatLng(-6.397549592412735, 106.83648967724532),
             zoom:9,
             mapTypeId:google.maps.MapTypeId.ROADMAP
         };
@@ -225,22 +222,7 @@
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 
-    <script>
-    const myInput = document.getElementById("my-input");
-    function stepper(btn){
-        let id = btn.getAttribute("id");
-        let min = myInput.getAttribute("min");
-        let max = myInput.getAttribute("max");
-        let step = myInput.getAttribute("step");
-        let val = myInput.getAttribute("value");
-        let calcStep = (id == "increment") ? (step*1) : (step * -1);
-        let newValue = parseInt(val) + calcStep;
-        
-        if(newValue >= min && newValue <= max){
-            myInput.setAttribute("value", newValue);
-        }
-    }
-    </script>
+
 
 @yield('js')
 

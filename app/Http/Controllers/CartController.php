@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,8 +21,8 @@ class CartController extends Controller
         $produk = Product::get();
         $cart = Cart::where('user_id', $user->id)->get();
         $data = array('cart'=>$cart);
-
         // dd($data);
+        session()->put('data', $data);
         return view('dashboards.users.cart.index', $data)->with('no', 1);
 >>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb
     }
@@ -50,14 +51,13 @@ class CartController extends Controller
                 'total' => $harga * $qty,
             ]);
         }
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        return redirect()->route('cart.index')->with('success', 'Product added to cart successfully!');
           
     }
 
-    public function kosongkan($id) {
-        $itemcart = Cart::findOrFail($id);
-        dd($itemcart);
-        $itemcart->detail()->delete();//hapus semua item di cart detail
+    public function clear(Request $request) {
+        $user = $request->user();
+        DB::table('cart')->where('user_id', $user->id)->delete();
         return back()->with('success', 'Cart berhasil dikosongkan');
     }
 
@@ -71,5 +71,7 @@ class CartController extends Controller
             return back()->with('error', 'Item gagal dihapus');
         }
     }
+
+
 
 }
