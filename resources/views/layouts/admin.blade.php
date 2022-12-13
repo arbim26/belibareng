@@ -465,6 +465,6 @@
         CKEDITOR.replace( 'content' );
     </script>
     
-
+    @yield('js')
     </body>
 </html>

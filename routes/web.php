@@ -5,7 +5,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
+<<<<<<< HEAD
 use App\Http\Controllers\UserController;
+=======
+>>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SliderController;
@@ -39,6 +42,8 @@ Route::get('/loginadmin', function () {
 Route::get('/registeradmin', function () {
     return view('auth.registeradmin');
 }); 
+
+
 
 
 
@@ -76,10 +81,16 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::post('store_artikel',[ArtikelController::class, 'store'])->name('store_artikel');
         Route::get('edit_artikel/{id}',[ArtikelController::class, 'edit'])->name('edit_artikel');
         Route::put('update_artikel/{id}',[ArtikelController::class, 'update'])->name('update_artikel');
+<<<<<<< HEAD
         Route::delete('delete_artikel/{id}', [ArtikelController::class, 'destroy'])->name('artikel.destroy');
         // Route::get('search', [ArticleController::class, 'search'])->name('search');
         Route::post('/search','ArtikelController@search');
         // article
+=======
+        Route::delete('delete_artikel/{id}', [ArtikelController::class, 'destroy'])->name('delete_artikel');
+        Route::post('/article/search',[ArtikelController::class,'search'])->name('article.search');
+        // artikel
+>>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb
 
         // tentangkami
         Route::get('aboutus',[AboutusController::class, 'index'])->name('aboutus.index'); 
@@ -118,6 +129,7 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
 
 
 
+
     });
 
     
@@ -128,8 +140,12 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::get('profile',[UserController::class,'profile'])->name('profile');
         Route::get('alamat',[UserController::class,'alamat'])->name('alamat');
         Route::get('password',[UserController::class,'password'])->name('password');
+<<<<<<< HEAD
         Route::get('cart',[UserController::class,'cart'])->name('cart');
         Route::get('checkout',[UserController::class,'checkout'])->name('checkout');
+=======
+        // Route::get('cart',[UserController::class,'cart'])->name('cart');
+>>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb
         Route::get('daftarpesanan',[UserController::class,'daftarpesanan'])->name('daftarpesanan');
         
         // artiekel
@@ -143,10 +159,11 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         // produk
 
         // cart
-        Route::get('cart', [CartController::class, 'cart'])->name('cart');
-        Route::get('add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add.to.cart');
-        Route::patch('update-cart', [CartController::class, 'update'])->name('update.cart');
-        Route::delete('remove-from-cart', [CartController::class, 'remove'])->name('remove.from.cart');
-        // cart
+        Route::resource('cart', CartController::class);
+        // Route::get('cart', [CartController::class,'index'])->name('cart.index');
+        // Route::post('cart', [CartController::class, 'store'])->name('cart.store');
+        Route::patch('kosongkan/{id}', [CartController::class, 'kosongkan']);
+        // cart detail
+
     });
 

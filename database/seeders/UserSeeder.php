@@ -32,5 +32,13 @@ class UserSeeder extends Seeder
             'password' =>bcrypt('123456789'),
             'remember_token' =>Str::random('60'),
         ]);
+        \App\Models\User::factory()->create([
+            'name' =>'Feby',
+            'email' =>'feby@gmail.com',
+            'telp' =>'01982198936',
+            'role' =>'2',
+            'password' =>bcrypt('123456789'),
+            'remember_token' =>Str::random('60'),
+        ]);
     }
 }

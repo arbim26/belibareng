@@ -1,75 +1,75 @@
 <?php
-  
+
 namespace App\Http\Controllers;
-  
-use Illuminate\Http\Request;
+
+use App\Models\Cart;
+use App\Models\User;
 use App\Models\Product;
-  
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
 class CartController extends Controller
 {
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function cart()
+    public function index(Request $request)
     {
+<<<<<<< HEAD
         return view('dashboards.users.cart');
+=======
+        $user = $request->user();
+        $produk = Product::get();
+        $cart = Cart::where('user_id', $user->id)->get();
+        $data = array('cart'=>$cart);
+
+        // dd($data);
+        return view('dashboards.users.cart.index', $data)->with('no', 1);
+>>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb
     }
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function addToCart($id)
+
+    public function store(Request $request, Cart $cart) 
     {
-        $product = Product::findOrFail($id);
-        
-        $cart = session()->get('cart', []);
-        if(isset($cart[$id])) {
-            $cart[$id]['quantity']++;
+        $this->validate($request, [
+            'produk_id' => 'required',
+        ]);
+        $itemuser = $request->user();
+        $itemproduk = Product::findOrFail($request->produk_id);
+        $qty = 1;
+        $harga = $itemproduk->harga;
+        $cekdetail = Cart::where('user_id', $itemuser->id)
+                    ->where('produk_id', $itemproduk->id)
+                    ->first();
+        if ($cekdetail) {
+            $cekdetail->updatedetail($cekdetail, $qty, $harga);
         } else {
-            $cart[$id] = [
-                "name" => $product->barang,
-                "quantity" => 1,
-                "price" => $product->harga,
-                "image" => $product->image
-            ];
+            $itemdetail = Cart::create([
+                'produk_id' => $itemproduk->id,
+                'user_id' => $itemuser->id,
+                'status_cart' =>'cart',
+                'qty' => $qty,
+                'harga' => $harga,
+                'total' => $harga * $qty,
+            ]);
         }
-          
-        session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Product added to cart successfully!');
+          
     }
-  
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function update(Request $request)
+
+    public function kosongkan($id) {
+        $itemcart = Cart::findOrFail($id);
+        dd($itemcart);
+        $itemcart->detail()->delete();//hapus semua item di cart detail
+        return back()->with('success', 'Cart berhasil dikosongkan');
+    }
+
+    public function destroy($id)
     {
-        if($request->id && $request->quantity){
-            $cart = session()->get('cart');
-            $cart[$request->id]["quantity"] = $request->quantity;
-            session()->put('cart', $cart);
-            session()->flash('success', 'Cart updated successfully');
+        $itemcart = Cart::findOrFail($id);;
+        // update total cart dulu
+        if ($itemcart->delete()) {
+            return back()->with('success', 'Item berhasil dihapus');
+        } else {
+            return back()->with('error', 'Item gagal dihapus');
         }
     }
-  
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function remove(Request $request)
-    {
-        if($request->id) {
-            $cart = session()->get('cart');
-            if(isset($cart[$request->id])) {
-                unset($cart[$request->id]);
-                session()->put('cart', $cart);
-            }
-            session()->flash('success', 'Product removed successfully');
-        }
-    }
+
 }

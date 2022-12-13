@@ -16,6 +16,6 @@ class Artikel extends Model
      */
     protected $table = 'artikel';
     protected $fillable = [
-        'image', 'title', 'content'
+        'image', 'title', 'content', 'date'
     ];
 }

@@ -28,8 +28,6 @@ class UserController extends Controller
         $misi = Misi::latest()->get();
         return view('dashboards.users.tentangkami', compact('tentangkami','visi','misi'));
     }
-
-    // artikel
     function artikel(){
         $artikel = Artikel::latest()->paginate(9);
         return view('dashboards.users.artikel', compact('artikel'));
@@ -52,6 +50,7 @@ class UserController extends Controller
         $data = Product::find($id);
         return view('dashboards.users.detailproduk', compact('data'));
     }
+<<<<<<< HEAD
     // product
 
     // profile
@@ -65,6 +64,11 @@ class UserController extends Controller
     {
         $data = User::latest()->get();
         return view('dashboards.users.profile', $data);
+=======
+    public function produk(){
+        $products = Product::latest()->paginate(10);
+        return view('dashboards.users.produk', compact('products'));
+>>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb
     }
 
     public function update(Request $request, Profile $profile)
@@ -119,12 +123,15 @@ class UserController extends Controller
     function password(){
         return view('dashboards.users.password');
     }
+<<<<<<< HEAD
     function cart(){
         return view('dashboards.users.cart');
     }
     function checkout(){
         return view('dashboards.users.checkout');
     }
+=======
+>>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb
     function daftarpesanan(){
         return view('dashboards.users.daftarpesanan');
     }

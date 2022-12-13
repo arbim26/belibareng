@@ -13,6 +13,7 @@
                             <div class="card-body">
                                 <!-- table -->
                                 <div class="toolbar">
+<<<<<<<< HEAD:resources/views/dashboards/admins/artikels/search.blade.php
                                   <form class="form">
                                     <div class="form-row">
                                       <div class="form-group col-auto">
@@ -23,6 +24,22 @@
                                         </form>
                                       </div>
 
+========
+                                    <form class="form">
+                                        <div class="form-row">
+                                            <div class="form-group col-auto mr-auto">
+                                                <a href="{{ route('addartikel')}}"
+                                                    class="btn btn-md btn-primary mb-3">TAMBAH BLOG</a>
+                                            </div>
+                                            <div class="form-group col-auto">
+                                                <div class="form-group col-auto">
+                                                    <label for="search" class="sr-only">Search</label>
+                                                    <input type="text" class="form-control" id="search1" value="" placeholder="Search">
+                                                </div>
+                                        </div>
+                                    </form>
+                                </div>
+>>>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb:resources/views/dashboards/admins/artikels/index.blade.php
                                 <table class="table datatables" id="dataTable-1">
                                     <thead>
                                         <tr>
@@ -42,18 +59,22 @@
                                             <td>{{ $blog->title }}</td>
                                             <td>{!! Str::limit($blog->content,100) !!}</td>
                                             <td class="">
-                                              <button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                              <span class="text-muted sr-only">Action</span>
-                                              </button>
-                                            <div class="dropdown-menu dropdown-menu-right" style="">
-                                              <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('delete_artikel', $blog->id) }}" method="POST">
-                                                <a class="dropdown-item" href=" {{ route('edit_artikel', $blog->id) }}">Edit</a>
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="dropdown-item text-danger">Hapus</button>
-                                              </form>
-                                            </div>
-                                          </td>
+                                                <button class="btn btn-sm dropdown-toggle more-horizontal" type="button"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <span class="text-muted sr-only">Action</span>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-right" style="">
+                                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');"
+                                                        action="{{ route('delete_artikel', $blog->id) }}" method="POST">
+                                                        <a class="dropdown-item"
+                                                            href=" {{ route('edit_artikel', $blog->id) }}">Edit</a>
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit"
+                                                            class="dropdown-item text-danger">Hapus</button>
+                                                    </form>
+                                                </div>
+                                            </td>
                                         </tr>
                                         @empty
                                         <div class="alert alert-danger">

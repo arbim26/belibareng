@@ -17,7 +17,11 @@ class ArtikelController extends Controller
     public function index()
     {
         $artikel = Artikel::latest()->paginate(5);
+<<<<<<< HEAD
         return view('dashboards.admins.artikels.index', compact('artikel'));
+=======
+        return view('artikel.index', compact('artikel'));
+>>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb
     }
 
         /**
@@ -27,15 +31,21 @@ class ArtikelController extends Controller
     */
     public function create()
     {
+<<<<<<< HEAD
         return view('dashboards.admins.artikels.create');
+=======
+        return view('artikel.add');
+>>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb
     }
 
     public function store(Request $request)
     {
+        // dd($request);
         $request->validate([
             'image'     => 'required|image|mimes:png,jpg,jpeg',
             'title'     => 'required',
-            'content'   => 'required'
+            'content'   => 'required',
+            'date'      => 'required'
         ]);
 
         //upload image
@@ -45,7 +55,8 @@ class ArtikelController extends Controller
         $blog = Artikel::create([
             'image'     => $image->hashName(),
             'title'     => $request->title,
-            'content'   => $request->content
+            'content'   => $request->content,
+            'date'      => $request->date
         ]);
 
         if($blog){
@@ -75,7 +86,8 @@ class ArtikelController extends Controller
         {
         $request->validate([
             'title'     => 'required',
-            'content'   => 'required'
+            'content'   => 'required',
+            'date'      => 'required'
         ]);
         $artikel = Artikel::findOrFail($id);
 
@@ -94,7 +106,8 @@ class ArtikelController extends Controller
             $artikel->update([
                 'image'     => $image->hashName(),
                 'title'     => $request->title,
-                'content'   => $request->content
+                'content'   => $request->content,
+                'date'      => $request->date
             ]);
 
         }
@@ -126,6 +139,7 @@ class ArtikelController extends Controller
 
     public function filter(Request $request, Admin $admin)
     {
+<<<<<<< HEAD
     //    $filter_text = $_GET['query'];
     //    $artikels = Artikel::where('title','LIKE','%' .$filter_text.'%')->with('blog')->get();
     
@@ -153,7 +167,18 @@ class ArtikelController extends Controller
     // bad - we should paginate in
     // reality.
     return Admin::all();
+=======
+        // menangkap data pencarian
+        $search = $request->search;
+     
+         // mengambil data dari table pegawai sesuai pencarian data
+        $artikel = DB::table('artikel')
+        ->where('title','like',"%".$search."%")
+        ->paginate();
+     
+            // mengirim data pegawai ke view index
+        return view('index',['pegawai' => $pegawai]);
+     
+>>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb
     }
-    // admin
-
 }

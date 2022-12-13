@@ -55,7 +55,7 @@
                             <a class="nav-link" href="{{ route('artikel') }}">Artikel</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('produk') }}">Produk</a>
+                            <a class="nav-link" href="{{ route('product.index') }}">Produk</a>
                         </li>
                         
                         @auth
@@ -74,7 +74,11 @@
                                             <p>Total: <span class="jingga">Rp {{ $total }}</span></p>
                                         </div>
                                         <div class="col-lg-6 col-sm-6 col-6 checkout text-end jingga">
+<<<<<<< HEAD
                                             <a href="{{ route('cart') }}" class="jingga">Lihat Selengkapnya</a>
+=======
+                                            <a href="{{ route('cart.index') }}" class="jingga">Liat Selengkapnya</a>
+>>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb
                                         </div>
                                     </div>
                                     @if(session('cart'))
@@ -238,50 +242,7 @@
     }
     </script>
 
-<script type="text/javascript">
-  
-    $(".update-cart").change(function (e) {
-        e.preventDefault();
-  
-        var ele = $(this);
-  
-        $.ajax({
-            url: '{{ route('update.cart') }}',
-            method: "patch",
-            data: {
-                _token: '{{ csrf_token() }}', 
-                id: ele.parents("tr").attr("data-id"), 
-                quantity: ele.parents("tr").find(".quantity").val()
-            },
-            success: function (response) {
-               window.location.reload();
-            }
-        });
-    });
-  
-    $(".remove-from-cart").click(function (e) {
-        e.preventDefault();
-  
-        var ele = $(this);
-  
-        if(confirm("Are you sure want to remove?")) {
-            $.ajax({
-                url: '{{ route('remove.from.cart') }}',
-                method: "DELETE",
-                data: {
-                    _token: '{{ csrf_token() }}', 
-                    id: ele.parents("tr").attr("data-id")
-                },
-                success: function (response) {
-                    window.location.reload();
-                }
-            });
-        }
-    });
-  
-</script>
-
-
+@yield('js')
 
 
 
