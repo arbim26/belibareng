@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../css/simplebar.css">
     <!-- Fonts CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Search -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!-- Icons CSS -->
     <link rel="stylesheet" href="../../css/feather.css">
     <link rel="stylesheet" href="../../css/select2.css">
@@ -111,7 +113,7 @@
               </a>
             </li>
             <li class="nav-item flex-fill w-100 ">
-              <a class="nav-link" href="{{ route('aboutus') }}">
+              <a class="nav-link" href="{{ route('aboutus.index') }}">
                 <i class="fe fe-layers fe-16"></i>
                 <span class="ml-3 item-text">Tentang Kami</span>
               </a>
@@ -141,7 +143,7 @@
           </p>
           <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-              <a class="nav-link" href="{{route('artikel_admin')}}">
+              <a class="nav-link" href="{{route('artikel.index')}}">
                 <i class="fe fe-calendar fe-16"></i>
                 <span class="ml-3 item-text">Artikel</span>
               </a>

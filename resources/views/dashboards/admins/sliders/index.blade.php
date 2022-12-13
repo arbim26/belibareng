@@ -8,7 +8,7 @@
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
                         <form action="slider">
-                        <a href="{{ route('slider.create') }}" class="btn btn-md btn-success mb-3">TAMBAH slider</a>
+                        <a href="{{ route('slider.create') }}" class="btn btn-md btn-success mb-3">TAMBAH SLIDER</a>
                         {{ $sliders->links() }}
                     </form>
                     <table class="table table-bordered">

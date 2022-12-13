@@ -5,25 +5,22 @@
     <div class="container pt-5">
       <form action="product">
         <div class="row ">
-              @foreach ($products as $product)
+              @foreach ($products as $data)
                 <div class="col-6 col-sm-3 mb-4">
                   <div class="card">
-                      <img src="{{ Storage::url('public/products/').$product->image }}" class="card-img-top round" alt="">
-                      <div class="isi-card">
-                        <h4 class="judul-card">{{ $product->barang }}</h4>
-                        <div class="row">
-                          <div class="col">
-                            <p class="f-20 jingga">{{ $product->harga }}</p>
-                          </div>
-                          <div class="col">
-                            <p class="f-15 text-muted">{{ $product->stock }}</p>
-                          </div>
-                          <div class="product-action-1 show">
-                            <a aria-label="Add To Cart" class="action-btn hover-up" href="{{ route('product.detail') }}"><i class="fi-rs-shopping-bag-add"></i>{!! $product->content !!}</a>
+                    <img src="{{ Storage::url('products/').$data->image }}" class="card-img-top round" alt="">
+                    <div class="isi-card">
+                      <a class="judul-card" href="{{route('detailproduk', $data->id)}}">{{Str::limit($data->barang,30)}}</a>
+                      <div class="row">
+                        <div class="col">
+                          <p class="f-20 jingga">Rp. {{$data->harga}}</p>
                         </div>
+                        <div class="col">
+                          <p class="f-15 text-muted">{{$data->stock}}</p>
                         </div>
                       </div>
-                  </div>
+                    </div>
+                </div>
                 </div>
                 @endforeach
                 {{-- <div class="col-6 col-sm-3 mb-4">

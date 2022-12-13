@@ -8,15 +8,15 @@ use App\Http\Controllers\Controller;
 
 class AboutusController extends Controller
 {
-    public function show()
+    public function index()
     {
         $data = Aboutus::latest()->get();
-        return view('aboutus.index', compact('data'));
+        return view('dashboards.admins.aboutus.index', compact('data'));
     }
 
-    public function add()
+    public function create()
     {
-        return view('aboutus.add');
+        return view('dashboards.admins.aboutus.create');
     }
 
     public function store(Request $request)
@@ -39,10 +39,10 @@ class AboutusController extends Controller
 
         if($data){
             //redirect dengan pesan sukses
-            return redirect()->route('aboutus')->with(['success' => 'Data Berhasil Diupdate!']);
+            return redirect()->route('aboutus.index')->with(['success' => 'Data Berhasil Diupdate!']);
         }else{
             //redirect dengan pesan error
-            return redirect()->route('aboutus')->with(['error' => 'Data Gagal Diupdate!']);
+            return redirect()->route('aboutus.index')->with(['error' => 'Data Gagal Diupdate!']);
         }
     }
 

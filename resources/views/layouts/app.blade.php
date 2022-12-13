@@ -75,7 +75,7 @@
                                             <p>Total: <span class="jingga">Rp {{ $total }}</span></p>
                                         </div>
                                         <div class="col-lg-6 col-sm-6 col-6 checkout text-end jingga">
-                                            <a href="{{ route('cart') }}" class="jingga">Liat Selengkapnya</a>
+                                            <a href="{{ route('cart') }}" class="jingga">Lihat Selengkapnya</a>
                                         </div>
                                     </div>
                                     @if(session('cart'))

@@ -38,9 +38,9 @@ Route::get('/registeradmin', function () {
     return view('auth.registeradmin');
 }); 
 
-Route::resource('slider',SliderController::class);
 Route::resource('product',ProductController::class);
 Route::resource('order',OrderController::class);    
+
 
 Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
     Auth::routes();
@@ -59,19 +59,30 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::get('payment',[AdminController::class,'payment'])->name('payment');
         Route::get('profiles',[AdminController::class,'profiles'])->name('profiles');
 
-        // artikel
-        Route::get('artikel_admin',[ArtikelController::class, 'show'])->name('artikel_admin');
-        Route::get('addartikel',[ArtikelController::class, 'addartikel'])->name('addartikel');
+        // slider
+        Route::get('slider',[SliderController::class, 'index'])->name('slider.index'); 
+        Route::get('create_slider',[SliderController::class, 'create'])->name('slider.create');
+        Route::post('store_slider',[SliderController::class, 'store'])->name('store_slider');
+        Route::get('edit_slider/{id}',[SliderController::class, 'edit'])->name('slider.edit');
+        Route::put('update_slider/{id}',[SliderController::class, 'update'])->name('update_slider');
+        Route::delete('delete_slider/{id}',[SliderController::class, 'destroy'])->name('slider.destroy');
+
+        // slider
+
+        // article
+        Route::get('artikel',[ArtikelController::class, 'index'])->name('artikel.index');
+        Route::get('create_artikel',[ArtikelController::class, 'create'])->name('artikel.create');
         Route::post('store_artikel',[ArtikelController::class, 'store'])->name('store_artikel');
         Route::get('edit_artikel/{id}',[ArtikelController::class, 'edit'])->name('edit_artikel');
         Route::put('update_artikel/{id}',[ArtikelController::class, 'update'])->name('update_artikel');
-        Route::delete('delete_artikel/{id}', [ArtikelController::class, 'destroy'])->name('delete_artikel');
-        Route::get('search', [ArtikelController::class, 'search'])->name('search');
-        // artikel
+        Route::delete('delete_artikel/{id}', [ArtikelController::class, 'destroy'])->name('artikel.destroy');
+        // Route::get('search', [ArticleController::class, 'search'])->name('search');
+        Route::post('/search','ArtikelController@search');
+        // article
 
         // tentangkami
-        Route::get('aboutus',[AboutusController::class, 'show'])->name('aboutus');
-        Route::get('addaboutus',[AboutusController::class, 'add'])->name('addaboutus');
+        Route::get('aboutus',[AboutusController::class, 'index'])->name('aboutus.index'); 
+        Route::get('create_aboutus',[AboutusController::class, 'create'])->name('aboutus.create');
         Route::post('store_aboutus',[AboutusController::class, 'store'])->name('store_aboutus');
         Route::get('edit_aboutus/{id}',[AboutusController::class, 'edit'])->name('edit_aboutus');
         Route::put('update_aboutus/{id}',[AboutusController::class, 'update'])->name('update_aboutus');
@@ -92,6 +103,9 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::get('edit_misi/{id}',[VisimisiController::class, 'editmisi'])->name('edit_misi');
         Route::put('update_misi/{id}',[VisimisiController::class, 'updatemisi'])->name('update_misi');
         // visimisi
+
+        
+
 
 
     });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Misi;
 use App\Models\Visi;
+use App\Models\Slider;
 use App\Models\Aboutus;
 use App\Models\Artikel;
 use App\Models\Product;
@@ -16,7 +17,8 @@ class UserController extends Controller
         $artikel = Artikel::latest()->get();
         $tentangkami = Aboutus::latest()->get();
         $products = Product::latest()->get();
-        return view('dashboards.users.index', compact('artikel','tentangkami','products'));
+        $sliders = Slider::latest()->get();
+        return view('dashboards.users.index', compact('artikel','tentangkami','products','sliders'));
     }
 
     function tentangkami(){
@@ -36,16 +38,21 @@ class UserController extends Controller
         $data = Artikel::find($id);
         return view('artikel.detail', compact('data'));
     }
+    // artikel
+
+    // product
+    public function produk(){
+        
+        $products = Product::latest()->get();
+        return view('dashboards.users.produk', compact('products'));
+    }
     public function product($id)
     {
         $data = Product::find($id);
-        return view('dashboards.admins.products.detail', compact('data'));
+        return view('dashboards.users.detail', compact('data'));
     }
-    // artikel
-    public function produk(){
-        $products = Product::latest()->paginate(10);
-        return view('dashboards.users.produk', compact('products'));
-    }
+    // product
+
     function profile(){
         return view('dashboards.users.profile');
     }
