@@ -17,11 +17,7 @@ class ArtikelController extends Controller
     public function index()
     {
         $artikel = Artikel::latest()->paginate(5);
-<<<<<<< HEAD
         return view('dashboards.admins.artikels.index', compact('artikel'));
-=======
-        return view('artikel.index', compact('artikel'));
->>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb
     }
 
         /**
@@ -31,11 +27,7 @@ class ArtikelController extends Controller
     */
     public function create()
     {
-<<<<<<< HEAD
         return view('dashboards.admins.artikels.create');
-=======
-        return view('artikel.add');
->>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb
     }
 
     public function store(Request $request)
@@ -139,35 +131,6 @@ class ArtikelController extends Controller
 
     public function filter(Request $request, Admin $admin)
     {
-<<<<<<< HEAD
-    //    $filter_text = $_GET['query'];
-    //    $artikels = Artikel::where('title','LIKE','%' .$filter_text.'%')->with('blog')->get();
-    
-    //    return view('artikel.filter',compact('artikels'));
-    // Search for a user based on their name.
-    if ($request->has('title')) {
-        return $admin->where('title', $request->input('title'))->get();
-    }
-
-    // Search for a user based on their company.
-    if ($request->has('content')) {
-        return $admin->where('content', $request->input('content'))
-            ->get();
-    }
-
-    // Search for a user based on their city.
-    if ($request->has('image')) {
-        return $admin->where('image', $request->input('image'))->get();
-    }
-
-    // Continue for all of the filters.
-
-    // No filters have been provided, so
-    // let's return all users. This is
-    // bad - we should paginate in
-    // reality.
-    return Admin::all();
-=======
         // menangkap data pencarian
         $search = $request->search;
      
@@ -179,6 +142,5 @@ class ArtikelController extends Controller
             // mengirim data pegawai ke view index
         return view('index',['pegawai' => $pegawai]);
      
->>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb
     }
 }

@@ -14,9 +14,6 @@ class CartController extends Controller
 {
     public function index(Request $request)
     {
-<<<<<<< HEAD
-        return view('dashboards.users.cart');
-=======
         $user = $request->user();
         $produk = Product::get();
         $cart = Cart::where('user_id', $user->id)->get();
@@ -24,7 +21,6 @@ class CartController extends Controller
         // dd($data);
         session()->put('data', $data);
         return view('dashboards.users.cart.index', $data)->with('no', 1);
->>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb
     }
 
     public function store(Request $request, Cart $cart) 

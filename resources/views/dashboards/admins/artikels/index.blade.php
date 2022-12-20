@@ -13,44 +13,11 @@
                             <div class="card-body">
                                 <!-- table -->
                                 <div class="toolbar">
-<<<<<<< HEAD:resources/views/dashboards/admins/artikels/index.blade.php
-                                  <form class="form">
-                                    <div class="form-row">
-                                      <div class="form-group col-auto mr-auto">
-                                        <a href="{{ route('artikel.create')}}" class="btn btn-md btn-primary mb-3">TAMBAH BLOG</a>
-                                      </div>
-                                    
-                                      <div class="form-group col-auto">
-                                        <form class="form" type="get" action="{{ url('/search') }}">
-                                          <div class="form-group w-100 mb-3">
-                                              <input type="search" class="form-control" name="query" id="search" placeholder="Search">
-=======
-<<<<<<<< HEAD:resources/views/dashboards/admins/artikels/search.blade.php
-                                  <form class="form">
-                                    <div class="form-row">
-                                      <div class="form-group col-auto">
-                                        <form class="form" method="get" action="{{ url('/search') }}">
-                                          <div class="form-group w-100 mb-3">
-                                              <input type="search" class="form-control" name="query" id="search" value="" placeholder="Search">
->>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb:resources/views/artikel/index.blade.php
-                                          </div>
-                                        </form>
-                                      </div>
-
-<<<<<<< HEAD:resources/views/dashboards/admins/artikels/index.blade.php
-                                      {{-- <form class="form-inline my-2 my-lg-0" type="get" action="{{ url('/search') }}">
-                                        <input class="form-control mr-sm-2" name="query" type="search" placeholder="Cari artikel .." value="{{ old('search') }}">
-                                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-                                      </form> --}}
-                                    </div>
-                                  </form>
                                 </div>
-=======
-========
                                     <form class="form">
                                         <div class="form-row">
                                             <div class="form-group col-auto mr-auto">
-                                                <a href="{{ route('addartikel')}}"
+                                                <a href="{{ route('artikel.create')}}"
                                                     class="btn btn-md btn-primary mb-3">TAMBAH BLOG</a>
                                             </div>
                                             <div class="form-group col-auto">
@@ -61,8 +28,7 @@
                                         </div>
                                     </form>
                                 </div>
->>>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb:resources/views/dashboards/admins/artikels/index.blade.php
->>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb:resources/views/artikel/index.blade.php
+
                                 <table class="table datatables" id="dataTable-1">
                                     <thead>
                                         <tr>
@@ -82,20 +48,15 @@
                                             <td>{{ $blog->title }}</td>
                                             <td>{!! Str::limit($blog->content,100) !!}</td>
                                             <td class="">
-<<<<<<< HEAD:resources/views/dashboards/admins/artikels/index.blade.php
                                               <button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                               <span class="text-muted sr-only">Action</span>
                                               </button>
                                             <div class="dropdown-menu dropdown-menu-right" style="">
-                                              <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('artikel.destroy', $blog->id) }}" method="POST">
+                                              <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('delete_artikel', $blog->id) }}" method="POST">
                                                 <a class="dropdown-item" href=" {{ route('edit_artikel', $blog->id) }}">Edit</a>
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="dropdown-item text-danger">Hapus</button>
-                                              </form>
-                                            </div>
-                                          </td>
-=======
+                                                <button type="submit" class="dropdown-item text-danger
                                                 <button class="btn btn-sm dropdown-toggle more-horizontal" type="button"
                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <span class="text-muted sr-only">Action</span>
@@ -112,7 +73,6 @@
                                                     </form>
                                                 </div>
                                             </td>
->>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb:resources/views/artikel/index.blade.php
                                         </tr>
                                         @empty
                                         <div class="alert alert-danger">
@@ -121,11 +81,8 @@
                                         @endforelse
                                     </tbody>
                                 </table>
-<<<<<<< HEAD:resources/views/dashboards/admins/artikels/index.blade.php
+
                                 {{ $artikel->links('vendor.pagination.bootstrap-5') }}
-=======
-                                {{ $article->links('vendor.pagination.bootstrap-5') }}
->>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb:resources/views/artikel/index.blade.php
                                 </tbody>
                                 </table>
                             </div>

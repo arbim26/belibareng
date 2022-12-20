@@ -143,7 +143,7 @@
           </p>
           <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-              <a class="nav-link" href="{{ route('artikel_admin') }}">
+              <a class="nav-link" href="{{ route('artikel.index') }}">
                 <i class="fe fe-calendar fe-16"></i>
                 <span class="ml-3 item-text">Artikel</span>
               </a>
@@ -162,7 +162,7 @@
             <li class="navbar-nav flex-fill w-100">
               <li class="nav-item w-100">
               <a class="nav-link" href="">
-                <i class="fe fe-shield fe-16"></i>order
+                <i class="fe fe-shield fe-16"></i>
                 <span class="ml-3 item-text">Order</span>
               </a>
             </li>

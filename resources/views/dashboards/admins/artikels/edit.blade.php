@@ -72,7 +72,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-md btn-primary">UPDATE</button>
-                            <a href="{{route("artikel.index")}}" type="cancel" class="btn btn-md btn-danger">CANCEL</a>
+                            <a href="{{ route("artikel.index") }}" type="cancel" class="btn btn-md btn-danger">CANCEL</a>
 
                         </form> 
                             </div>

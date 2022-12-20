@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Misi;
+use App\Models\User;
 use App\Models\Visi;
 use App\Models\Slider;
 use App\Models\Aboutus;
 use App\Models\Artikel;
 use App\Models\Product;
-use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -51,43 +52,65 @@ class UserController extends Controller
         $data = Product::find($id);
         return view('dashboards.users.detailproduk', compact('data'));
     }
-<<<<<<< HEAD
-    // product
 
-    // profile
-
-    /**
-     * index
-     *
-     * @return void
-     */
-    function profile()
+    public function profile(Request $request, User $user)
     {
-        $data = User::latest()->get();
-        return view('dashboards.users.profile', $data);
-=======
-    public function produk(){
-        $products = Product::latest()->paginate(10);
-        return view('dashboards.users.produk', compact('products'));
->>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb
+        // $user = $request->all();
+        // $profile = $user->id;
+        
+        // dd($profile);
+
+        $user = auth()->user();
+        $profile = User::all();
+        return view('dashboards.users.profile', compact('user','profile'));
+
+        // if($request->file('image') == "") {
+        //     $user = User::find($user->id);
+        //     $user->update($request->all());
+        // } else {x
+
+        //     //hapus old image
+        //     Storage::disk('local')->delete('public/users/'.$user->image);
+
+        //     //upload new image
+        //     $image = $request->file('image');
+        //     $image->storeAs('public/users', $image->hashName());
+
+
+        // }
+
+        // // if($profile){
+        //     //redirect dengan pesan sukses
+        // return view('dashboards.users.profile', compact('profile'))->with(['success' => 'Data Berhasil Disimpan!']);
+        // }else{
+        //     //redirect dengan pesan error
+        //     return redirect()->route('profile')->with(['error' => 'Data Gagal Disimpan!']);
+        // }
     }
-
-    public function update(Request $request, Profile $profile)
+    
+    /**
+    * update
+    *
+    * @param  mixed $request
+    * @param  mixed $profil
+    * @return void
+    */
+    public function profileupdate(Request $request, User $user)
     {
-        // dd($product);
+        // dd($request);
         $request->validate([
-            'name'    => 'required',
-            'email'   => 'required',
-            'telp'    => 'required',
-            'date'    => 'required',
-            'gender'  => 'required'
+            'name'   => 'required',
+            'email'  => 'required',
+            'telp'   => 'required',
+            'jenis_kelamin' => 'required',
+            'tanggal_lahir'   => 'required'
         ]);
 
         //get data Blog by ID
-        $profile = Profile::findOrFail($profile->id);
+        $profie = User::findOrFail($user->id);
 
         if($request->file('image') == "") {
-            $profile = Profile::find($profile->id);
+            $profile = User::find($profile->id);
             $profile->update($request->all());
         } else {
 
@@ -98,25 +121,25 @@ class UserController extends Controller
             $image = $request->file('image');
             $image->storeAs('public/profiles', $image->hashName());
 
-            $product->update([
-                'image'     => $image->hashName(),
-                'name'      => $request->name,
-                'email'     => $request->email,
-                'telp'     => $request->telp,
-                'date'     => $request->date,
-                'gender'   => $request->gender
+            $profile->update([
+                'image'  => $image->hashName(),
+                'name'   => $request->name,
+                'email'  => $request->email,
+                'telp'   => $request->telp,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'tanggal_lahir'   => $request->tanggal_lahir
             ]);
 
         }
-        if($product){
+        if($profile){
             //redirect dengan pesan sukses
-            return redirect()->route('profile')->with(['success' => 'Data Berhasil Disimpan!']);
+            return redirect()->route('dashboards.users.profile')->with(['success' => 'Data Berhasil Disimpan!']);
         }else{
             //redirect dengan pesan error
-            return redirect()->route('profile')->with(['error' => 'Data Gagal Disimpan!']);
+            return redirect()->route('dashboards.users.profile')->with(['error' => 'Data Gagal Disimpan!']);
         }
     }
-    
+
     // profile
     function alamat(){
         return view('dashboards.users.alamat');
@@ -124,15 +147,6 @@ class UserController extends Controller
     function password(){
         return view('dashboards.users.password');
     }
-<<<<<<< HEAD
-    function cart(){
-        return view('dashboards.users.cart');
-    }
-    function checkout(){
-        return view('dashboards.users.checkout');
-    }
-=======
->>>>>>> 105738666bad883ee3b34c38655b529e9fea28cb
     function daftarpesanan(){
         return view('dashboards.users.daftarpesanan');
     }

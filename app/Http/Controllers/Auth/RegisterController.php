@@ -73,5 +73,6 @@ class RegisterController extends Controller
             'role'=>2,
             'password' => Hash::make($data['password']),
         ]);
+        return redirect()->route('user.dashboard');
     }
 }
