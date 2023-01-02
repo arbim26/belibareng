@@ -8,7 +8,7 @@
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
                         <form action="product">
-                        <a href="{{ route('product.create') }}" class="btn btn-md btn-primary text-white mb-3">TAMBAH PRODUCT</a>
+                        <a href="{{ route('product.create') }}" class="btn btn-md btn-danger text-white mb-3">ADD + </a>
                         <table class="table table-bordered">
                             <thead>
                               <tr>

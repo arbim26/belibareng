@@ -18,6 +18,8 @@ use App\Models\Checkout;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -59,37 +61,10 @@ class UserController extends Controller
 
     public function profile(Request $request, User $user)
     {
-        // $user = $request->all();
-        // $profile = $user->id;
-        
-        // dd($profile);
-
         $user = auth()->user();
         $profile = User::all();
         return view('dashboards.users.profile', compact('user','profile'));
 
-        // if($request->file('image') == "") {
-        //     $user = User::find($user->id);
-        //     $user->update($request->all());
-        // } else {x
-
-        //     //hapus old image
-        //     Storage::disk('local')->delete('public/users/'.$user->image);
-
-        //     //upload new image
-        //     $image = $request->file('image');
-        //     $image->storeAs('public/users', $image->hashName());
-
-
-        // }
-
-        // // if($profile){
-        //     //redirect dengan pesan sukses
-        // return view('dashboards.users.profile', compact('profile'))->with(['success' => 'Data Berhasil Disimpan!']);
-        // }else{
-        //     //redirect dengan pesan error
-        //     return redirect()->route('profile')->with(['error' => 'Data Gagal Disimpan!']);
-        // }
     }
     
     /**
@@ -99,19 +74,19 @@ class UserController extends Controller
     * @param  mixed $profil
     * @return void
     */
-    public function profileupdate(Request $request, User $user)
+    public function updateprofile(Request $request, User $user)
     {
-        // dd($request);
+        
         $request->validate([
-            'name'   => 'required',
-            'email'  => 'required',
-            'telp'   => 'required',
-            'jenis_kelamin' => 'required',
+            'name'   => ['required','string','max:255'],
+            'email'  => ['required', 'string', 'email', 'max:255'],
+            'telp'   => ['required','max:15'],
+            'jenis_kelamin' => ['required', ],
             'tanggal_lahir'   => 'required'
         ]);
 
         //get data Blog by ID
-        $profie = User::findOrFail($user->id);
+        $profile = User::findOrFail($user->id);
 
         if($request->file('image') == "") {
             $profile = User::find($profile->id);
@@ -135,6 +110,45 @@ class UserController extends Controller
             ]);
 
         }
+
+        // # check if user image is null, then validate
+        // if (auth()->user()->image == null) {
+        //     $validate_image = Validator::make($request->all(), [
+        //         'image' => ['required', 'image', 'max:1000']
+        //     ]);
+        //     # check if their is any error in image validation
+        //     if ($validate_image->fails()) {
+        //         return response()->json(['code' => 400, 'msg' => $validate_image->errors()->first()]);
+        //     }
+        // }
+
+        // # check if their is any error
+        // if ($validated->fails()) {
+        //     return response()->json(['code' => 400, 'msg' => $validated->errors()->first()]);
+        // }
+
+        // # check if the request has profile image
+        // if ($request->hasFile('image')) {
+        //     $imagePath = 'storage/' .auth()->image;
+        //     # check whether the image exists in the directory
+        //     if (File::exists($imagePath)) {
+        //         # delete image
+        //         File::delete($imagePath);
+        //     }
+        //     $image = $request->image->store('image','public');
+        // }
+
+        // # update the user info
+        // auth()->user()->update([
+        //     'name'   => $request->name,
+        //     'email'  => $request->email,
+        //     'telp'   => $request->telp,
+        //     'jenis_kelamin' => $request->jenis_kelamin,
+        //     'tanggal_lahir'   => $request->tanggal_lahir,
+        //     'image'  => $image ?? auth()->user()->image
+        // ]);
+        // return response()->json(['code' => 200, 'msg' => 'profile updated successfully']);
+
         if($profile){
             //redirect dengan pesan sukses
             return redirect()->route('dashboards.users.profile')->with(['success' => 'Data Berhasil Disimpan!']);

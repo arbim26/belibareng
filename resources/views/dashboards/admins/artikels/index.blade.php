@@ -18,17 +18,24 @@
                                         <div class="form-row">
                                             <div class="form-group col-auto mr-auto">
                                                 <a href="{{ route('artikel.create')}}"
-                                                    class="btn btn-md btn-primary mb-3">TAMBAH BLOG</a>
+                                                    class="btn btn-md btn-danger mb-3">ADD +</a>
                                             </div>
-                                            <div class="form-group col-auto">
+                                            {{-- <div class="form-group col-auto">
                                                 <div class="form-group col-auto">
                                                     <label for="search" class="sr-only">Search</label>
                                                     <input type="text" class="form-control" id="search1" value="" placeholder="Search">
-                                                </div>
-                                        </div>
+                                                </div> --}}
                                     </form>
+                                    <form action="{{ route('artikel.search') }}" >
+                                    <label for="search" class="sr-only">
+                                        Search
+                                    </label>
+                                    <input type="text" name="s"
+                                        class="block w-full p-3 pl-10 text-sm border-gray-200 rounded-md focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                                        placeholder="Search..." />
+                                    </form>
+                                    </div>
                                 </div>
-
                                 <table class="table datatables" id="dataTable-1">
                                     <thead>
                                         <tr>

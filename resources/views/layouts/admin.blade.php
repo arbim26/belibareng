@@ -203,7 +203,7 @@
             </li>
           </ul>
           <div class="btn-box w-100 mt-4 mb-1">
-            <a href="https://themeforest.net/item/tinydash-bootstrap-html-admin-dashboard-template/27511269" target="_blank" class="btn mb-2 btn-primary btn-lg btn-block">
+            <a href="https://themeforest.net/item/tinydash-bootstrap-html-admin-dashboard-template/27511269" target="_blank" class="btn mb-2 btn-danger btn-lg btn-block">
               <i class="fe fe-shopping-cart fe-12 mx-2"></i><span class="small">Belibareng</span>
             </a>
           </div>
@@ -476,7 +476,9 @@
     <script>
         CKEDITOR.replace( 'content' );
     </script>
-    
+
+
+
     @yield('js')
     </body>
 </html>
