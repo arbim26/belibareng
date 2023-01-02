@@ -71,8 +71,8 @@
                                 @enderror
                             </div>
 
-                            <button type="submit" class="btn btn-md btn-primary">UPDATE</button>
-                            <a href="{{ route("artikel.index") }}" type="cancel" class="btn btn-md btn-danger">CANCEL</a>
+                            <button type="submit" class="btn btn-md btn-danger">UPDATE</button>
+                            <a href="{{ route("artikel.index") }}" type="cancel" class="btn btn-md btn-warning">CANCEL</a>
 
                         </form> 
                             </div>

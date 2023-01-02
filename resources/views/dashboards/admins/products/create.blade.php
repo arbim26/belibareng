@@ -36,15 +36,16 @@
                         </div> <!-- /.col -->
                         <div class="card-body">
                           <input type="file" name="image" class="dropzone bg-light rounded-lg" id="product">
-                            <div class="dz-message needsclick">
-                              <div class="circle circle-lg bg-primary">
+                          
+                            {{-- <div class="dz-message needsclick">
+                              <div class="circle circle-lg bg-danger">
                                 <i class="fe fe-upload fe-24 text-white"></i>
                               </div>
                               <h5 class="text-muted mt-4">Drop files here or click to upload</h5>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
+                    <button type="submit" class="btn btn-md btn-danger">SIMPAN</button>
                     <button type="reset" class="btn btn-md btn-warning">RESET</button>
                   </form>
                 </div> <!-- / .card -->

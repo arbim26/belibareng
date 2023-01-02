@@ -53,7 +53,6 @@
                   </div>
                 </div>
               @endforeach
-
             <div class="text-end">
               <a href="{{ route('produk') }}" type="button" class="merah">Selengkapnya</a>
             </div>

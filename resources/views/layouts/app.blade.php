@@ -36,6 +36,9 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ route('user.dashboard') }}">
                     <img src="../../assets/logo/logo belibareng 1-01.png" width="" height="40" alt="">
+                    <style>
+                        
+                    </style>
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -58,6 +61,23 @@
                             <a class="nav-link" href="{{ route('produk') }}">Produk</a>
                         </li>
                         
+                        <style>
+                            ul li a {
+                                text-decoration: none;
+                                color: white;
+                                transition: 0.5s ease;
+                            }
+
+                            ul:hover li a {
+                                color: #D82B2A;
+                            }
+                            
+                            ul:hover li a:not(:hover) {
+                                color: white;
+                                opacity: 0.3;
+                                filter: blur(0.5px);
+                            }
+                        </style>
                         @auth
                         <div class="navbar-nav d-flex gap-2">
                             <div class="dropdown">
@@ -102,7 +122,7 @@
                                 <a class="" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                                 aria-expanded="false"><i class="bi bi-person-circle" style="font-size: 1.75rem; color: black;"></i>
                             </a>
-                            <ul class="dropdown-menu hover" aria-labelledby="dropdow  nMenuButton1">
+                            <ul class="dropdown-menu hover" aria-labelledby="dropdownMenuButton1">
                                 <li><a class="dropdown-item" href="{{ route('profile') }}">Akun Saya</a></li>
                                 <li><a class="dropdown-item" href="{{ route('cart.index') }}">Pesanan Saya</a></li>
                                 <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();

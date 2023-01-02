@@ -16,7 +16,7 @@
                                   <form class="form">
                                     <div class="form-row">
                                       <div class="form-group col-auto mr-auto">
-                                        <a href="{{ route('addvisi')}}" class="btn btn-md btn-primary mb-3">ADD</a>
+                                        <a href="{{ route('addvisi')}}" class="btn btn-md btn-danger mb-3">ADD +</a>
                                       </div>
                                       <div class="form-group col-auto">
                                         <form class="form" method="get" action="">

@@ -129,18 +129,19 @@ class ArtikelController extends Controller
       }
     }
 
-    public function filter(Request $request, Admin $admin)
+    public function search(Request $request)
     {
-        // menangkap data pencarian
-        $search = $request->search;
-     
-         // mengambil data dari table pegawai sesuai pencarian data
-        $artikel = DB::table('artikel')
-        ->where('title','like',"%".$search."%")
-        ->paginate();
-     
-            // mengirim data pegawai ke view index
-        return view('index',['pegawai' => $pegawai]);
-     
+        $artikel = Artikel::where([
+            ['title', '!=', Null],
+            [function ($query) use ($request) {
+                if (($s = $request->s)) {
+                    $query->orWhere('title', 'LIKE', '%' . $s . '%')
+                        ->orWhere('content', 'LIKE', '%' . $s . '%')
+                        ->get();
+                }
+            }]
+        ])->paginate(6);
+
+        return view('dashboards.admins.artikels.index', compact('artikel'));
     }
 }
