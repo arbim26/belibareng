@@ -25,8 +25,8 @@ class UserSeeder extends Seeder
             'remember_token' =>Str::random('60'),
         ]);
         \App\Models\User::factory()->create([
-            'name' =>'Bima',
-            'email' =>'bima@gmail.com',
+            'name' =>'User',
+            'email' =>'user@gmail.com',
             'telp' =>'01982198939',
             'role' =>'2',
             'password' =>bcrypt('123456789'),

@@ -5,23 +5,22 @@
     <div class="container pt-5 pb-5 ps-5 pe-5">
         <div class="row">
             <div class="col-md-4">
-                <img src="/assets/image/Tepung 2-01.jpg" class="round w-100" alt="...">
+                <img src="{{ Storage::url('products/').$data->image }}"  class="round w-100" alt="...">
                 <hr>
                 <h6 class="jingga">Detail Produk</h6>
                 <hr>
                 <div class="text-detail">
                     <p>Berat 25Kg</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo odit atque repellendus iusto explicabo quidem in temporibus soluta libero molestiae.</p>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim debitis non ullam accusantium consequuntur corporis, optio tenetur dolor iusto saepe.</p>
+                    <p>{!! $data->content !!}</p>
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                      <h3 class="fw-bolder">Tepung</h3>
+                      <h3 class="fw-bolder">{{$data->barang}}</h3>
                       <div class="d-flex gap-5">
                         <p class="text-decoration-line-through">Rp 16.000</p>
-                        <p class="jingga">12.000</p>
+                        <p class="jingga">{{$data->harga}}</p>
                       </div>
                     </div>
                     <div class="card-body abu">
@@ -57,19 +56,20 @@ p                                        <div class="spinner border">
                             <li>
                                 <div class="row">
                                     <label class="col-sm-3">Kuota</label>
-                                    <p class="col-sm-9 m-0">850/100kg</p>
+                                    <p class="col-sm-9 m-0">850/1000kg</p>
                                 </div>
                             </li>
                         </ul>
-                        <a class="btn text-white bg-red" href="#" style="background-color: #D82B2A;">
-                            <div class="d-flex gap-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
-                                    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
-                                </svg>
-                                <p class="m-0">Masukkan Keranjang</p>
-                            </div>
-                        </a>
-                        <a class="btn text-white bg-red" href="#" style="background-color: #D82B2A;">Beli Sekarang</a>
+                        <div class="d-flex gap-1">
+                            <form action="{{ route('cart.store') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="produk_id" value={{$data->id}}>
+                                <button class="btn text-white" type="submit" style="background-color: #D82B2A;">
+                                    <i class="bi bi-cart2" style="font-size: 1.2rem;;"></i> Tambahkan Ke Keranjang
+                                </button>
+                            </form>
+                            <a class="btn text-white bg-red" href="#" style="background-color: #D82B2A;">Beli Sekarang</a>
+                        </div>
                     </div>
                 </div>
                 <div class="mt-5">
@@ -79,7 +79,7 @@ p                                        <div class="spinner border">
                             <tr>
                               <th scope="col">Nama</th>
                               <th scope="col">Jumlah</th>
-                              <th scope="col">Alaman</th>
+                              <th scope="col">Alamat</th>
                             </tr>
                           </thead>
                           <tbody>

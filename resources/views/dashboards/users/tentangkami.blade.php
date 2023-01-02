@@ -30,13 +30,14 @@
     </div>
 </section>
 
+
 <section id="tentang-kami">
     <div class="container pt-5 pb-5">
       <div class="row">
-        <div class="col-md-4">
-          <img src="/assets/image/Kumpulan_Sembako.jpg" class="round tentangkami-img" alt="...">
-        </div>
         @foreach ($tentangkami as $aboutus)
+        <div class="col-md-4">
+          <img src="{{ Storage::url('aboutus/').$aboutus->image }}" class="round tentangkami-img" alt="...">
+        </div>
         <div class="col-md-8">
           <div class="p-1">
             <h2 class="fw-bold">{{$aboutus->title}}</h2>
@@ -55,18 +56,22 @@
     <div class="container px-3 text-center">
         <div class="row gx-5">
           <div class="col">
-           <div class="p-3 border bg-light round mb-5">
-                <h2 class="mb-5">Visi</h2>
-                    <img src="/assets/logo/Group.png" class="mb-5" alt="">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis cumque eveniet minima natus laboriosam ipsum! Officia inventore similique ab at, pariatur in nesciunt, repellendus atque iure impedit, sint praesentium alias!</p>
-                </div>
+            @foreach ($visi as $row)
+            <div class="p-3 border bg-light round mb-5">
+                 <h2 class="mb-5">{{ $row->title }}</h2>
+                     <img src="{{ Storage::url('visi/').$row->image }}" class="mb-5" alt="">
+                     <p>{!! Str::limit($row->content,100) !!}</p>
+                 </div>
+            @endforeach
           </div>
           <div class="col">
+            @forelse ($misi as $row)
             <div class="p-3 border bg-light round mb-5">
-                <h2 class="mb-5">Misi</h2>
-                    <img src="/assets/logo/medal-star.png" class="mb-5" alt="">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis cumque eveniet minima natus laboriosam ipsum! Officia inventore similique ab at, pariatur in nesciunt, repellendus atque iure impedit, sint praesentium alias!</p>
+                <h2 class="mb-5">{{ $row->title }}</h2>
+                    <img src="{{ Storage::url('misi/').$row->image }}" class="mb-5" alt="">
+                    <p>{!! Str::limit($row->content,100) !!}</p>
                 </div>
+            @endforeach
           </div>
         </div>
       </div>

@@ -45,8 +45,8 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('produk') }}">Produk</a>
                   </li>
-                  @endauth
                   
+                  @endauth
                   <a href="{{ route('login') }}" class="btn text-white bg-red-round" style="background-color: #D82B2A; width:70px; height:35px;">Masuk</a>
                 </ul>
                 </div>

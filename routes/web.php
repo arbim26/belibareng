@@ -8,13 +8,21 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
+<<<<<<< HEAD
 use App\Http\Controllers\SatuanController;
+=======
+>>>>>>> 69332ce0d6a4ac327c8e043ca4f7e2c40c5a3243
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\AboutusController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\ProductController;
+<<<<<<< HEAD
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\VisimisiController;
+=======
+use App\Http\Controllers\VisimisiController;
+use App\Http\Controllers\CartDetailController;
+>>>>>>> 69332ce0d6a4ac327c8e043ca4f7e2c40c5a3243
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +36,7 @@ use App\Http\Controllers\VisimisiController;
 */
 
 
-Route::get('/', function () {
+Route::get('/',[HomeController::class,'index'], function () {
     return view('beforeLogin.home');
 });
 Route::get('/sip', function () {
@@ -43,10 +51,12 @@ Route::get('/registeradmin', function () {
 
 
 
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
     Auth::routes();
 });
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     
     Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth','PreventBackHistory']], function(){
         Route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
@@ -58,11 +68,22 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::get('product',[AdminController::class,'product'])->name('product');
         Route::get('order',[AdminController::class,'order'])->name('order');
         Route::get('payment',[AdminController::class,'payment'])->name('payment');
-        Route::get('profiles',[AdminController::class,'profiles'])->name('profiles');
+        Route::get('profileadmin',[AdminController::class,'admin'])->name('profileadmin');
+        Route::get('accountuser',[AdminController::class,'user'])->name('accountuser');
 
-        // artikel
-        Route::get('artikel_admin',[ArtikelController::class, 'show'])->name('artikel_admin');
-        Route::get('addartikel',[ArtikelController::class, 'addartikel'])->name('addartikel');
+        // slider
+        Route::get('slider',[SliderController::class, 'index'])->name('slider.index'); 
+        Route::get('create_slider',[SliderController::class, 'create'])->name('slider.create');
+        Route::post('store_slider',[SliderController::class, 'store'])->name('store_slider');
+        Route::get('edit_slider/{id}',[SliderController::class, 'edit'])->name('slider.edit');
+        Route::put('update_slider/{id}',[SliderController::class, 'update'])->name('update_slider');
+        Route::delete('delete_slider/{id}',[SliderController::class, 'destroy'])->name('slider.destroy');
+
+        // slider
+
+        // article
+        Route::get('artikel',[ArtikelController::class, 'index'])->name('artikel.index');
+        Route::get('create_artikel',[ArtikelController::class, 'create'])->name('artikel.create');
         Route::post('store_artikel',[ArtikelController::class, 'store'])->name('store_artikel');
         Route::get('edit_artikel/{id}',[ArtikelController::class, 'edit'])->name('edit_artikel');
         Route::put('update_artikel/{id}',[ArtikelController::class, 'update'])->name('update_artikel');
@@ -71,8 +92,8 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         // artikel
 
         // tentangkami
-        Route::get('aboutus',[AboutusController::class, 'show'])->name('aboutus');
-        Route::get('addaboutus',[AboutusController::class, 'add'])->name('addaboutus');
+        Route::get('aboutus',[AboutusController::class, 'index'])->name('aboutus.index'); 
+        Route::get('create_aboutus',[AboutusController::class, 'create'])->name('aboutus.create');
         Route::post('store_aboutus',[AboutusController::class, 'store'])->name('store_aboutus');
         Route::get('edit_aboutus/{id}',[AboutusController::class, 'edit'])->name('edit_aboutus');
         Route::put('update_aboutus/{id}',[AboutusController::class, 'update'])->name('update_aboutus');
@@ -96,8 +117,24 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
 
         Route::resource('slider',SliderController::class);
         Route::resource('product',ProductController::class);
+<<<<<<< HEAD
         Route::resource('order',OrderController::class);    
         Route::resource('satuan',SatuanController::class);    
+=======
+        Route::resource('order',OrderController::class);            // product
+        Route::resource('product',ProductController::class);
+        // product
+
+        // order
+        Route::resource('order',OrderController::class);
+        // order
+
+
+        
+
+
+
+>>>>>>> 69332ce0d6a4ac327c8e043ca4f7e2c40c5a3243
 
     });
 
@@ -106,17 +143,28 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::get('detailartikel/{id}',[UserController::class,'detail'])->name('detailartikel');
         Route::get('dashboard',[UserController::class,'index'])->name('user.dashboard');
         Route::get('tentangkami',[UserController::class,'tentangkami'])->name('tentangkami');
-        Route::get('profile',[UserController::class,'profile'])->name('profile');
         Route::get('alamat',[UserController::class,'alamat'])->name('alamat');
         Route::get('password',[UserController::class,'password'])->name('password');
+<<<<<<< HEAD
         Route::get('form.checkout',[UserController::class,'checkout'])->name('form.checkout');
 
         Route::get('checkout',[CheckoutController::class,'store'])->name('checkout');
 
+=======
+        Route::get('checkout',[UserController::class,'checkout'])->name('checkout');
+>>>>>>> 69332ce0d6a4ac327c8e043ca4f7e2c40c5a3243
         Route::get('daftarpesanan',[UserController::class,'daftarpesanan'])->name('daftarpesanan');
         
+        // profile
+        Route::get('profile',[UserController::class,'profile'])->name('profile');
+        Route::put('profile/{id}',[UserController::class,'profileupdate'])->name('profile.update');
+        Route::post('profile',[UserController::class,'profile'])->name('profile');
+
+        // Route::get('profile', 'UserController@profileupdate')->name('profile.update');
+        // profile
         // artiekel
         Route::get('artikel',[UserController::class,'artikel'])->name('artikel');
+        Route::get('detailartikel/{id}',[UserController::class,'detail'])->name('detailartikel');
         // artiekel
 
         // produk

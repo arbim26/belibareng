@@ -33,7 +33,10 @@ class AdminController extends Controller
     function payment(){
         return view('dashboards.admins.payment');
     }
-    function profiles(){
-        return view('dashboards.admins.profiles');
+    function admin(){
+        return view('dashboards.admins.profileadmin');
+    }
+    function user(){
+        return view('dashboards.admins.accountuser');
     }
 }
