@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('cart', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->string('status_cart');// ada 2 yaitu cart, checkout
+            $table->integer('order_id')->unsigned();
             $table->integer('produk_id')->unsigned();
             $table->bigInteger('qty')->default(0);
             $table->bigInteger('harga')->default(0);
@@ -32,9 +31,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('checkouts', function($table)
+        Schema::dropIfExists('cart', function($table)
         {
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('order_id')->references('id')->on('orders');
             $table->foreign('produk_id')->references('id')->on('produk');
         });
     }

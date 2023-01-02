@@ -62,10 +62,13 @@
 
                         <div class="navbar-nav d-flex gap-2">
                             <div class="dropdown">
-                                <button type="button" class="dropbtn" data-toggle="dropdown">
+                                <a href="{{ route('cart.index') }}">                                    
+                                    <i class="bi bi-cart" style="font-size: 1.6rem; color: black;"></i><span class="position-absolute start-75 translate-middle badge rounded-pill bg-danger" style="top: 10px"></span>
+                                </a>
+                                {{-- <button type="button" class="dropbtn" data-toggle="dropdown">
                                     <i class="bi bi-cart" style="font-size: 1.6rem; color: black;"></i><span class="position-absolute start-75 translate-middle badge rounded-pill bg-danger" style="top: 10px"></span>
                                 </button>
-                                {{-- <div class="dropdown-cart hover">
+                                <div class="dropdown-cart hover">
                                     @php $total = 0 @endphp
                                     <div class="row d-flex d-flex justify-content-between">
                                         <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
@@ -105,7 +108,7 @@
                                 </a>
                                 <ul class="dropdown-menu hover" aria-labelledby="dropdow  nMenuButton1">
                                     <li><a class="dropdown-item" href="{{ route('profile') }}">Akun Saya</a></li>
-                                    <li><a class="dropdown-item" href="">Pesanan Saya</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('daftarpesanan') }}">Pesanan Saya</a></li>
                                     <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">Logout</a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"

@@ -11,7 +11,7 @@
                     <div class="">
                         <div class="card">
                             <div class="d-flex justify-content-between align-items-center card-body">
-                                <p class="m-0">@php echo count($cart) @endphp Produk</p>
+                                <p class="m-0">@php echo count($data) @endphp Produk</p>
                                 <form onsubmit="return confirm('Kosongkan Keranjang ?');" action="{{ route('cart.clear') }}" method="post">
                                     @csrf()
                                     <button type="submit" class="text-end link-danger fw-bold">Hapus Semua</button>
@@ -19,7 +19,7 @@
                             </div>
                         </div>
                     </div>
-                    @forelse ($cart as $row)
+                    @forelse ($data as $row)
                     <div class="card mt-3">
                         <div class="card-body">
                           <h5 class="card-title"><i class="bi bi-shop-window" ></i>Jawa Barat - Depok</h5>
@@ -41,9 +41,15 @@
                                         </button>                    
                                     </form>
                                     <div class=" spinner border text-end">
-                                      <button id="decrement" onclick="stepper(this)"><i class="bi bi-dash-lg"></i></button>
-                                      <input type="number" min="0" max="100" step="1"  value="{{ $row->qty }}" id="my-input" readonly>
-                                      <button id="increment" onclick="stepper(this)"><i class="bi bi-plus-lg"></i></button>
+                                        <form action="{{ route('cart.minus',$row->id) }}" method="POST">  
+                                            @csrf
+                                            <button class="mt-1" type="submit"><i class="bi bi-dash-lg"></i></button>
+                                        </form>
+                                        <input type="number" min="0" max="100" step="1"  value="{{ $row->qty }}" id="my-input" readonly>
+                                        <form action="{{ route('cart.plus',$row->id) }}" method="POST">  
+                                            @csrf
+                                            <button class="mt-1" type="submit"><i class="bi bi-plus-lg"></i></button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +57,7 @@
                         </div>
                     </div>  
                     @empty
-                    <div class="mt-4 alert alert-danger">
+                    <div class="mt-4 alert alert-danger"> 
                         Belum ada barang di cart.
                     </div>
                     @endforelse
@@ -61,13 +67,9 @@
                 <div class="card">
                     <div class="card-body">
                     <p class="card-text fw-bold">Total Belanja</p>
-                    @php $total = 0 @endphp
-                    @foreach ($cart as $row)
-                        @php $total = $row->where('user_id', $row->user_id)->sum('total'); @endphp
-                    @endforeach
                     <p class="text-end">Rp. {{number_format($total, 2)}}</p>
                     <div class="d-grid gap-2">
-                        <a class="btn text-white bg-red" href="{{ route('checkout') }}" style="background-color: #D82B2A;">Beli Sekarang</a>
+                        <a class="btn text-white bg-red" href="{{ route('form.checkout') }}" style="background-color: #D82B2A;">Beli Sekarang</a>
                     </div>
                     </div>
                 </div>

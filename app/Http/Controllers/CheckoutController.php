@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Mdels\Cecckout;
+use App\Models\Order;
+use App\Models\Checkout;
+use Illuminate\Support\Facades\DB;
 
 class CheckoutController extends Controller
 {
@@ -40,19 +42,20 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'nama_penerima' => 'required',
-            'no_tlp' => 'required',
-        ]);
-        $itemuser = $request->user();//ambil data user yang sedang login
-        $inputan = $request->all();//buat variabel dengan nama $inputan
-        $inputan['user_id'] = $itemuser->id;
-        $inputan['status'] = 'utama';
-        $itemalamatpengiriman = AlamatPengiriman::create($inputan);
-        // set semua status alamat pengiriman bukan utama
-        AlamatPengiriman::where('id', '!=', $itemalamatpengiriman->id)
-                    ->update(['status' => 'tidak']);
-        return back()->with('success', 'Alamat pengiriman berhasil disimpan');
+        $user = $request->user();
+        $cart = order::where('user_id', $user->id)->where('status', 'cart')->first();
+        $data = array('cart'=>$cart);
+
+        $inputanorder['order_id'] = $cart->id;
+        $inputanorder['user_id'] = $user->id;
+        $inputanorder['nama_penerima'] = $request->nama_penerima;
+        $inputanorder['tlp'] = $request->telp;
+        $inputanorder['email'] = $request->email;
+        $inputanorder['status'] = "checkout";
+
+        $itemorder = Checkout::create($inputanorder);
+        $cart->update(['status' => 'checkout']);
+        return redirect()->route('daftarpesanan')->with('success', 'Order berhasil disimpan');
     }
 
     /**

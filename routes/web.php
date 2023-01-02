@@ -3,14 +3,18 @@
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AboutusController;
-use App\Http\Controllers\VisimisiController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\AboutusController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\VisimisiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,6 +97,7 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::resource('slider',SliderController::class);
         Route::resource('product',ProductController::class);
         Route::resource('order',OrderController::class);    
+        Route::resource('satuan',SatuanController::class);    
 
     });
 
@@ -104,9 +109,10 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::get('profile',[UserController::class,'profile'])->name('profile');
         Route::get('alamat',[UserController::class,'alamat'])->name('alamat');
         Route::get('password',[UserController::class,'password'])->name('password');
-        Route::get('checkout',[UserController::class,'checkout'])->name('checkout');
+        Route::get('form.checkout',[UserController::class,'checkout'])->name('form.checkout');
 
-        // Route::get('cart',[UserController::class,'cart'])->name('cart');
+        Route::get('checkout',[CheckoutController::class,'store'])->name('checkout');
+
         Route::get('daftarpesanan',[UserController::class,'daftarpesanan'])->name('daftarpesanan');
         
         // artiekel
@@ -120,10 +126,10 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
 
         // cart
         Route::resource('cart', CartController::class);
-        // Route::get('cart', [CartController::class,'index'])->name('cart.index');
-        // Route::post('cart', [CartController::class, 'store'])->name('cart.store');
+        Route::post('cart.plus/{id}',[CartController::class, 'plus'])->name('cart.plus');
+        Route::post('cart.minus/{id}',[CartController::class, 'min'])->name('cart.minus');
         Route::post('clear', [CartController::class, 'clear'])->name('cart.clear');
-        // cart detai
+        // cart
 
     });
 

@@ -57,7 +57,7 @@
                             </li>
                         </ul>
                         <div class="d-flex gap-1">
-                            <form action="{{ route('cart.store') }}" method="POST">
+                            <form action="{{ route('cart.store') }}" method="POST">  
                                 @csrf
                                 <input type="hidden" name="produk_id" value={{$data->id}}>
                                 <button class="btn text-white" type="submit" style="background-color: #D82B2A;">

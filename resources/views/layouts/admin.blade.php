@@ -12,20 +12,20 @@
     <!-- Fonts CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- Icons CSS -->
-    <link rel="stylesheet" href="../../css/feather.css">
-    <link rel="stylesheet" href="../../css/select2.css">
-    <link rel="stylesheet" href="../../css/dropzone.css">
-    <link rel="stylesheet" href="../../css/uppy.min.css">
-    <link rel="stylesheet" href="../../css/jquery.steps.css">
-    <link rel="stylesheet" href="../../css/jquery.timepicker.css">
-    <link rel="stylesheet" href="../../css/quill.snow.css">
+    <link rel="stylesheet" href="../../../css/feather.css">
+    <link rel="stylesheet" href="../../../css/select2.css">
+    <link rel="stylesheet" href="../../../css/dropzone.css">
+    <link rel="stylesheet" href="../../../css/uppy.min.css">
+    <link rel="stylesheet" href="../../../css/jquery.steps.css">
+    <link rel="stylesheet" href="../../../css/jquery.timepicker.css">
+    <link rel="stylesheet" href="../../../css/quill.snow.css">
     <!-- Date Range Picker CSS -->
-    <link rel="stylesheet" href="../../css/daterangepicker.css">
+    <link rel="stylesheet" href="../../../css/daterangepicker.css">
     <!-- App CSS -->
-    <link rel="stylesheet" href="../../css/app-light.css" id="lightTheme" disabled>
-    <link rel="stylesheet" href="../../css/app-dark.css" id="darkTheme">
+    <link rel="stylesheet" href="../../../css/app-light.css" id="lightTheme" >
+    <link rel="stylesheet" href="../../../css/app-dark.css" id="darkTheme" disabled >
   </head>
-  <body class="vertical  dark  ">
+  <body class="vertical  dark">
     <div class="wrapper">
       <nav class="topnav navbar navbar-light">
         <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
@@ -159,8 +159,15 @@
             </li>
             <li class="navbar-nav flex-fill w-100">
               <li class="nav-item w-100">
+              <a class="nav-link" href="{{ route('satuan.index') }}">
+                <i class="fe fe-shield fe-16"></i>
+                <span class="ml-3 item-text">Satuan Produk</span>
+              </a>
+            </li>
+            <li class="navbar-nav flex-fill w-100">
+              <li class="nav-item w-100">
               <a class="nav-link" href="">
-                <i class="fe fe-shield fe-16"></i>order
+                <i class="fe fe-shield fe-16"></i>
                 <span class="ml-3 item-text">Order</span>
               </a>
             </li>

@@ -14,12 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('checkouts', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->integer('order_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->string('status');//utama atau tidak
             $table->string('nama_penerima');
-            $table->string('no_tlp');
+            $table->string('tlp');
+            $table->string('email');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -33,6 +34,7 @@ return new class extends Migration
     {
         Schema::dropIfExists('checkouts', function($table)
         {
+            $table->foreign('order_id')->references('id')->on('orders');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

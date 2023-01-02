@@ -9,42 +9,34 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th>Barang</th>
-              <th>Jumlah</th>
+              <th>Nama Penerima</th>
+              <th>Nama Barang</th>
+              <th>No Telephon</th>
+              <th>Email</th>
               <th>Status</th>
-              <th>Pembayaran</th>
-              <th>Pengiriman</th>
-              <th>Alamat</th>
             </tr>
           </thead>
           <tbody>
+          @foreach ($checkout as $row)
             <tr>
-              <td>Tepung</td>
-              <td>50 Kg</td>
-              <td>Sedang diproses</td>
-              <td>Transfer</td>
-              <td>Kurir</td>
-              <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+              <td>{{ $row->nama_penerima }}</td>
+              <td>
+                <ul>
+                  {{-- @foreach ($produk as $item) --}}
+                  <li>
+                      {{ $row->order->detail->produk->barang }}
+                  </li>
+                  {{-- @endforeach --}}
+                </ul>
+              </td>
+              <td>{{ $row->tlp }}</td>
+              <td>{{ $row->email }}</td>
+              <td>{{ $row->status }}</td>
             </tr>
-            <tr>
-              <td>Minyak Goreng</td>
-              <td>50 L</td>
-              <td>Belum Bayar</td>
-              <td>COD</td>
-              <td>Kurir</td>
-              <td>Lorem ipsum dolor, sit amet consectetur adipisicing.</td>
-            </tr>
-            <tr>
-              <td>Detergen Sabun</td>
-              <td>5 pcs</td>
-              <td>Sudah diterima oleh pemilik</td>
-              <td>Transfer</td>
-              <td>Kurir</td>
-              <td>Lorem ipsum dolor, sit amet consectetur adipisicing.</td>
-            </tr>
+          @endforeach
           </tbody>
         </table>
         <br>
-      </div>
+    </div>
 </section>
 @endsection

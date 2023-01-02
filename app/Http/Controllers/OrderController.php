@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Cart;
+use App\Models\Cart;
+use App\Models\Order;
 use App\AlamatPengiriman;
-use App\Order;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
-class TransaksiController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -57,31 +59,27 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        $itemuser = $request->user();
-        $itemcart = Cart::where('status_cart', 'cart')
-                        ->where('user_id', $itemuser->id)
-                        ->first();
-        if ($itemcart) {
-            $itemalamatpengiriman = AlamatPengiriman::where('user_id', $itemuser->id)
-                                                    ->where('status', 'utama')
-                                                    ->first();
-            if ($itemalamatpengiriman) {
+        $user = $request->user();
+        $cart = Cart::where('user_id', $user->id)->where('status_cart', 'cart')->first();
+        $data = array('cart'=>$cart);
+        // $no_invoice = Cart::where('user_id', $user->id)->where('status_cart', 'cart')->get();
+        // dd($no_invoice);
+        // dd($data);
+        if ($data) {
+            if ($request) {
                 // buat variabel inputan order
-                $inputanorder['cart_id'] = $itemcart->id;
-                $inputanorder['nama_penerima'] = $itemalamatpengiriman->nama_penerima;
-                $inputanorder['no_tlp'] = $itemalamatpengiriman->no_tlp;
-                $inputanorder['alamat'] = $itemalamatpengiriman->alamat;
-                $inputanorder['provinsi'] = $itemalamatpengiriman->provinsi;
-                $inputanorder['kota'] = $itemalamatpengiriman->kota;
-                $inputanorder['kecamatan'] = $itemalamatpengiriman->kecamatan;
-                $inputanorder['kelurahan'] = $itemalamatpengiriman->kelurahan;
-                $inputanorder['kodepos'] = $itemalamatpengiriman->kodepos;
+                $inputanorder['cart_id'] = $cart->id;
+                $inputanorder['nama_penerima'] = $request->name;
+                $inputanorder['telp'] = $request->telp;
+                $inputanorder['email'] = $request->email;
+                // $inputanorder['total'] = $request->email;
+                dd($inputanorder);
                 $itemorder = Order::create($inputanorder);//simpan order
                 // update status cart
-                $itemcart->update(['status_cart' => 'checkout']);
-                return redirect()->route('transaksi.index')->with('success', 'Order berhasil disimpan');
+                DB::table('cart')->update(['status_cart' => 'checkout']);
+                return redirect()->route('checkout')->with('success', 'Order berhasil disimpan');
             } else {
-                return back()->with('error', 'Alamat pengiriman belum diisi');
+                return back()->with('error');
             }
         } else {
             return abort('404');//kalo ternyata ga ada shopping cart, maka akan menampilkan error halaman tidak ditemukan

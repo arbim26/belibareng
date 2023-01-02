@@ -9,13 +9,13 @@ class Order extends Model
 {
     protected $table = 'orders';
     protected $fillable = [
-        'cart_id',
-        'nama_penerima',
-        'tlp',
-        'email',
+        'user_id',
+        'no_invoice',
+        'status',
+        'total',
     ];
 
-    public function cart() {
-        return $this->belongsTo('App\Cart', 'cart_id');
+    public function detail() {
+        return $this->hasOne('App\Models\cart', 'order_id');
     }
 }
