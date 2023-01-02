@@ -27,44 +27,68 @@
                 <h6>Kelola Informasi profil anda untuk mengontrol,melindungi dan mengamankan akun</h6>
                 <hr>
               </div>
-
+            <form method="POST" action="{{ route('profile.update', $user->id) }}" enctype="multipart/form-data">   
+                @csrf
+                @method('PUT')
                 <div class="row">
                     <div class="col-9 pe-5">
                         <div class="mb-4 row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">Nama</label>
+                            <label for="name" class="col-sm-2 col-form-label">{{ __('Nama') }}</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputEmail">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autocomplete="name">
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4 row">
+                            <label for="email" class="col-sm-2 col-form-label">{{ __('Email') }}</label>
+                            <div class="col-sm-10">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email', $user->email) }}" required autocomplete="email">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
                             </div>
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                            <label for="telp" class="col-sm-2 col-form-label">{{ __('No.Telp') }}</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputEmail">
-                            </div>
-                        </div>
+                              <input id="telp" type="text" class="form-control"  name="telp" value="{{ old('telp', $user->telp) }}" required autocomplete="telp">
 
-                        <div class="mb-4 row">
-                            <label for="inputPassword" class="col-sm-2 col-form-label">No.Telpon</label>
-                            <div class="col-sm-10">
-                                <input type="number" class="form-control" id="inputPassword">
+                                @error('telp')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+
                             </div>
-                        </div>
+                          </div>
+
 
                         <div class="mb-4 row">
                             <label for="inputPassword" class="col-sm-2 col-form-label">Jenis Kelamin</label>
                             <div class="col-sm-10">
                                 <div class="d-flex gap-3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                            id="flexRadioDefault1">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault1"
+                                            id="flexRadioDefault1" value="laki-laki" @if($user->jenis_kelamin == 'laki-laki') {{ 'checked' }} @endif>
                                         <label class="form-check-label" for="flexRadioDefault1">
                                             Laki-Laki
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                            id="flexRadioDefault2" checked>
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault2"
+                                            id="flexRadioDefault2" value="perempuan" @if($user->jenis_kelamin == 'perempuan') {{ 'checked' }} @endif>
                                         <label class="form-check-label" for="flexRadioDefault2">
                                             Perempuan
                                         </label>
@@ -72,26 +96,31 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <input type="file" name="image" class="dropzone bg-light rounded-lg" id="image">
 
                         <div class="mb-4 row">
                             <label for="inputPassword" class="col-sm-2 col-form-label">Tanggal Lahir</label>
                             <div class="col-sm-10">
-                                <input type="date" class="form-control" id="inputPassword">
+                                <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value=" {{ $user->tanggal_lahir }} ">
                             </div>
                         </div>
-
-                        <button class="btn" style="background-color: #D82B2A; color: white">Simpan</button>
+                        
+                        <button class="btn" type="submit" style="background-color: #D82B2A; color: white" >{{ __('Simpan') }}</button>
                     </div>
-
-                    <div class="col-3 text-center">
-                        <img src="https://i.pinimg.com/564x/69/9c/65/699c6525f476e3d305d80b63691d9628.jpg" style="height: 200px; border-radius: 500px" alt="">
-                        <p class="mt-2">Ukuran gambar: maks. 1 MB Format gambar: .JPEG, .PNG</p>
-                        <button class="btn" style="background-color: #D82B2A; color: white">Upload Gambar</button>
-                    </div>
+                    {{-- <div class="col-3 text-center">
+                        <form action="/file-upload">
+                            <img src="https://i.pinimg.com/564x/69/9c/65/699c6525f476e3d305d80b63691d9628.jpg" style="height: 200px; border-radius: 500px" alt="">
+                            <p class="mt-2">Ukuran gambar: maks. 1 MB Format gambar: .JPEG, .PNG</p>
+                            <button class="btn" style="background-color: #D82B2A; color: white">Upload Gambar</button>
+                        </form>
+                    </div> --}}
                 </div>
-
+            </form>
             </div>
         </div>
     </div>
 </section>
 @endsection
+
+

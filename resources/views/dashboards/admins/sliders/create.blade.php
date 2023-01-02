@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="card border-0 shadow rounded">
                 <div class="card-body">
-                    <form action="{{ route('slider.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('store_slider') }}" method="POST" enctype="multipart/form-data">
                     
                         @csrf
 

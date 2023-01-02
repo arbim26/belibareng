@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Misi;
+use App\Models\User;
 use App\Models\Visi;
+use App\Models\Slider;
 use App\Models\Aboutus;
 use App\Models\Artikel;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -17,7 +20,8 @@ class UserController extends Controller
         $artikel = Artikel::latest()->get();
         $tentangkami = Aboutus::latest()->get();
         $products = Product::latest()->get();
-        return view('dashboards.users.index', compact('artikel','tentangkami','products'));
+        $sliders = Slider::latest()->get();
+        return view('dashboards.users.index', compact('artikel','tentangkami','products','sliders'));
     }
 
     function tentangkami(){
@@ -33,20 +37,110 @@ class UserController extends Controller
     public function detail($id)
     {
         $data = Artikel::find($id);
-        return view('artikel.detail', compact('data'));
+        return view('dashboards.users.detailartikel', compact('data'));
+    }
+    // artikel
+
+    // product
+    public function produk(){
+        
+        $products = Product::latest()->get();
+        return view('dashboards.users.produk', compact('products'));
     }
     public function product($id)
     {
         $data = Product::find($id);
-        return view('dashboards.admins.products.detail', compact('data'));
+        return view('dashboards.users.detailproduk', compact('data'));
     }
-    public function produk(){
-        $products = Product::latest()->paginate(10);
-        return view('dashboards.users.produk', compact('products'));
+
+    public function profile(Request $request, User $user)
+    {
+        // $user = $request->all();
+        // $profile = $user->id;
+        
+        // dd($profile);
+
+        $user = auth()->user();
+        $profile = User::all();
+        return view('dashboards.users.profile', compact('user','profile'));
+
+        // if($request->file('image') == "") {
+        //     $user = User::find($user->id);
+        //     $user->update($request->all());
+        // } else {x
+
+        //     //hapus old image
+        //     Storage::disk('local')->delete('public/users/'.$user->image);
+
+        //     //upload new image
+        //     $image = $request->file('image');
+        //     $image->storeAs('public/users', $image->hashName());
+
+
+        // }
+
+        // // if($profile){
+        //     //redirect dengan pesan sukses
+        // return view('dashboards.users.profile', compact('profile'))->with(['success' => 'Data Berhasil Disimpan!']);
+        // }else{
+        //     //redirect dengan pesan error
+        //     return redirect()->route('profile')->with(['error' => 'Data Gagal Disimpan!']);
+        // }
     }
-    function profile(){
-        return view('dashboards.users.profile');
+    
+    /**
+    * update
+    *
+    * @param  mixed $request
+    * @param  mixed $profil
+    * @return void
+    */
+    public function profileupdate(Request $request, User $user)
+    {
+        // dd($request);
+        $request->validate([
+            'name'   => 'required',
+            'email'  => 'required',
+            'telp'   => 'required',
+            'jenis_kelamin' => 'required',
+            'tanggal_lahir'   => 'required'
+        ]);
+
+        //get data Blog by ID
+        $profie = User::findOrFail($user->id);
+
+        if($request->file('image') == "") {
+            $profile = User::find($profile->id);
+            $profile->update($request->all());
+        } else {
+
+            //hapus old image
+            Storage::disk('local')->delete('public/profiles/'.$profile->image);
+
+            //upload new image
+            $image = $request->file('image');
+            $image->storeAs('public/profiles', $image->hashName());
+
+            $profile->update([
+                'image'  => $image->hashName(),
+                'name'   => $request->name,
+                'email'  => $request->email,
+                'telp'   => $request->telp,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'tanggal_lahir'   => $request->tanggal_lahir
+            ]);
+
+        }
+        if($profile){
+            //redirect dengan pesan sukses
+            return redirect()->route('dashboards.users.profile')->with(['success' => 'Data Berhasil Disimpan!']);
+        }else{
+            //redirect dengan pesan error
+            return redirect()->route('dashboards.users.profile')->with(['error' => 'Data Gagal Disimpan!']);
+        }
     }
+
+    // profile
     function alamat(){
         return view('dashboards.users.alamat');
     }

@@ -31,7 +31,7 @@
               @enderror
           </div>
           <div class="col">
-              <input class="@error('telp') is-invalid @enderror" name="telp" id="telp" type="text" required />
+              <input class="@error('telp') is-invalid @enderror" name="telp" id="telp" type="number" required />
               <label class="label-text">{{ __('No Telphone') }}</label>
               @error('telp')
               <span class="invalid-feedback" role="alert">

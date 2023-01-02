@@ -26,10 +26,10 @@
                                     <td class="text-center">
                                         <img src="{{ Storage::url('public/products/').$product->image }}" class="rounded" style="height: 20vh">
                                     </td>
-                                    <td>{{Str::limit($product->barang,30)}}</td>
-                                    <td>{{ $product->harga }}</td>
-                                    <td>{{ $product->stock }}</td>
-                                    <td>{!!Str::limit($product->content,50)!!}</td>
+                                    <td class="text-center">{{Str::limit($product->barang,30)}}</td>
+                                    <td class="text-center">{{ $product->harga }}</td>
+                                    <td class="text-center">{{ $product->stock }}</td>
+                                    <td class="text-center">{!!Str::limit(Str::limit($product->content,50),50)!!}</td>
                                     <td class="">
                                       <button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                       <span class="text-muted sr-only">Action</span>

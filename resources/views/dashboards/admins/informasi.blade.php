@@ -33,8 +33,8 @@
                 <div class="card-body">
                   <div class="row align-items-center">
                     <div class="col">
-                      <span class="h2 mb-0">$1.2K</span>
-                      <p class="small text-muted mb-0">Monthly Sales</p>
+                      <span class="h2 mb-0">10+</span>
+                      <p class="small text-muted mb-0">Products</p>
                       <span class="badge badge-pill badge-success">+15.5%</span>
                     </div>
                     <div class="col-auto">
@@ -49,8 +49,8 @@
                 <div class="card-body">
                   <div class="row align-items-center">
                     <div class="col">
-                      <span class="h2 mb-0">1K+</span>
-                      <p class="small text-muted mb-0">Orders</p>
+                      <span class="h2 mb-0">50+</span>
+                      <p class="small text-muted mb-0">Artikels</p>
                       <span class="badge badge-pill badge-success">+16.5%</span>
                     </div>
                     <div class="col-auto">

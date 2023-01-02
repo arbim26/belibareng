@@ -14,12 +14,12 @@ class VisimisiController extends Controller
     public function showvisi()
     {
         $visi = Visi::latest()->get();
-        return view('visi.index', compact('visi'));
+        return view('dashboards.admins.visis.index', compact('visi'));
     }
 
     public function addvisi()
     {
-        return view('visi.add');
+        return view('dashboards.admins.visis.add');
     }
 
     public function storevisi(Request $request)
@@ -52,7 +52,7 @@ class VisimisiController extends Controller
     public function editvisi($id)
     {
         $data = Visi::find($id);
-        return view('visi.edit', compact('data'));
+        return view('dashboards.admins.visis.edit', compact('data'));
     }
 
     public function updatevisi(Request $request, Visi $visi, $id)
@@ -97,12 +97,12 @@ class VisimisiController extends Controller
     public function showmisi()
     {
         $misi = Misi::latest()->get();
-        return view('misi.index', compact('misi'));
+        return view('dashboards.admins.misis.index', compact('misi'));
     }
 
     public function addmisi()
     {
-        return view('misi.add');
+        return view('dashboards.admins.misis.add');
     }
 
     public function storemisi(Request $request)
@@ -135,7 +135,7 @@ class VisimisiController extends Controller
     public function editmisi($id)
     {
         $data = Misi::find($id);
-        return view('visi.edit', compact('data'));
+        return view('dashboards.admins.visis.edit', compact('data'));
     }
 
     public function updatemisi(Request $request, Misi $misi, $id)

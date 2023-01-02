@@ -45,7 +45,6 @@
 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        @auth
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="{{ route('user.dashboard') }}">Home</a>
                         </li>
@@ -58,8 +57,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('produk') }}">Produk</a>
                         </li>
-                        @endauth
-
+                        
+                        @auth
                         <div class="navbar-nav d-flex gap-2">
                             <div class="dropdown">
                                 <button type="button" class="dropbtn" data-toggle="dropdown">
@@ -72,7 +71,7 @@
                                             <p>Total: <span class="jingga">Rp {{ $total }}</span></p>
                                         </div>
                                         <div class="col-lg-6 col-sm-6 col-6 checkout text-end jingga">
-                                            <a href="{{ route('cart.index') }}" class="jingga">Liat Selengkapnya</a>
+                                            <a href="{{ route('cart.index') }}" class="jingga">Lihat Selengkapnya</a>
                                         </div>
                                     </div>
                                     @if(session('cart'))
@@ -95,34 +94,35 @@
                                 </div> --}}
                               </div>
                             <div class="dropdown">
-
-
+                                
+                                
                             </div>
 
                             <div class="dropdown">
                                 <a class="" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                                    aria-expanded="false"><i class="bi bi-person-circle" style="font-size: 1.75rem; color: black;"></i>
-                                </a>
-                                <ul class="dropdown-menu hover" aria-labelledby="dropdow  nMenuButton1">
-                                    <li><a class="dropdown-item" href="{{ route('profile') }}">Akun Saya</a></li>
-                                    <li><a class="dropdown-item" href="">Pesanan Saya</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">Logout</a>
+                                aria-expanded="false"><i class="bi bi-person-circle" style="font-size: 1.75rem; color: black;"></i>
+                            </a>
+                            <ul class="dropdown-menu hover" aria-labelledby="dropdow  nMenuButton1">
+                                <li><a class="dropdown-item" href="{{ route('profile') }}">Akun Saya</a></li>
+                                <li><a class="dropdown-item" href="{{ route('cart.index') }}">Pesanan Saya</a></li>
+                                <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">Logout</a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                            class="d-none">
-                                            @csrf
-                                        </form>
-                                    </li>
-                                </ul>
-                            </form>
-                            </div>
+                                        class="d-none">
+                                        @csrf
+                                    </form>
+                                </li>
+                            </ul>
+                        </form>
                         </div>
+                        @endauth
+                    </div>
                 </div>
             </div>
-
-            </div>
-        </nav>
-    </section>
+            
+        </div>
+    </nav>
+</section>
 
     <div class="wrapper">
         @yield('content')
@@ -188,7 +188,8 @@
 
                 <div class="artikel col-md-4">
                     <h5>Lokasi Kami</h5>
-                    <div id="googleMap" style="width:100%;height:200px;"></div>
+                    {{-- <div id="googleMap" style="width:100%;height:200px;"></div> --}}
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.973830438097!2d106.8346443137163!3d-6.397373864348052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ebebc175f967%3A0x7d4279e7ef0e041e!2sJl.%20Kamboja%201%20No.79%2C%20Mekar%20Jaya%2C%20Kec.%20Sukmajaya%2C%20Kota%20Depok%2C%20Jawa%20Barat%2016411!5e0!3m2!1sid!2sid!4v1671435249879!5m2!1sid!2sid" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
           </div>

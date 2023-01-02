@@ -14,10 +14,10 @@ use App\Http\Controllers\ArtikelController;
 class ArtikelController extends Controller
 {
     // admin
-    public function show()
+    public function index()
     {
         $artikel = Artikel::latest()->paginate(5);
-        return view('artikel.index', compact('artikel'));
+        return view('dashboards.admins.artikels.index', compact('artikel'));
     }
 
         /**
@@ -25,9 +25,9 @@ class ArtikelController extends Controller
     *
     * @return void
     */
-    public function addartikel()
+    public function create()
     {
-        return view('artikel.add');
+        return view('dashboards.admins.artikels.create');
     }
 
     public function store(Request $request)
@@ -53,17 +53,17 @@ class ArtikelController extends Controller
 
         if($blog){
             //redirect dengan pesan sukses
-            return redirect()->route('artikel_admin')->with(['success' => 'Data Berhasil Disimpan!']);
+            return redirect()->route('artikel.index')->with(['success' => 'Data Berhasil Disimpan!']);
         }else{
             //redirect dengan pesan error
-            return redirect()->route('artikel_admin')->with(['error' => 'Data Gagal Disimpan!']);
+            return redirect()->route('artikel.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
     }
 
     public function edit($id)
     {
         $data = Artikel::find($id);
-        return view('artikel.edit', compact('data'));
+        return view('dashboards.admins.artikels.edit', compact('data'));
     }
 
 
@@ -106,10 +106,10 @@ class ArtikelController extends Controller
 
         if($artikel){
             //redirect dengan pesan sukses
-            return redirect()->route('artikel_admin')->with(['success' => 'Data Berhasil Diupdate!']);
+            return redirect()->route('artikel.index')->with(['success' => 'Data Berhasil Diupdate!']);
         }else{
             //redirect dengan pesan error
-            return redirect()->route('artikel_admin')->with(['error' => 'Data Gagal Diupdate!']);
+            return redirect()->route('artikel.index')->with(['error' => 'Data Gagal Diupdate!']);
         }
 
     }
@@ -122,14 +122,14 @@ class ArtikelController extends Controller
     
       if($artikel){
          //redirect dengan pesan sukses
-         return redirect()->route('artikel_admin')->with(['success' => 'Data Berhasil Dihapus!']);
+         return redirect()->route('artikel.index')->with(['success' => 'Data Berhasil Dihapus!']);
       }else{
         //redirect dengan pesan error
-        return redirect()->route('artikel_admin')->with(['error' => 'Data Gagal Dihapus!']);
+        return redirect()->route('artikel.index')->with(['error' => 'Data Gagal Dihapus!']);
       }
     }
 
-    public function search(Request $request)
+    public function filter(Request $request, Admin $admin)
     {
         // menangkap data pencarian
         $search = $request->search;

@@ -43,7 +43,7 @@
                         <a class="judul-card" href="{{route('detailproduk', $data->id)}}">{{Str::limit($data->barang,30)}}</a>
                         <div class="row">
                           <div class="col">
-                            <p class="f-20 jingga">{{number_format($data->harga)}}</p>
+                            <p class="f-20 jingga">Rp. {{number_format($data->harga)}}</p>
                           </div>
                           <div class="col">
                             <p class="f-15 text-muted">{{$data->stock}}</p>
@@ -79,6 +79,9 @@
         </div>
       @endforeach
     </div>
+    <div class="text-end">
+      <a href="{{ route('tentangkami') }}" type="button" class="merah">Selengkapnya</a>
+    </div>
   </div>
 </section>
 
@@ -93,7 +96,7 @@
               <img src="{{ Storage::url('artikels/').$data->image }}" class="card-img-top round" alt="">
               <div class="isi-card d-flex flex-column ">
                 <div class="title">
-                  <a href="{{route('detailartikel', $data->id)}}" class="judul-card ">{{ Str::limit($data->title,100) }}</a>
+                  <a href="{{ route('detailartikel', $data->id) }}" class="judul-card ">{{ Str::limit($data->title,100) }}</a>
                 </div>
                 <hr>
                 <div class="d-flex gap-2">
