@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-12">
-                <h2 class="mb-2 page-title">Tambah Satuan Baru</h2>
+                <h2 class="mb-2 page-title">Tambah Pack Baru</h2>
                 <div class="row my-4">
                     <!-- Small table -->
                     <div class="col-md-12">
@@ -16,8 +16,8 @@
                                     <form class="form">
                                         <div class="form-row">
                                             <div class="form-group col-auto mr-auto">
-                                                <a href="{{ route('satuan.create')}}"
-                                                    class="btn btn-md btn-primary mb-3">TAMBAH SATUAN</a>
+                                                <a href="{{ route('pack.create')}}"
+                                                    class="btn btn-md btn-primary mb-3">TAMBAH PACK</a>
                                             </div>
                                             <div class="form-group col-auto">
                                                 <div class="form-group col-auto">
@@ -31,7 +31,7 @@
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>SATUAN</th>
+                                            <th>pack</th>
                                             <th>AKSI</th>
                                         </tr>
                                     </thead>
@@ -39,11 +39,11 @@
                                         @forelse ($data as $index => $row)
                                         <tr>
                                             <td>{{ $data->firstItem() + $index }}</td>
-                                            <td>{{ $row->satuan }}</td>
+                                            <td>{{ $row->pack }}</td>
                                             <td>
                                             <form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                                                action="{{ route('satuan.destroy', $row->id) }}" method="POST">
-                                                <a class="text-dark" href="{{ route('satuan.edit', $row->id) }}">Edit</a>
+                                                action="{{ route('pack.destroy', $row->id) }}" method="POST">
+                                                <a class="text-dark" href="{{ route('pack.edit', $row->id) }}">Edit</a>
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn text-danger">Hapus</button>

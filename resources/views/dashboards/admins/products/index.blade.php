@@ -12,12 +12,13 @@
                         <table class="table table-bordered">
                             <thead>
                               <tr>
-                                <th scope="col">GAMBAR</th>
-                                <th scope="col">BARANG</th>
-                                <th scope="col">HARGA</th>
-                                <th scope="col">STOCK</th>
-                                <th scope="col">DESKRIPSI</th>
-                                <th scope="col">AKSI</th>
+                                <th scope="col" class="text-center">GAMBAR</th>
+                                <th scope="col" class="text-center">BARANG</th>
+                                <th scope="col" class="text-center">HARGA</th>
+                                <th scope="col" class="text-center">STOCK</th>
+                                <th scope="col" class="text-center">PACK</th>
+                                <th scope="col" class="text-center">DESKRIPSI</th>
+                                <th scope="col" class="text-center">AKSI</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -27,8 +28,9 @@
                                         <img src="{{ Storage::url('public/products/').$product->image }}" class="rounded" style="height: 20vh">
                                     </td>
                                     <td class="text-center">{{Str::limit($product->barang,30)}}</td>
-                                    <td class="text-center">{{ $product->harga }}</td>
-                                    <td class="text-center">{{ $product->stock }}</td>
+                                    <td class="text-center">{{ number_format($product->harga) }}</td>
+                                    <td class="text-center">{{ number_format($product->stock) }} {{ $product->satuan->satuan }}</td>
+                                    <td class="text-center">{{ $product->jumlah_pack }} {{ $product->satuan->satuan }} / {{ $product->pack->pack }}</td>
                                     <td class="text-center">{!!Str::limit(Str::limit($product->content,50),50)!!}</td>
                                     <td class="">
                                       <button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

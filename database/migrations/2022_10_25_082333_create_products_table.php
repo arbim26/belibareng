@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('barang');
             $table->integer('harga');
             $table->integer('stock');
+            $table->integer('satuan_id')->unsigned();
+            $table->integer('jumlah_pack');
+            $table->integer('pack_id')->unsigned();
             $table->text('content');
             $table->timestamps();
         });
@@ -32,6 +35,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('products',function($table)
+        {
+            $table->foreign('satuan_id')->references('id')->on('orders');
+            $table->foreign('pack_id')->references('id')->on('orders');
+        });
     }
 };

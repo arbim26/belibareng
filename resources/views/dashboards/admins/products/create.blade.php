@@ -8,8 +8,7 @@
               
               <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <h2 class="page-title">New</h2>
-                <p class="text-muted">Demo for form control styles, layout options, and custom components for creating a wide variety of forms.</p>
+                <h2 class="page-title mb-3">Tabahkan Produk</h2>
                 <div class="card shadow mb-4">
                   <div class="card-header">
                     <strong class="card-title">Add Product</strong>
@@ -25,12 +24,36 @@
                             <label for="example-email">Harga</label>
                             <input type="number" name="harga" id="harga"  class="form-control" placeholder="Rp.">
                           </div>
-                          <div class="form-group mb-3">
-                            <label for="example-multiselect">Stock</label>
-                            <input type="text" name="stock" id="stock" class="form-control" placeholder="L/kg">
+                          <div class="form-row">
+                            <div class="col-md-8 mb-3">
+                              <label for="example-multiselect">Stok</label>
+                              <input type="number" name="stock" id="stock" class="form-control" placeholder="Masukkan Jumlah Stok">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                              <label for="validationCustom04">Satuan</label>
+                              <select class="custom-select" name="satuan_id" id="validationCustom04" required="">
+                                @foreach ($satuan as $satuans)
+                                 <option value="{{ $satuans->id }}">{{ $satuans->satuan }}</option>
+                                @endforeach
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="col-md-8 mb-3">
+                              <label for="example-multiselect">Jumlah Pack</label>
+                              <input type="number" name="jumlah_pack" id="stock" class="form-control" placeholder="Maukkan Jumlah Pack/Satuan">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                              <label for="validationCustom04">Satuan</label>
+                              <select class="custom-select" name="pack_id" id="validationCustom04" required="">
+                                @foreach ($pack as $packs)
+                                  <option value="{{ $packs->id }}">{{ $packs->pack }}</option>
+                                @endforeach
+                              </select>
+                            </div>
                           </div>
                           <div class="form-group mb-3">
-                            <label for="example-textarea">Content</label>
+                            <label for="example-textarea">Deskripsi</label>
                             <textarea class="form-control" name="content" id="example-textarea" rows="4"></textarea>
                           </div>
                         </div> <!-- /.col -->

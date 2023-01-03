@@ -4,25 +4,18 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\PackController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
-<<<<<<< HEAD
 use App\Http\Controllers\SatuanController;
-=======
->>>>>>> 69332ce0d6a4ac327c8e043ca4f7e2c40c5a3243
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\AboutusController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\ProductController;
-<<<<<<< HEAD
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\VisimisiController;
-=======
-use App\Http\Controllers\VisimisiController;
-use App\Http\Controllers\CartDetailController;
->>>>>>> 69332ce0d6a4ac327c8e043ca4f7e2c40c5a3243
 
 /*
 |--------------------------------------------------------------------------
@@ -88,7 +81,7 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::get('edit_artikel/{id}',[ArtikelController::class, 'edit'])->name('edit_artikel');
         Route::put('update_artikel/{id}',[ArtikelController::class, 'update'])->name('update_artikel');
         Route::delete('delete_artikel/{id}', [ArtikelController::class, 'destroy'])->name('delete_artikel');
-        Route::post('/article/search',[ArtikelController::class,'search'])->name('article.search');
+        Route::get('/search',[ArtikelController::class,'search'])->name('artikel.search');
         // artikel
 
         // tentangkami
@@ -117,24 +110,9 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
 
         Route::resource('slider',SliderController::class);
         Route::resource('product',ProductController::class);
-<<<<<<< HEAD
         Route::resource('order',OrderController::class);    
         Route::resource('satuan',SatuanController::class);    
-=======
-        Route::resource('order',OrderController::class);            // product
-        Route::resource('product',ProductController::class);
-        // product
-
-        // order
-        Route::resource('order',OrderController::class);
-        // order
-
-
-        
-
-
-
->>>>>>> 69332ce0d6a4ac327c8e043ca4f7e2c40c5a3243
+        Route::resource('pack',PackController::class);    
 
     });
 
@@ -145,14 +123,10 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::get('tentangkami',[UserController::class,'tentangkami'])->name('tentangkami');
         Route::get('alamat',[UserController::class,'alamat'])->name('alamat');
         Route::get('password',[UserController::class,'password'])->name('password');
-<<<<<<< HEAD
         Route::get('form.checkout',[UserController::class,'checkout'])->name('form.checkout');
 
         Route::get('checkout',[CheckoutController::class,'store'])->name('checkout');
 
-=======
-        Route::get('checkout',[UserController::class,'checkout'])->name('checkout');
->>>>>>> 69332ce0d6a4ac327c8e043ca4f7e2c40c5a3243
         Route::get('daftarpesanan',[UserController::class,'daftarpesanan'])->name('daftarpesanan');
         
         // profile

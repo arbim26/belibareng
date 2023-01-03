@@ -6,11 +6,9 @@ use App\Models\Cart;
 use App\Models\Misi;
 use App\Models\User;
 use App\Models\Visi;
-<<<<<<< HEAD
 use App\Models\Order;
-=======
+use App\Models\Satuan;
 use App\Models\Slider;
->>>>>>> 69332ce0d6a4ac327c8e043ca4f7e2c40c5a3243
 use App\Models\Aboutus;
 use App\Models\Artikel;
 use App\Models\Product;
@@ -26,26 +24,28 @@ class UserController extends Controller
         $tentangkami = Aboutus::latest()->get();
         $products = Product::latest()->get();
         $sliders = Slider::latest()->get();
-        return view('dashboards.users.index', compact('artikel','tentangkami','products','sliders'));
+        $satuan = Satuan::all();
+        return view('dashboards.users.index', compact('artikel','tentangkami','products','sliders','satuan'));
     }
+
     function tentangkami(){
         $tentangkami = Aboutus::latest()->get();
         $visi = Visi::latest()->get();
         $misi = Misi::latest()->get();
         return view('dashboards.users.tentangkami', compact('tentangkami','visi','misi'));
     }
+
     function artikel(){
         $artikel = Artikel::latest()->paginate(9);
         return view('dashboards.users.artikel', compact('artikel'));
     }
+
     public function detail($id)
     {
         $data = Artikel::find($id);
         return view('dashboards.users.detailartikel', compact('data'));
     }
-    // artikel
 
-    // product
     public function produk(){
         
         $products = Product::latest()->get();
@@ -54,7 +54,8 @@ class UserController extends Controller
     public function product($id)
     {
         $data = Product::find($id);
-        return view('dashboards.users.detailproduk', compact('data'));
+        $satuan = Satuan::all();
+        return view('dashboards.users.detailproduk', compact('data','satuan'));
     }
 
     public function profile(Request $request, User $user)
@@ -101,7 +102,7 @@ class UserController extends Controller
     */
     public function profileupdate(Request $request, User $user)
     {
-        // dd($request);
+
         $request->validate([
             'name'   => 'required',
             'email'  => 'required',
@@ -110,7 +111,6 @@ class UserController extends Controller
             'tanggal_lahir'   => 'required'
         ]);
 
-        //get data Blog by ID
         $profie = User::findOrFail($user->id);
 
         if($request->file('image') == "") {
@@ -144,13 +144,14 @@ class UserController extends Controller
         }
     }
 
-    // profile
     function alamat(){
         return view('dashboards.users.alamat');
     }
+
     function password(){
         return view('dashboards.users.password');
     }
+
     function checkout(Request $request){
         $user = $request->user();
         $itemcart = optional(Order::where('status', 'cart')
@@ -158,9 +159,9 @@ class UserController extends Controller
                      ->first())->id;
         $data = Cart::where('order_id', $itemcart)->get();
         $total = $data->where('order_id', $itemcart)->sum('total');
-        // dd($data->produk);
         return view('dashboards.users.checkout', compact('data', 'total', 'user'));
     }
+
     function daftarpesanan(Request $request){
         $user = $request->user();
         $itemcart = optional(Order::where('status', 'checkout')
@@ -168,7 +169,6 @@ class UserController extends Controller
                     ->first())->id;
         $produk = Cart::where('order_id', $itemcart)->get();
         $checkout = checkout::where('user_id', $user->id)->get();
-        // dd($produk);
         $data = array('produk' => $produk,
                       'checkout' => $checkout);
         return view('dashboards.users.daftarpesanan', $data);

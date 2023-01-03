@@ -41,14 +41,8 @@
                       <img src="{{ Storage::url('products/').$data->image }}" class="card-img-top round" alt="">
                       <div class="isi-card">
                         <a class="judul-card" href="{{route('detailproduk', $data->id)}}">{{Str::limit($data->barang,30)}}</a>
-                        <div class="row">
-                          <div class="col">
-                            <p class="f-20 jingga">Rp. {{number_format($data->harga)}}</p>
-                          </div>
-                          <div class="col">
-                            <p class="f-15 text-muted">{{$data->stock}}</p>
-                          </div>
-                        </div>
+                        <p class="f-20 jingga m-0">Rp. {{number_format($data->harga)}}</p>
+                        <p class="f-15 text-muted m-0">Stock : {{ number_format($data->stock) }} {{ $data->satuan->satuan }}</p>
                       </div>
                   </div>
                 </div>

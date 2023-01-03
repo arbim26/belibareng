@@ -17,18 +17,16 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                      <h3 class="fw-bolder">{{$data->barang}}</h3>
-                      <div class="d-flex gap-5">
-                        <p class="text-decoration-line-through">Rp 16.000</p>
-                        <p class="jingga">{{$data->harga}}</p>
-                      </div>
+                      <h2 class="fw-bolder">{{$data->barang}}</h2>
+                      <p class="jingga fs-3 m-0">Rp. {{ number_format($data->harga) }}</p>
+                      <p class="text-decoration-line-through text-muted fs-6 m-0">Rp. 16.000</p>
                     </div>
                     <div class="card-body abu">
                         <ul style="list-style: none; padding: 0;">
                             <li>
                                 <div class="row">
-                                    <label class="col-sm-3">1 bal</label>
-                                    <p class="col-sm-9 m-0">25 kg</p>
+                                    <label class="col-sm-3">1 {{ $data->pack->pack }}</label>
+                                    <p class="col-sm-9 m-0">{{ $data->jumlah_pack }} {{ $data->satuan->satuan }}</p>
                                 </div>
                             </li>
                             <li>
@@ -37,7 +35,7 @@
                                     <p class="col-sm-9 m-0">Diambil di Gudang</p>
                                 </div>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <div class="row">
                                     <label class="col-sm-3">Jumlah</label>
                                     <div class="col-sm-9 m-0">
@@ -52,11 +50,11 @@ p                                        <div class="spinner border">
                                         </div>
                                     </div>
                                 </div>
-                            </li>
+                            </li> --}}
                             <li>
                                 <div class="row">
                                     <label class="col-sm-3">Kuota</label>
-                                    <p class="col-sm-9 m-0">850/1000kg</p>
+                                    <p class="col-sm-9 m-0">{{ number_format($data->stock) }} {{ $data->satuan->satuan }} / 1000kg</p>
                                 </div>
                             </li>
                         </ul>

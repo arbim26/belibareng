@@ -14,19 +14,23 @@
                                 <!-- table -->
                                 <div class="toolbar">
                                 </div>
-                                    <form class="form">
-                                        <div class="form-row">
-                                            <div class="form-group col-auto mr-auto">
-                                                <a href="{{ route('artikel.create')}}"
-                                                    class="btn btn-md btn-primary mb-3">TAMBAH BLOG</a>
-                                            </div>
-                                            <div class="form-group col-auto">
-                                                <div class="form-group col-auto">
-                                                    <label for="search" class="sr-only">Search</label>
-                                                    <input type="text" class="form-control" id="search1" value="" placeholder="Search">
-                                                </div>
-                                        </div>
-                                    </form>
+                                {{-- <form class="form"> --}}
+                                <div class="form-row">
+                                    <div class="form-group col-auto mr-auto">
+                                        <a href="{{ route('artikel.create')}}"
+                                            class="btn btn-md btn-primary mb-3">TAMBAH BLOG</a>
+                                    </div>
+                                    {{-- </form> --}}
+                                    <div class="form-group col-auto">
+                                        <form action="{{ route('artikel.search') }}">
+                                            <label for="search" class="sr-only">
+                                                Search
+                                            </label>
+                                            <input type="text" name="s" class="form-control"
+                                                class="block w-full p-3 pl-10 text-sm border-gray-200 rounded-md focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                                                placeholder="Search..." />
+                                        </form>
+                                    </div>
                                 </div>
 
                                 <table class="table datatables" id="dataTable-1">
@@ -48,15 +52,6 @@
                                             <td>{{ $blog->title }}</td>
                                             <td>{!! Str::limit($blog->content,100) !!}</td>
                                             <td class="">
-                                              <button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                              <span class="text-muted sr-only">Action</span>
-                                              </button>
-                                            <div class="dropdown-menu dropdown-menu-right" style="">
-                                              <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('delete_artikel', $blog->id) }}" method="POST">
-                                                <a class="dropdown-item" href=" {{ route('edit_artikel', $blog->id) }}">Edit</a>
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="dropdown-item text-danger
                                                 <button class="btn btn-sm dropdown-toggle more-horizontal" type="button"
                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <span class="text-muted sr-only">Action</span>

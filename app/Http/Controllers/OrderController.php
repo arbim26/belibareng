@@ -2,17 +2,12 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
 use App\Models\Cart;
 use App\Models\Order;
 use App\AlamatPengiriman;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
-=======
-use App\Models\Models\Order;
-use Illuminate\Http\Request;
->>>>>>> 69332ce0d6a4ac327c8e043ca4f7e2c40c5a3243
 
 class OrderController extends Controller
 {
@@ -26,12 +21,7 @@ class OrderController extends Controller
         $orders = Order::latest()->paginate(10);
         return view('dashboards.admins.orders.index', compact('orders'));
     }
-}
-// <?php
 
-// namespace App\Http\Controllers;
-
-<<<<<<< HEAD
     /**
      * Store a newly created resource in storage.
      *
@@ -66,13 +56,7 @@ class OrderController extends Controller
             return abort('404');//kalo ternyata ga ada shopping cart, maka akan menampilkan error halaman tidak ditemukan
         }
     }
-=======
-// use Illuminate\Http\Request;
-// use App\Cart;
-// use App\AlamatPengiriman;
-// use App\Order;
->>>>>>> 69332ce0d6a4ac327c8e043ca4f7e2c40c5a3243
-
+}
 // class TransaksiController extends Controller
 // {
 //     /**

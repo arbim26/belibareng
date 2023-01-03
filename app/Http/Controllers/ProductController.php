@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Satuan;
+use App\Models\Pack;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -16,7 +19,9 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::latest()->paginate(10);
-        return view('dashboards.admins.products.index', compact('products'));
+        $satuan = Satuan::all();
+        $pack = Pack::all();
+        return view('dashboards.admins.products.index', ['products' => $products, 'satuan' => $satuan, "pack" => $pack]);
     }
 
     /**
@@ -26,7 +31,9 @@ class ProductController extends Controller
     */
     public function create()
     {
-        return view('dashboards.admins.products.create');
+        $satuan = Satuan::all();
+        $pack = Pack::all();
+        return view('dashboards.admins.products.create', ['satuan' => $satuan, "pack" => $pack]);
     }
     /**
     * store
@@ -37,24 +44,29 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        $this->validate($request, [
-            'image'     => 'required|image|mimes:png,jpg,jpeg',
-            'barang'    => 'required',
-            'harga'     => 'required',
-            'stock'     => 'required',
-            'content'   => 'required'
-        ]);
+            // $this->validate($request, [
+            //     'image'     => 'required|image|mimes:png,jpg,jpeg',
+            //     'barang'    => 'required',
+            //     'harga'     => 'required',
+            //     'stock'     => 'required',
+            //     'satuan_id' => 'required',
+            //     'jumlah_id' => 'required',
+            //     'pack_id'   => 'required',
+            //     'content'   => 'required',
+            // ]);
 
-        //upload image
         $image = $request->file('image');
         $image->storeAs('public/products', $image->hashName());
 
         $product = Product::create([
-            'image'     => $image->hashName(),
-            'barang'    => $request->barang,
-            'harga'     => $request->harga,
-            'stock'     => $request->stock,
-            'content'   => $request->content
+            'image'         => $image->hashName(),
+            'barang'        => $request->barang,
+            'harga'         => $request->harga,
+            'stock'         => $request->stock,
+            'satuan_id'     => $request->satuan_id,
+            'jumlah_pack'   => $request->jumlah_pack,
+            'pack_id'       => $request->pack_id,
+            'content'       => $request->content
         ]);
 
         if($product){

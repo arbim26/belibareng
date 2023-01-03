@@ -24,13 +24,8 @@
     <!-- Date Range Picker CSS -->
     <link rel="stylesheet" href="../../../css/daterangepicker.css">
     <!-- App CSS -->
-<<<<<<< HEAD
     <link rel="stylesheet" href="../../../css/app-light.css" id="lightTheme" >
     <link rel="stylesheet" href="../../../css/app-dark.css" id="darkTheme" disabled >
-=======
-    <link rel="stylesheet" href="../../../css/app-light.css" id="lightTheme" disabled>
-    <link rel="stylesheet" href="../../../css/app-dark.css" id="darkTheme">
->>>>>>> 69332ce0d6a4ac327c8e043ca4f7e2c40c5a3243
   </head>
   <body class="vertical  dark">
     <div class="wrapper">
@@ -169,6 +164,13 @@
               <a class="nav-link" href="{{ route('satuan.index') }}">
                 <i class="fe fe-shield fe-16"></i>
                 <span class="ml-3 item-text">Satuan Produk</span>
+              </a>
+            </li>
+            <li class="navbar-nav flex-fill w-100">
+              <li class="nav-item w-100">
+              <a class="nav-link" href="{{ route('pack.index') }}">
+                <i class="fe fe-shield fe-16"></i>
+                <span class="ml-3 item-text">Pack Produk</span>
               </a>
             </li>
             <li class="navbar-nav flex-fill w-100">
