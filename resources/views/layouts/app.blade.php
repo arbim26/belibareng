@@ -36,6 +36,9 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ route('user.dashboard') }}">
                     <img src="../../assets/logo/logo belibareng 1-01.png" width="" height="40" alt="">
+                    <style>
+                        
+                    </style>
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -58,6 +61,23 @@
                             <a class="nav-link" href="{{ route('produk') }}">Produk</a>
                         </li>
                         
+                        <style>
+                            ul li a {
+                                text-decoration: none;
+                                color: white;
+                                transition: 0.5s ease;
+                            }
+
+                            ul:hover li a {
+                                color: #D82B2A;
+                            }
+                            
+                            ul:hover li a:not(:hover) {
+                                color: white;
+                                opacity: 0.3;
+                                filter: blur(0.5px);
+                            }
+                        </style>
                         @auth
                         <div class="navbar-nav d-flex gap-2">
                             <div class="dropdown">
@@ -110,6 +130,18 @@
                                     <li><a class="dropdown-item" href="{{ route('daftarpesanan') }}">Pesanan Saya</a></li>
                                     <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">Logout</a>
+<<<<<<< HEAD
+=======
+=======
+                                aria-expanded="false"><i class="bi bi-person-circle" style="font-size: 1.75rem; color: black;"></i>
+                            </a>
+                            <ul class="dropdown-menu hover" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="{{ route('profile') }}">Akun Saya</a></li>
+                                <li><a class="dropdown-item" href="{{ route('cart.index') }}">Pesanan Saya</a></li>
+                                <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">Logout</a>
+>>>>>>> 69332ce0d6a4ac327c8e043ca4f7e2c40c5a3243
+>>>>>>> b46427aa441f3452493f9382dbf3f11a7fdca68e
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                         class="d-none">
                                         @csrf

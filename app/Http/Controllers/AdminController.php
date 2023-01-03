@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -12,6 +13,27 @@ class AdminController extends Controller
     function informasi(){
         return view('dashboards.admins.informasi');
     }
+
+    function regiuser(){
+
+        $table = User::select(\DB::raw("COUNT(*) as count"))
+            ->whereYear('created_at', date('Y'))
+            ->groupBy(\DB::raw("Month(created_at)"))
+            ->pluck('count');
+            
+        return view('dashboards.admins.informasi', compact('user'));
+    }
+
+    function artiuser(){
+
+        $artikelData = Artikel::select(\DB::raw("COUNT(*) as count"))
+            ->whereID('created_at', date('Y'))
+            ->groupBy(\DB::raw("Title(created_at)"))
+            ->pluck('count');
+            
+        return view('dashboards.admins.informasi', compact('artikelData'));
+    }
+    
     function slider(){
         return view('dashboards.admins.slider');
     }
