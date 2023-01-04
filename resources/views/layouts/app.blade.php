@@ -61,7 +61,7 @@
                             <a class="nav-link" href="{{ route('produk') }}">Produk</a>
                         </li>
                         
-                        <style>
+                        {{-- <style>
                             ul li a {
                                 text-decoration: none;
                                 color: white;
@@ -77,7 +77,7 @@
                                 opacity: 0.3;
                                 filter: blur(0.5px);
                             }
-                        </style>
+                        </style> --}}
                         @auth
                         <div class="navbar-nav d-flex gap-2">
                             <div class="dropdown">
@@ -128,22 +128,8 @@
                                 <ul class="dropdown-menu hover" style="margin-left: -125px" aria-labelledby="dropdownMenuButton1">
                                     <li><a class="dropdown-item" href="{{ route('profile') }}">Akun Saya</a></li>
                                     <li><a class="dropdown-item" href="{{ route('daftarpesanan') }}">Pesanan Saya</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">Logout</a>
-<<<<<<< HEAD
-=======
-=======
-                                aria-expanded="false"><i class="bi bi-person-circle" style="font-size: 1.75rem; color: black;"></i>
-                            </a>
-                            <ul class="dropdown-menu hover" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="{{ route('profile') }}">Akun Saya</a></li>
-                                <li><a class="dropdown-item" href="{{ route('cart.index') }}">Pesanan Saya</a></li>
-                                <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">Logout</a>
->>>>>>> 69332ce0d6a4ac327c8e043ca4f7e2c40c5a3243
->>>>>>> b46427aa441f3452493f9382dbf3f11a7fdca68e
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        class="d-none">
+                                    <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </li>

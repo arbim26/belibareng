@@ -140,11 +140,7 @@ class ArtikelController extends Controller
                         ->get();
                 }
             }]
-<<<<<<< HEAD
         ])->paginate(5);
-=======
-        ])->paginate(6);
->>>>>>> b46427aa441f3452493f9382dbf3f11a7fdca68e
 
         return view('dashboards.admins.artikels.index', compact('artikel'));
     }

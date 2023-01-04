@@ -77,11 +77,7 @@ class UserController extends Controller
     */
     public function updateprofile(Request $request, User $user)
     {
-<<<<<<< HEAD
-
-=======
-        
->>>>>>> b46427aa441f3452493f9382dbf3f11a7fdca68e
+        dd($request);
         $request->validate([
             'name'   => ['required','string','max:255'],
             'email'  => ['required', 'string', 'email', 'max:255'],
@@ -90,12 +86,7 @@ class UserController extends Controller
             'tanggal_lahir'   => 'required'
         ]);
 
-<<<<<<< HEAD
-        $profie = User::findOrFail($user->id);
-=======
-        //get data Blog by ID
         $profile = User::findOrFail($user->id);
->>>>>>> b46427aa441f3452493f9382dbf3f11a7fdca68e
 
         if($request->file('image') == "") {
             $profile = User::find($profile->id);
@@ -119,44 +110,6 @@ class UserController extends Controller
             ]);
 
         }
-
-        // # check if user image is null, then validate
-        // if (auth()->user()->image == null) {
-        //     $validate_image = Validator::make($request->all(), [
-        //         'image' => ['required', 'image', 'max:1000']
-        //     ]);
-        //     # check if their is any error in image validation
-        //     if ($validate_image->fails()) {
-        //         return response()->json(['code' => 400, 'msg' => $validate_image->errors()->first()]);
-        //     }
-        // }
-
-        // # check if their is any error
-        // if ($validated->fails()) {
-        //     return response()->json(['code' => 400, 'msg' => $validated->errors()->first()]);
-        // }
-
-        // # check if the request has profile image
-        // if ($request->hasFile('image')) {
-        //     $imagePath = 'storage/' .auth()->image;
-        //     # check whether the image exists in the directory
-        //     if (File::exists($imagePath)) {
-        //         # delete image
-        //         File::delete($imagePath);
-        //     }
-        //     $image = $request->image->store('image','public');
-        // }
-
-        // # update the user info
-        // auth()->user()->update([
-        //     'name'   => $request->name,
-        //     'email'  => $request->email,
-        //     'telp'   => $request->telp,
-        //     'jenis_kelamin' => $request->jenis_kelamin,
-        //     'tanggal_lahir'   => $request->tanggal_lahir,
-        //     'image'  => $image ?? auth()->user()->image
-        // ]);
-        // return response()->json(['code' => 200, 'msg' => 'profile updated successfully']);
 
         if($profile){
             //redirect dengan pesan sukses
