@@ -135,10 +135,10 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
         Route::get('daftarpesanan',[UserController::class,'daftarpesanan'])->name('daftarpesanan');
         
         // profile
-        Route::resource('profile',UserController::class);
+        // Route::resource('profile',UserController::class);
         // Route::get('profile',[UserController::class,'profile'])->name('profile');
-        // Route::put('profile.update/{id}',[UserController::class, 'updateprofile'])->name('profile.update');
-        Route::post('profile',[UserController::class, 'profile'])->name('profile');
+        Route::put('profile.update',[UserController::class, 'updateprofile'])->name('profile.update');
+        Route::get('profile',[UserController::class, 'profile'])->name('profile');
         // profile
         // artiekel
         Route::get('artikel',[UserController::class,'artikel'])->name('artikel');

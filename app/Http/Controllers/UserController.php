@@ -75,37 +75,34 @@ class UserController extends Controller
     * @param  mixed $profil
     * @return void
     */
-    public function updateprofile(Request $request, User $user)
+    
+    public function updateprofile(Request $request)
     {
-        dd($request);
-        $request->validate([
-            'name'   => ['required','string','max:255'],
-            'email'  => ['required', 'string', 'email', 'max:255'],
-            'telp'   => ['required','max:15'],
-            'jenis_kelamin' => ['required', ],
-            'tanggal_lahir'   => 'required'
-        ]);
-
+        // dd($request);   
+        // $this->validate($request, [
+        //     'name'   => 'required','string','max:255',
+        //     'email'  => 'required', 'string', 'email', 'max:255',
+        //     'telp'   => 'required','max:15',
+        // ]);
+        $user = $request->user();
         $profile = User::findOrFail($user->id);
-
         if($request->file('image') == "") {
             $profile = User::find($profile->id);
             $profile->update($request->all());
         } else {
-
             //hapus old image
             Storage::disk('local')->delete('public/profiles/'.$profile->image);
-
             //upload new image
             $image = $request->file('image');
+            // dd($image);
             $image->storeAs('public/profiles', $image->hashName());
 
             $profile->update([
-                'image'  => $image->hashName(),
-                'name'   => $request->name,
-                'email'  => $request->email,
-                'telp'   => $request->telp,
-                'jenis_kelamin' => $request->jenis_kelamin,
+                'image'           => $image->hashName(),
+                'name'            => $request->name,
+                'email'           => $request->email,
+                'telp'            => $request->telp,
+                'jenis_kelamin'   => $request->jenis_kelamin,
                 'tanggal_lahir'   => $request->tanggal_lahir
             ]);
 
@@ -113,10 +110,10 @@ class UserController extends Controller
 
         if($profile){
             //redirect dengan pesan sukses
-            return redirect()->route('dashboards.users.profile')->with(['success' => 'Data Berhasil Disimpan!']);
+            return redirect()->route('profile')->with(['success' => 'Data Berhasil Disimpan!']);
         }else{
             //redirect dengan pesan error
-            return redirect()->route('dashboards.users.profile')->with(['error' => 'Data Gagal Disimpan!']);
+            return redirect()->route('profile')->with(['error' => 'Data Gagal Disimpan!']);
         }
     }
 
