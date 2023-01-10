@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\Cart;
+use App\Models\Product;
 use App\Models\Checkout;
 use Illuminate\Support\Facades\DB;
 
@@ -40,21 +42,54 @@ class CheckoutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+     public function generateUniqueCode()
+     {
+         do {
+             $code = random_int(100000, 999999);
+         } while (Product::where("code", "=", $code)->first());
+   
+         return $code;
+     }
+
     public function store(Request $request)
     {
         $user = $request->user();
-        $cart = order::where('user_id', $user->id)->where('status', 'cart')->first();
-        $data = array('cart'=>$cart);
+        $itemcart = Order::where('status', 'cart')
+                     ->where('user_id', $user->id)
+                     ->first();
+        $cart = cart::where('order_id', $itemcart->id)->get();
 
-        $inputanorder['order_id'] = $cart->id;
-        $inputanorder['user_id'] = $user->id;
-        $inputanorder['nama_penerima'] = $request->nama_penerima;
-        $inputanorder['tlp'] = $request->telp;
-        $inputanorder['email'] = $request->email;
-        $inputanorder['status'] = "checkout";
+        $sip = cart::where('order_id', $itemcart->id)->first();
+        $produk = Product::where('id', $sip->produk_id)->first();
+        $pack = $produk->jumlah_pack;
+        $stock = $produk->stock;
 
-        $itemorder = Checkout::create($inputanorder);
-        $cart->update(['status' => 'checkout']);
+        $no_invoice = Order::where('user_id', $user->id)->count();
+        $number = mt_rand(10, 99); // better than rand()
+        
+        // dd($pack);
+        foreach ($cart as $key => $carts) {      
+            $inputanorder['cart_id'] = $carts->id;
+            $inputanorder['qty'] = $carts->qty;
+            $inputanorder['no_invoice'] = $carts->no_invoice; 
+            $inputanorder['user_id'] = $user->id;
+            $inputanorder['nama_penerima'] = $request->nama_penerima;
+            $inputanorder['tlp'] = $request->telp;
+            $inputanorder['email'] = $request->email;
+            $inputanorder['status'] = "Menunggu Target";
+    
+            $itemorder = Checkout::create($inputanorder);
+        }
+
+        $qty = $itemorder->qty;
+
+        // dd($pack);
+        $produk->stock($pack, $qty, $stock);
+
+        $itemcart->update(['status' => 'checkout']);
+
+        
         return redirect()->route('daftarpesanan')->with('success', 'Order berhasil disimpan');
     }
 

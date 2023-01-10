@@ -20,8 +20,8 @@ class CartController extends Controller
                      ->where('user_id', $user->id)
                      ->first())->id;
         $data = Cart::where('order_id', $itemcart)->get();
+        // dd($data);
         $total = $data->where('order_id', $itemcart)->sum('total');
-        // dd($data->produk);
         return view('dashboards.users.cart.index', compact('data', 'total'));
     }
 
@@ -32,6 +32,7 @@ class CartController extends Controller
         ]);
         $user = $request->user();
         $itemproduk = Product::findOrFail($request->produk_id);
+        // dd($itemproduk->jumlah_pack);    
         $qty = 1;
         $harga = $itemproduk->harga;
         $order = Order::where('user_id', $user->id)
@@ -40,27 +41,28 @@ class CartController extends Controller
         if ($order) {
             $itemorder = $order;
         }else{
-            $no_invoice = Order::where('user_id', $user->id)->count();
             $inputorder['user_id'] = $user->id;
-            $inputorder['no_invoice'] = 'INV '.str_pad(($no_invoice + 2),'4', '0', STR_PAD_LEFT);
             $inputorder['status'] = 'cart';
             $itemorder = Order::create($inputorder);
         }
         $cekdetail = Cart::where('order_id', $itemorder->id)
                     ->where('produk_id', $itemproduk->id)
                     ->first();
+        $no_invoice = Order::where('user_id', $user->id)->count();
+        $number = mt_rand(10, 99);
         
         if ($cekdetail) {
             $cekdetail->updatedetail($cekdetail, $qty, $harga);
         } else {
             $inputancart['produk_id'] = $itemproduk->id;
+            $inputancart['no_invoice'] = 'INV '.str_pad(($user->id),'5', ($number), STR_PAD_LEFT);;
             $inputancart['order_id'] = $itemorder->id;
             $inputancart['qty'] = $qty;
             $inputancart['harga'] = $harga;
             $inputancart['total'] = $harga * $qty;
             $itemdetail = Cart::create($inputancart);
         }
-        return redirect()->route('cart.index')->with('message', 'IT WORKS!');
+        return redirect()->route('cart.index')->with('success', 'barang berhasil di masukkan ke keranjang');
           
     }
 
@@ -68,7 +70,7 @@ class CartController extends Controller
     {
         $itemcart = Cart::findOrFail($id);;
         if ($itemcart->delete()) {
-            return back()->with('success', 'Item berhasil dihapus');
+            return back()->with('successd', 'Item berhasil dihapus');
         } else {
             return back()->with('error', 'Item gagal dihapus');
         }

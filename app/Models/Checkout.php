@@ -10,16 +10,18 @@ class Checkout extends Model
     use HasFactory;
     protected $table = 'checkouts';
     protected $fillable = [
-        'order_id',
+        'cart_id',
         'user_id',
+        'qty',
         'nama_penerima',
         'tlp',
         'email',
+        'no_invoice',
         'status',
     ];
 
-    public function order() {
-        return $this->belongsTo('App\Models\Order', 'order_id');
+    public function cart() {
+        return $this->belongsTo('App\Models\cart', 'cart_id');
     }
     
 }

@@ -12,17 +12,21 @@ class Cart extends Model
     protected $fillable = [
         'produk_id',
         'order_id',
+        'no_invoice',
         'status_cart',
         'qty',
         'harga',
-        'total',
+        'total'
     ];
 
     public function produk() {
         return $this->belongsTo('App\Models\Product', 'produk_id');
+    } 
+
+    public function checkout() {
+        return $this->hasMany('App\Models\Checkout');
     }   
 
-    // function untuk update qty, sama subtotal
     public function updatedetail($itemdetail, $qty, $harga) {
         $this->attributes['qty'] = $itemdetail->qty + $qty;
         $this->attributes['total'] = $itemdetail->total + ($qty * $harga);

@@ -75,19 +75,19 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mt-3">
-                <div class="card">
-                    <div class="card-body">
-                        <p class="card-text fw-bold">Total Belanja</p>
-                        <p >Rp. {{number_format($total, 2)}}</p>
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-danger" type="submit">Beli Sekarang</button>
-                        </div>
+        </div>
+        <div class="col-md-4 mt-3">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text fw-bold">Total Belanja</p>
+                    <p >Rp. {{number_format($total, 2)}}</p>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-danger" type="submit">Beli Sekarang</button>
                     </div>
                 </div>
             </div>
         </div>
-        </form>
+    </form>
     </div>
     </div>
 

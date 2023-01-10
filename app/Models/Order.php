@@ -10,12 +10,11 @@ class Order extends Model
     protected $table = 'orders';
     protected $fillable = [
         'user_id',
-        'no_invoice',
         'status',
         'total',
     ];
 
-    public function detail() {
+    public function cart() {
         return $this->hasOne('App\Models\cart', 'order_id');
     }
 }

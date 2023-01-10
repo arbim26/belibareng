@@ -7,6 +7,14 @@
             <h2 class="fw-bold text-center mb-3">Keranjang Belanja</h2>
             <br>
             <div class="col-md-8 mt-3">
+                @if (Session::has('success'))
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert">
+                            <i class="bi bi-x"></i>
+                        </button>
+                        <strong></strong> {{ session('success') }}
+                    </div>
+                @endif
                 <div class="d-flex flex-column">
                     <div class="">
                         <div class="card">

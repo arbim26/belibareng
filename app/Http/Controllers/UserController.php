@@ -53,11 +53,13 @@ class UserController extends Controller
         $products = Product::latest()->get();
         return view('dashboards.users.produk', compact('products'));
     }
+
     public function product($id)
     {
         $data = Product::find($id);
         $satuan = Satuan::all();
-        return view('dashboards.users.detailproduk', compact('data','satuan'));
+        $cart = Cart::where('produk_id', $id)->get();
+        return view('dashboards.users.detailproduk', ['data' => $data, 'cart' => $cart, 'satuan' => $satuan]);
     }
 
     public function profile(Request $request, User $user)
@@ -65,7 +67,6 @@ class UserController extends Controller
         $user = auth()->user();
         $profile = User::all();
         return view('dashboards.users.profile', compact('user','profile'));
-
     }
     
     /**
@@ -137,13 +138,8 @@ class UserController extends Controller
 
     function daftarpesanan(Request $request){
         $user = $request->user();
-        $itemcart = optional(Order::where('status', 'checkout')
-                    ->where('user_id', $user->id)
-                    ->first())->id;
-        $produk = Cart::where('order_id', $itemcart)->get();
-        $checkout = checkout::where('user_id', $user->id)->get();
-        $data = array('produk' => $produk,
-                      'checkout' => $checkout);
+        $checkout = Checkout::where('user_id', $user->id)->get();
+        $data = array('checkout' => $checkout);
         return view('dashboards.users.daftarpesanan', $data);
     }
 }

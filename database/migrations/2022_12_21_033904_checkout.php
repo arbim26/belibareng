@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('checkouts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('order_id')->unsigned();
+            $table->integer('cart_id')->unsigned();
             $table->integer('user_id')->unsigned();
+            $table->integer('qty');
+            $table->string('no_invoice');
             $table->string('nama_penerima');
             $table->string('tlp');
             $table->string('email');
@@ -34,7 +36,7 @@ return new class extends Migration
     {
         Schema::dropIfExists('checkouts', function($table)
         {
-            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('cart_id')->references('id')->on('cart');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

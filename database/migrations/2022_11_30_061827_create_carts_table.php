@@ -14,9 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('cart', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id');   
             $table->integer('order_id')->unsigned();
             $table->integer('produk_id')->unsigned();
+            $table->string('no_invoice')->unique();
             $table->bigInteger('qty')->default(0);
             $table->bigInteger('harga')->default(0);
             $table->bigInteger('total')->default(0);
@@ -24,7 +25,7 @@ return new class extends Migration
         });
     }
 
-    /**
+/**
      * Reverse the migrations.
      *
      * @return void

@@ -10,25 +10,20 @@
           <thead>
             <tr>
               <th>Nama Penerima</th>
+              <th>Invoice</th>
               <th>Nama Barang</th>
-              <th>No Telephon</th>
+              <th>No Telephone</th>
               <th>Email</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
+          {{-- {{dd($checkout->cart)}}   --}}
           @foreach ($checkout as $row)
             <tr>
               <td>{{ $row->nama_penerima }}</td>
-              <td>
-                <ul>
-                  {{-- @foreach ($produk as $item) --}}
-                  <li>
-                      {{ $row->order->detail->produk->barang }}
-                  </li>
-                  {{-- @endforeach --}}
-                </ul>
-              </td>
+              <td>{{ $row->no_invoice }}</td>
+              <td>{{ $row->cart->produk->barang }}</td>
               <td>{{ $row->tlp }}</td>
               <td>{{ $row->email }}</td>
               <td>{{ $row->status }}</td>

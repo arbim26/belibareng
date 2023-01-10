@@ -62,7 +62,7 @@ p                                        <div class="spinner border">
                             <form action="{{ route('cart.store') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="produk_id" value={{$data->id}}>
-                                <button class="btn text-white" type="submit" style="background-color: #D82B2A;">
+                                <button class="btn text-white" {{ $data->stock >= 0 ? '' : 'disabled' }} type="submit" style="background-color: #D82B2A;">
                                     <i class="bi bi-cart2" style="font-size: 1.2rem;;"></i> Tambahkan Ke Keranjang
                                 </button>
                             </form>
@@ -77,16 +77,23 @@ p                                        <div class="spinner border">
                             <tr>
                               <th scope="col">Nama</th>
                               <th scope="col">Jumlah</th>
-                              <th scope="col">Alamat</th>
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-
-                              <td>Mark</td>
-                              <td>Otto</td>
-                              <td>@mdo</td>
-                            </tr>
+                            @foreach ($cart as $row) 
+                                @forelse ($row->checkout as $item)                                    
+                                <tr>
+                                    <td>{{ $item->nama_penerima}}</td>
+                                    <td>{{ $row->qty}} {{ $data->pack->pack }}</td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="alert alert-danger text-center">Belum ada yang memesan barang ini</div>
+                                    </td>         
+                                </tr>
+                                @endforelse
+                            @endforeach
                           </tbody>
                     </table>
                 </div>

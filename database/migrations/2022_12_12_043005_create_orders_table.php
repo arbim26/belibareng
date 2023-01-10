@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->string('no_invoice');
+            $table->integer('user_id')->unsigned(); 
             $table->string('status');// ada 2 yaitu cart, checkout
             $table->double('total', 12, 2)->default(0);
             $table->timestamps();
