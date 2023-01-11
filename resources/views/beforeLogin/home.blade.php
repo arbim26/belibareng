@@ -40,19 +40,13 @@
             @foreach ($products->take(4) as $data)
               <div class="col-6 col-sm-3 mb-4">
                 <div class="card">
-                    <img src="{{ Storage::url('products/').$data->image }}" class="card-img-top round" alt="">
-                    <div class="isi-card">
-                      <a class="judul-card" href="{{route('detailproduk', $data->id)}}">{{Str::limit($data->barang,30)}}</a>
-                      <div class="row">
-                        <div class="col">
-                          <p class="f-20 jingga">Rp.{{$data->harga}}</p>
-                        </div>
-                        <div class="col">
-                          <p class="f-15 text-muted">{{$data->stock}}</p>
-                        </div>
-                      </div>
-                    </div>
-                </div>
+                  <img src="{{ Storage::url('products/').$data->image }}" class="card-img-top round" alt="">
+                  <div class="isi-card">
+                    <a class="judul-card" href="{{route('detailproduk', $data->id)}}">{{Str::limit($data->barang,30)}}</a>
+                    <p class="f-20 jingga m-0">Rp. {{number_format($data->harga)}}</p>
+                    <p class="f-15 text-muted m-0">Kuota Barang : {{ number_format($data->minimal_rilis) }} {{ $data->satuan->satuan }} / {{ number_format($data->barang_dipesan) }} {{ $data->satuan->satuan }}</p>
+                  </div>
+              </div>
               </div>
             @endforeach
 

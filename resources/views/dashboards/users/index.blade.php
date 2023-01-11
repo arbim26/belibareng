@@ -42,7 +42,11 @@
                       <div class="isi-card">
                         <a class="judul-card" href="{{route('detailproduk', $data->id)}}">{{Str::limit($data->barang,30)}}</a>
                         <p class="f-20 jingga m-0">Rp. {{number_format($data->harga)}}</p>
-                        <p class="f-15 text-muted m-0">Stock : {{ number_format($data->stock) }} {{ $data->satuan->satuan }}</p>
+                        @if ($data->status == 'belum rilis')
+                        <p class="f-15 text-muted mt-1 mb-0">Kuota Barang : {{ number_format($data->minimal_rilis) }} {{ $data->satuan->satuan }} / {{ number_format($data->barang_dipesan) }} {{ $data->satuan->satuan }}</p>
+                            @else
+                        <small class="mb-0 mb-1 alert alert-danger p-2" style="width: 200px">Barang sudah rilis</small>
+                        @endif
                       </div>
                   </div>
                 </div>
@@ -89,7 +93,7 @@
               <img src="{{ Storage::url('artikels/').$data->image }}" class="card-img-top round" alt="">
               <div class="isi-card d-flex flex-column ">
                 <div class="title">
-                  <a href="{{ route('detailartikel', $data->id) }}" class="judul-card ">{{ Str::limit($data->title,100) }}</a>
+                  <a href="{{route('detailartikel', $data->id)}}" class="judul-card ">{{ Str::limit($data->title,100) }}</a>
                 </div>
                 <hr>
                 <div class="d-flex gap-2">
@@ -110,9 +114,5 @@
         </div>
       </div>
   </div>
-</section>
-
-
-
-  
+</section>  
 @endsection

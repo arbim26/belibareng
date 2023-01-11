@@ -18,7 +18,7 @@
                                         <th scope="col" class="text-center">HARGA</th>
                                         <th scope="col" class="text-center">STOCK</th>
                                         <th scope="col" class="text-center">PACK</th>
-                                        <th scope="col" class="text-center">DESKRIPSI</th>
+                                        <th scope="col" class="text-center">BARNAG DIPESAN</th>
                                         <th scope="col" class="text-center">AKSI</th>
                                     </tr>
                                 </thead>
@@ -31,11 +31,11 @@
                                         </td>
                                         <td class="text-center">{{Str::limit($product->barang,30)}}</td>
                                         <td class="text-center">{{ number_format($product->harga) }}</td>
-                                        <td class="text-center">{{ number_format($product->stock) }}
+                                        <td class="text-center">{{ number_format($product->minimal_rilis) }}
                                             {{ $product->satuan->satuan }}</td>
                                         <td class="text-center">{{ $product->jumlah_pack }}
                                             {{ $product->satuan->satuan }} / {{ $product->pack->pack }}</td>
-                                        <td class="text-center">{!!Str::limit(Str::limit($product->content,50),50)!!}
+                                        <td class="text-center">{{ number_format($product->barang_dipesan) }} {{ $product->pack->pack }}
                                         </td>
                                         <td class="">
                                             <button class="btn btn-sm dropdown-toggle more-horizontal" type="button"
@@ -70,23 +70,6 @@
         </div>
     </div>
 </main>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-<script>
-    //message with toastr
-    @if(session() - > has('success'))
 
-    toastr.success('{{ session('
-        success ') }}', 'BERHASIL!');
-
-    @elseif(session() - > has('error'))
-
-    toastr.error('{{ session('
-        error ') }}', 'GAGAL!');
-
-    @endif
-
-</script>
 @endsection

@@ -10,6 +10,7 @@ class Checkout extends Model
     use HasFactory;
     protected $table = 'checkouts';
     protected $fillable = [
+        'tanggal',
         'cart_id',
         'user_id',
         'qty',

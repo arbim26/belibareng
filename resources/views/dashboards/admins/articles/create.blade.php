@@ -11,7 +11,7 @@
                     <div class="col-md-12">
                         <div class="card shadow">
                             <div class="card-body">
-                                <form action="{{ route('store_artikel') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('article.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="form-group col-md-6">
@@ -70,7 +70,7 @@
                                     </div>
         
                                     <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
-                                    <a href="{{route("artikel.index")}}" type="cancel" class="btn btn-md btn-danger">CANCEL</a>
+                                    <a href="{{route("article.index")}}" type="cancel" class="btn btn-md btn-danger">CANCEL</a>
         
                                 </form> 
                             </div>

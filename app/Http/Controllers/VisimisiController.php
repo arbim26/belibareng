@@ -68,18 +68,16 @@ class VisimisiController extends Controller
         $visi->update($request->all());
     } else {
 
-        //hapus old image
-        Storage::disk('local')->delete('public/visi/'.$visi->image);
-
-        //upload new image
-        $image = $request->file('image');
-        $image->storeAs('public/visi', $image->hashName());
-
-        $visi->update([
-            'image'     => $image->hashName(),
-            'title'     => $request->title,
-            'content'   => $request->content
-        ]);
+    //hapus old image
+    Storage::disk('local')->delete('public/visi/'.$visi->image);
+    //upload new image
+    $image = $request->file('image');
+    $image->storeAs('public/visi', $image->hashName());
+    $visi->update([
+        'image'     => $image->hashName(),
+        'title'     => $request->title,
+        'content'   => $request->content
+    ]);
 
     }
 

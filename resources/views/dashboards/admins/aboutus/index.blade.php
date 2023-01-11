@@ -51,7 +51,7 @@
                                               <span class="text-muted sr-only">Action</span>
                                               </button>
                                             <div class="dropdown-menu dropdown-menu-right" style="">
-                                                <a class="dropdown-item" href=" {{ route('edit_aboutus', $row->id) }}">Edit</a>
+                                                <a class="dropdown-item" href=" {{ route('aboutus.edit', $row->id) }}">Edit</a>
                                             </div>
                                           </td>
                                         </tr>

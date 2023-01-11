@@ -17,12 +17,12 @@
                                 {{-- <form class="form"> --}}
                                 <div class="form-row">
                                     <div class="form-group col-auto mr-auto">
-                                        <a href="{{ route('artikel.create')}}"
+                                        <a href="{{ route('article.create')}}"
                                             class="btn btn-md btn-primary mb-3">TAMBAH BLOG</a>
                                     </div>
                                     {{-- </form> --}}
                                     <div class="form-group col-auto">
-                                        <form action="{{ route('artikel.search') }}">
+                                        <form action="{{ route('article.search') }}">
                                             <label for="search" class="sr-only">
                                                 Search
                                             </label>
@@ -57,9 +57,9 @@
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-right" style="">
                                                     <form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                                                        action="{{ route('delete_artikel', $blog->id) }}" method="POST">
+                                                        action="{{ route('article.destroy', $blog->id) }}" method="POST">
                                                         <a class="dropdown-item"
-                                                            href=" {{ route('edit_artikel', $blog->id) }}">Edit</a>
+                                                            href=" {{ route('article.edit', $blog->id) }}">Edit</a>
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit"

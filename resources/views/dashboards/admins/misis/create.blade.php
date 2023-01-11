@@ -5,13 +5,13 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-12">
-                <h2 class="mb-2 page-title">Tambah Visi</h2>
+                <h2 class="mb-2 page-title">Tambah Misi</h2>
                 <div class="row my-4">
                     <!-- Small table -->
                     <div class="col-md-12">
                         <div class="card shadow">
                             <div class="card-body">
-                                <form action="{{ route('store_visi') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('misi.store') }}" method="POST" enctype="multipart/form-data">
                         
                                     @csrf
         
@@ -52,7 +52,7 @@
                                     </div>
         
                                     <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
-                                    <a href="{{route("visi")}}" type="cancel" class="btn btn-md btn-danger">CANCEL</a>
+                                    <a href="{{route("misi.index")}}" type="cancel" class="btn btn-md btn-danger">CANCEL</a>
         
                                 </form> 
                             </div>

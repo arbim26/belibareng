@@ -10,7 +10,7 @@ use App\Models\Order;
 use App\Models\Satuan;
 use App\Models\Slider;
 use App\Models\Aboutus;
-use App\Models\Artikel;
+use App\Models\Article;
 use App\Models\Product;
 use App\Models\Checkout;
 use Illuminate\Http\Request;
@@ -22,7 +22,7 @@ use Illuminate\Validation\Rule;
 class UserController extends Controller
 {
     function index(){
-        $artikel = Artikel::latest()->get();
+        $artikel = Article::latest()->get();
         $tentangkami = Aboutus::latest()->get();
         $products = Product::latest()->get();
         $sliders = Slider::latest()->get();
@@ -38,13 +38,13 @@ class UserController extends Controller
     }
 
     function artikel(){
-        $artikel = Artikel::latest()->paginate(9);
+        $artikel = Article::latest()->paginate(9);
         return view('dashboards.users.artikel', compact('artikel'));
     }
 
     public function detail($id)
     {
-        $data = Artikel::find($id);
+        $data = Article::find($id);
         return view('dashboards.users.detailartikel', compact('data'));
     }
 
@@ -138,9 +138,8 @@ class UserController extends Controller
 
     function daftarpesanan(Request $request){
         $user = $request->user();
-        $checkout = Checkout::where('user_id', $user->id)->get();
-        $data = array('checkout' => $checkout);
-        return view('dashboards.users.daftarpesanan', $data);
+        $checkout = Checkout::where('user_id', $user->id)->orderBy('created_at','desc')->paginate(10);
+        return view('dashboards.users.daftarpesanan', compact('checkout'));
     }
 }
 

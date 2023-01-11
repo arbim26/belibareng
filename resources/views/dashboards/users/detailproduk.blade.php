@@ -35,26 +35,16 @@
                                     <p class="col-sm-9 m-0">Diambil di Gudang</p>
                                 </div>
                             </li>
-                            {{-- <li>
-                                <div class="row">
-                                    <label class="col-sm-3">Jumlah</label>
-                                    <div class="col-sm-9 m-0">
-p                                        <div class="spinner border">
-                                            <button id="decrement" onclick="stepper(this)"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-                                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-                                              </svg> </button>
-                                            <input type="number" min="0" max="100" step="1" value="20" id="my-input" readonly>
-                                            <button id="increment" onclick="stepper(this)"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                              </svg> </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> --}}
                             <li>
                                 <div class="row">
                                     <label class="col-sm-3">Kuota</label>
-                                    <p class="col-sm-9 m-0">{{ number_format($data->stock) }} {{ $data->satuan->satuan }} / 1000kg</p>
+                                    <p class="col-sm-9 m-0">
+                                        @if ($data->status == 'belum rilis')
+                                            {{ number_format($data->barang_dipesan) }} {{ $data->satuan->satuan }} / {{ number_format($data->minimal_rilis) }} {{ $data->satuan->satuan }} 
+                                        @else
+                                        <div class="ms-3 alert alert-danger text-center" style="width: 365px">Barang sudah rilis</div>
+                                        @endif
+                                    </p>
                                 </div>
                             </li>
                         </ul>
@@ -62,7 +52,7 @@ p                                        <div class="spinner border">
                             <form action="{{ route('cart.store') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="produk_id" value={{$data->id}}>
-                                <button class="btn text-white" {{ $data->stock >= 0 ? '' : 'disabled' }} type="submit" style="background-color: #D82B2A;">
+                                <button class="btn text-white"  <?php if ($data->status == 'barang sudah rilis'){ ?> disabled <?php   } ?> type="submit" style="background-color: #D82B2A;">
                                     <i class="bi bi-cart2" style="font-size: 1.2rem;;"></i> Tambahkan Ke Keranjang
                                 </button>
                             </form>

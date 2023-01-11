@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Satuan;
 use App\Models\Slider;
 use App\Models\Aboutus;
-use App\Models\Artikel;
+use App\Models\Article;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -28,10 +29,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $artikel = Artikel::latest()->get();
+        $artikel = Article::latest()->get();
         $tentangkami = Aboutus::latest()->get();
         $products = Product::latest()->get();
         $sliders = Slider::latest()->get();
+        $satuan = Satuan::all();
         return view('beforeLogin.home', compact('artikel','tentangkami','products','sliders'));
     }
 }

@@ -26,8 +26,8 @@
                           </div>
                           <div class="form-row">
                             <div class="col-md-8 mb-3">
-                              <label for="example-multiselect">Stok</label>
-                              <input type="number" name="stock" id="stock" class="form-control" placeholder="Masukkan Jumlah Stok">
+                              <label for="example-multiselect">Kuota Minimum Perilisan</label>
+                              <input type="number" name="minimal_rilis" id="stock" class="form-control" placeholder="Masukkan Jumlah Kuota Minimum">
                             </div>
                             <div class="col-md-4 mb-3">
                               <label for="validationCustom04">Satuan</label>
@@ -74,9 +74,7 @@
                 </div> <!-- / .card -->
           </main> <!-- main -->
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+
 <script>
     CKEDITOR.replace( 'content' );
 </script>

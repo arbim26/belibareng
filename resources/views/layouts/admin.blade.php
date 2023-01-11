@@ -119,13 +119,13 @@
               </a>
             </li>
             <li class="nav-item flex-fill w-100 ">
-              <a class="nav-link" href="{{ route('visi') }}">
+              <a class="nav-link" href="{{ route('visi.index') }}">
                 <i class="fe fe-layers fe-16"></i>
                 <span class="ml-3 item-text">Visi</span>
               </a>
             </li>
             <li class="nav-item flex-fill w-100 ">
-              <a class="nav-link" href="{{ route('misi') }}">
+              <a class="nav-link" href="{{ route('misi.index') }}">
                 <i class="fe fe-layers fe-16"></i>
                 <span class="ml-3 item-text">Misi</span>
               </a>
@@ -143,7 +143,7 @@
           </p>
           <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-              <a class="nav-link" href="{{ route('artikel.index') }}">
+              <a class="nav-link" href="{{ route('article.index') }}">
                 <i class="fe fe-calendar fe-16"></i>
                 <span class="ml-3 item-text">Artikel</span>
               </a>

@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('content')
 
-<section id="artikel">
+<section id="artikel" style="min-height: 300px">
     <div class="container pt-5">
       <h2 class="fw-bold text-center">Artikel</h2>
       <div class="container pt-5 pb-5">
           <div class="row">
-            @foreach ($artikel as $data)
+            @forelse ($artikel as $data)
               <div class="col-6 col-sm-4 mb-4">
                 <div class="card">
                   <img src="{{ Storage::url('artikels/').$data->image }}" class="card-img-top round" alt="">
@@ -25,7 +25,11 @@
                     </div>
                 </div>
               </div>
-            @endforeach
+              @empty
+              <div class="mt-4 alert alert-danger text-center"> 
+                  Belum ada artikel.
+              </div>
+            @endforelse
           </div>
 
           <div class="text-end ">

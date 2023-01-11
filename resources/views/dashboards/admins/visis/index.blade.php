@@ -16,7 +16,7 @@
                                   <form class="form">
                                     <div class="form-row">
                                       <div class="form-group col-auto mr-auto">
-                                        <a href="{{ route('addvisi')}}" class="btn btn-md btn-danger mb-3">ADD +</a>
+                                        <a href="{{ route('visi.create')}}" class="btn btn-md btn-danger mb-3">ADD +</a>
                                       </div>
                                       <div class="form-group col-auto">
                                         <form class="form" method="get" action="">
@@ -51,7 +51,7 @@
                                               <span class="text-muted sr-only">Action</span>
                                               </button>
                                             <div class="dropdown-menu dropdown-menu-right" style="">
-                                                <a class="dropdown-item" href=" {{ route('edit_visi', $row->id) }}">Edit</a>
+                                                <a class="dropdown-item" href=" {{ route('visi.edit', $row->id) }}">Edit</a>
                                             </div>
                                           </td>
                                         </tr>

@@ -15,12 +15,20 @@ class Product extends Model
     * @var array
     */
     protected $fillable = [
-        'image', 'barang', 'harga', 'stock', 'jumlah_pack', 'satuan_id', 'pack_id', 'content'
+        'image', 
+        'barang', 
+        'harga', 
+        'minimal_rilis', 
+        'jumlah_pack', 
+        'satuan_id', 
+        'pack_id', 
+        'status', 
+        'content'
     ];
 
 
-    public function stock($stock, $qty, $pack) {
-        $this->attributes['stock'] = ($qty * $pack) - $stock;
+    public function barang_dipesan($barang_dipesan) {
+        $this->attributes['barang_dipesan'] = $barang_dipesan;
         self::save();
     }
 

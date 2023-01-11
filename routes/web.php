@@ -12,10 +12,11 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\AboutusController;
-use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\VisimisiController;
+use App\Http\Controllers\VisiController;
+use App\Http\Controllers\MisiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,58 +67,19 @@ Route::middleware(['middleware'=>'PreventBackHistory'])->group(function () {
 
         // Chartline
         Route::get('/regiuser', [AdminController::class, 'regiuser']);
-
         // Chartline
 
-        // slider
-        Route::get('slider',[SliderController::class, 'index'])->name('slider.index'); 
-        Route::get('create_slider',[SliderController::class, 'create'])->name('slider_create');
-        Route::post('store_slider',[SliderController::class, 'store'])->name('store_slider');
-        Route::get('edit_slider/{id}',[SliderController::class, 'edit'])->name('slider_edit');
-        Route::put('update_slider/{id}',[SliderController::class, 'update'])->name('update_slider');
-        Route::delete('delete_slider/{id}',[SliderController::class, 'destroy'])->name('slider_destroy');
-
-        // slider
-
-        // article
-        Route::get('artikel',[ArtikelController::class, 'index'])->name('artikel.index');
-        Route::get('create_artikel',[ArtikelController::class, 'create'])->name('artikel.create');
-        Route::post('store_artikel',[ArtikelController::class, 'store'])->name('store_artikel');
-        Route::get('edit_artikel/{id}',[ArtikelController::class, 'edit'])->name('edit_artikel');
-        Route::put('update_artikel/{id}',[ArtikelController::class, 'update'])->name('update_artikel');
-        Route::delete('delete_artikel/{id}', [ArtikelController::class, 'destroy'])->name('delete_artikel');
-        Route::get('/search',[ArtikelController::class,'search'])->name('artikel.search');
-        // artikel
-
-        // tentangkami
-        Route::get('aboutus',[AboutusController::class, 'index'])->name('aboutus.index'); 
-        Route::get('create_aboutus',[AboutusController::class, 'create'])->name('aboutus.create');
-        Route::post('store_aboutus',[AboutusController::class, 'store'])->name('store_aboutus');
-        Route::get('edit_aboutus/{id}',[AboutusController::class, 'edit'])->name('edit_aboutus');
-        Route::put('update_aboutus/{id}',[AboutusController::class, 'update'])->name('update_aboutus');
-        // tentangkami
-
-        // visimisi
-        Route::get('visi',[VisimisiController::class, 'showvisi'])->name('visi');
-        Route::get('addvisi',[VisimisiController::class, 'addvisi'])->name('addvisi');
-        Route::post('store_visi',[VisimisiController::class, 'storevisi'])->name('store_visi');
-        Route::get('edit_visi/{id}',[VisimisiController::class, 'editvisi'])->name('edit_visi');
-        Route::put('update_visi/{id}',[VisimisiController::class, 'updatevisi'])->name('update_visi');
-        // visimisi
-
-        // visimisi
-        Route::get('misi',[VisimisiController::class, 'showmisi'])->name('misi');
-        Route::get('addmisi',[VisimisiController::class, 'addmisi'])->name('addmisi');
-        Route::post('store_misi',[VisimisiController::class, 'storemisi'])->name('store_misi');
-        Route::get('edit_misi/{id}',[VisimisiController::class, 'editmisi'])->name('edit_misi');
-        Route::put('update_misi/{id}',[VisimisiController::class, 'updatemisi'])->name('update_misi');
-        // visimisi
-
+        Route::resource('article',ArticleController::class);
+        Route::resource('aboutus',AboutusController::class); 
+        Route::resource('visi',VisiController::class); 
+        Route::resource('misi',MisiController::class); 
         Route::resource('slider',SliderController::class);
         Route::resource('product',ProductController::class);
         Route::resource('order',OrderController::class);    
         Route::resource('satuan',SatuanController::class);    
         Route::resource('pack',PackController::class);    
+
+        Route::get('/search',[ArticleController::class,'search'])->name('article.search');  
 
     });
 

@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Artikel extends Model
+class Article extends Model
 {
     use HasFactory;
-    
-    /**
+
+        /**
      * fillable
      *
      * @var array
      */
-    protected $table = 'artikel';
+    protected $table = 'article';
     protected $fillable = [
         'image', 'title', 'content', 'date'
     ];

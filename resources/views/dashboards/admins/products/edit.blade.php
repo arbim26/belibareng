@@ -40,8 +40,8 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="font-weight-bold">Stock</label>
-                                <input type="text" class="form-control @error('stock') is-invalid @enderror" name="stock" value="{{ old('stock', $product->stock) }}" placeholder="Masukkan Stock Barang">
+                                <label class="font-weight-bold">Minimal Rilis</label>
+                                <input type="text" class="form-control @error('stock') is-invalid @enderror" name="stock" value="{{ old('stock', $product->minimal_rilis) }}" placeholder="Masukkan Stock Barang">
                             
                                 <!-- error message untuk title -->
                                 @error('stock')

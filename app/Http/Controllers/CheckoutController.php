@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
@@ -43,14 +44,14 @@ class CheckoutController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function generateUniqueCode()
-     {
-         do {
-             $code = random_int(100000, 999999);
-         } while (Product::where("code", "=", $code)->first());
-   
-         return $code;
-     }
+    public function generateUniqueCode()
+    {
+        do {
+            $code = random_int(100000, 999999);
+        } while (Product::where("code", "=", $code)->first());
+
+        return $code;
+    }
 
     public function store(Request $request)
     {
@@ -63,13 +64,16 @@ class CheckoutController extends Controller
         $sip = cart::where('order_id', $itemcart->id)->first();
         $produk = Product::where('id', $sip->produk_id)->first();
         $pack = $produk->jumlah_pack;
-        $stock = $produk->stock;
+        $barang = $produk->barang_dipesan;
 
+        $tanggal = Carbon::now()->isoFormat('D MMMM Y');
+        // dd($tanggal);
         $no_invoice = Order::where('user_id', $user->id)->count();
         $number = mt_rand(10, 99); // better than rand()
         
         // dd($pack);
         foreach ($cart as $key => $carts) {      
+            $inputanorder['tanggal'] = $tanggal;
             $inputanorder['cart_id'] = $carts->id;
             $inputanorder['qty'] = $carts->qty;
             $inputanorder['no_invoice'] = $carts->no_invoice; 
@@ -78,18 +82,24 @@ class CheckoutController extends Controller
             $inputanorder['tlp'] = $request->telp;
             $inputanorder['email'] = $request->email;
             $inputanorder['status'] = "Menunggu Target";
-    
+            
             $itemorder = Checkout::create($inputanorder);
         }
+        
+        $qty = $sip->qty;
+        $barang_dipesan = $barang + $pack * $qty;
+        $produk->barang_dipesan($barang_dipesan);
 
-        $qty = $itemorder->qty;
+        $barang_dipesan = $produk->barang_dipesan;
+        $minimal_rilis = $produk->minimal_rilis;
 
-        // dd($pack);
-        $produk->stock($pack, $qty, $stock);
+
+        if ($barang_dipesan >= $minimal_rilis) {
+            $produk->update(['status' => 'barang sudah rilis']);
+        }
 
         $itemcart->update(['status' => 'checkout']);
 
-        
         return redirect()->route('daftarpesanan')->with('success', 'Order berhasil disimpan');
     }
 

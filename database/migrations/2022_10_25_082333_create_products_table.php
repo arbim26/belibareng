@@ -19,10 +19,12 @@ return new class extends Migration
             $table->string('image');
             $table->string('barang');
             $table->integer('harga');
-            $table->integer('stock');
+            $table->integer('minimal_rilis');
+            $table->integer('barang_dipesan')->default(0);
             $table->integer('satuan_id')->unsigned();
             $table->integer('jumlah_pack');
             $table->integer('pack_id')->unsigned();
+            $table->string('status')->default('menunggu rilis');
             $table->text('content');
             $table->timestamps();
         });

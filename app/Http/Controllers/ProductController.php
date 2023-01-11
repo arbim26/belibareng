@@ -62,7 +62,7 @@ class ProductController extends Controller
             'image'         => $image->hashName(),
             'barang'        => $request->barang,
             'harga'         => $request->harga,
-            'stock'         => $request->stock,
+            'minimal_rilis' => $request->minimal_rilis,
             'satuan_id'     => $request->satuan_id,
             'jumlah_pack'   => $request->jumlah_pack,
             'pack_id'       => $request->pack_id,

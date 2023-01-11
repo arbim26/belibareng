@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('checkouts', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('tanggal');
             $table->integer('cart_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->integer('qty');
